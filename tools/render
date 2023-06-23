@@ -42,6 +42,12 @@ parser.add_argument(
     default=Path("/tmp/out")
 )
 parser.add_argument(
+    "--input-format", "-if",
+    help="Input Format",
+    choices=["aep", "json"],
+    default="json"
+)
+parser.add_argument(
     "command",
     nargs=argparse.REMAINDER,
     help="Renderer command, use {} for the input file name, {frame} for the frame number, {out} for the suggested output filename"
@@ -56,6 +62,7 @@ if "{}" not in args.command:
 infile_index = args.command.index("{}")
 outfile_index = args.command.index("{out}")
 frame_index = args.command.index("{frame}")
+input_suffix = "." + args.input_format
 
 if frame_index == -1:
     sys.stderr.write("TODO\n")
@@ -69,10 +76,12 @@ def collect_directory(root: Path, path: Path):
         elif file.suffix == ".png":
             m = re.match("(.*)-([0-9]+)$", file.stem)
             basename = m.group(1)
-            frame_number = m.group(2)
-            out_file = args.output / path / ("%s-%s.png" % (basename, frame_number))
-            out_file.parent.mkdir(parents=True, exist_ok=True)
-            invoke(str(file), str(out_file), frame_number)
+            in_file = file.parent / (basename + input_suffix)
+            if in_file.exists():
+                frame_number = m.group(2)
+                out_file = args.output / path / ("%s-%s.png" % (basename, frame_number))
+                out_file.parent.mkdir(parents=True, exist_ok=True)
+                invoke(str(in_file), str(out_file), frame_number)
 
 
 collect_directory(args.reference, Path())
