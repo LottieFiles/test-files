@@ -43,6 +43,8 @@ def collect_files(root: Path, path: Path, out: dict, suffix:str):
     for file in (root / path).iterdir():
         if file.is_dir():
             collect_files(root, path / file.name, out, suffix)
+        elif file.name == "meta.json":
+            continue
         elif file.suffix == suffix:
             basename = re.sub("-[0-9]+$", "", file.stem)
             example_name = str(path / basename)
@@ -123,7 +125,7 @@ def compare_datum(test_item, reference_item, result, path_prefix):
     uqi = opencv_similarity(test_img, ref_img)
     data["uqi"] = uqi
     score = uqi ** 3
-    if score > 0.99:
+    if score > 0.95:
         score = 1
     data["score"] = score
     result["score"] += score
@@ -169,17 +171,96 @@ def compare_data(test_data, reference_data, path_prefix):
             reference_item.mark_features(score, features)
 
     return {
+        "meta": {
+            "title": "Report",
+            "comment": "",
+            "command": "",
+        },
         "features": features,
         "tests": results,
     }
 
 
+def html_percent(value, parent):
+    e = ElementTree.SubElement(parent, "div")
+    e.attrib["class"] = "percent-parent"
+    ElementTree.SubElement(e, "span").text = "%.3g%%" % (value * 100)
+    bar = ElementTree.SubElement(e, "span")
+    bar.attrib["class"] = "percent-bar"
+    ElementTree.SubElement(bar, "span").attrib["style"] = "width: %s%%" % (value * 100)
+
+
 def render_html(report, path):
     html = ElementTree.Element("html")
     head = ElementTree.SubElement(html, "head")
-    title = ElementTree.SubElement(head, "title")
+    ElementTree.SubElement(head, "style").text = """
+    body {
+        width: 100vw;
+        max-width: 1024px;
+        margin: 0 auto;
+    }
+
+    td:first-child {
+        width: 100%;
+    }
+
+    td, th {
+        border: 1px solid silver;
+        padding: 5px;
+        white-space: nowrap;
+    }
+
+    th {
+        background: #eee;
+    }
+
+    table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    table img {
+        display: block;
+        margin: 0 auto;
+    }
+
+    .bad {
+        background: #fcc;
+    }
+    .meh {
+        background: #eea;
+    }
+
+    .percent-parent {
+        display: flex;
+        flex-flow: column;
+    }
+
+    span.percent-bar {
+        height: 5px;
+        border: 1px solid silver;
+        background: #c44;
+    }
+
+    .percent-bar > span {
+        background: #4c4;
+        display: block;
+        height: 100%;
+    }
+    """
+    title = "Report for " + report["meta"]["title"] if report["meta"]["title"] else "Lottie test files report"
+    ElementTree.SubElement(head, "title").text = title
     body = ElementTree.SubElement(html, "body")
-    ElementTree.SubElement(body, "h1").text = "Features"
+
+    ElementTree.SubElement(body, "h1").text = title
+    if report["meta"]["comment"]:
+        ElementTree.SubElement(body, "p").text = report["meta"]["comment"]
+
+    if report["meta"]["command"]:
+        ElementTree.SubElement(body, "p").text = "Render command:"
+        ElementTree.SubElement(ElementTree.SubElement(body, "pre"), "code").text = report["meta"]["command"]
+
+    ElementTree.SubElement(body, "h2").text = "Features"
     table = ElementTree.SubElement(body, "table")
     tr = ElementTree.SubElement(table, "tr")
     ElementTree.SubElement(tr, "th").text = "Feature"
@@ -187,15 +268,14 @@ def render_html(report, path):
     for fname, fdata in report["features"].items():
         tr = ElementTree.SubElement(table, "tr")
         ElementTree.SubElement(tr, "td").text = fname
-        ElementTree.SubElement(tr, "td").text = "%g%%" % (
-            fdata["score"] / fdata["max"] * 100
-        )
+        html_percent(fdata["score"] / fdata["max"], ElementTree.SubElement(tr, "td"))
 
-    ElementTree.SubElement(body, "h1").text = "Tests"
+    ElementTree.SubElement(body, "h2").text = "Tests"
     table = ElementTree.SubElement(body, "table")
     tr = ElementTree.SubElement(table, "tr")
     ElementTree.SubElement(tr, "th").text = "Name"
     ElementTree.SubElement(tr, "th").text = "File"
+    ElementTree.SubElement(tr, "th").text = "UQI"
     ElementTree.SubElement(tr, "th").text = "Score"
     ElementTree.SubElement(tr, "th").text = "Reference"
     ElementTree.SubElement(tr, "th").text = "Render"
@@ -203,9 +283,14 @@ def render_html(report, path):
     for name, result in report["tests"].items():
         for item in result["items"]:
             tr = ElementTree.SubElement(table, "tr")
+            if item["score"] < 0.9:
+                tr.attrib["class"] = "bad"
+            elif item["score"] < 1:
+                tr.attrib["class"] = "meh"
             ElementTree.SubElement(tr, "td").text = name
             ElementTree.SubElement(tr, "td").text = item["reference"].rsplit("/", 1)[-1]
-            ElementTree.SubElement(tr, "td").text = "%g%%" % (item["score"] * 100)
+            html_percent(item["uqi"], ElementTree.SubElement(tr, "td"))
+            html_percent(item["score"], ElementTree.SubElement(tr, "td"))
             td = ElementTree.SubElement(tr, "td")
             if item["reference"]:
                 ElementTree.SubElement(td, "img").attrib["src"] = "file://" + str(Path(item["reference"]).absolute())
@@ -213,9 +298,9 @@ def render_html(report, path):
             if item["source"]:
                 ElementTree.SubElement(td, "img").attrib["src"] = "file://" + str(Path(item["source"]).absolute())
 
-
     with open(path, "wb") as f:
         f.write(ElementTree.tostring(html, "utf8", "html"))
+
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(
@@ -255,6 +340,10 @@ if __name__ == "__main__":
     reference = collect_directory(args.reference)
     test = collect_directory(args.path)
     data = compare_data(test, reference, args.prefix)
+    meta = args.path / "meta.json"
+    if meta.exists:
+        with open(meta) as f:
+            data["meta"].update(json.load(f))
     out = sys.stdout if args.output is None else open(args.output, "w")
     json.dump(data, out, indent=4)
     out.write("\n")

@@ -2,6 +2,8 @@
 
 import re
 import sys
+import shlex
+import json
 import argparse
 import subprocess
 from pathlib import Path
@@ -48,6 +50,16 @@ parser.add_argument(
     default="json"
 )
 parser.add_argument(
+    "--comment", "-c",
+    help="Render set comment",
+    default=""
+)
+parser.add_argument(
+    "--title", "-t",
+    help="Render set title",
+    default=None
+)
+parser.add_argument(
     "command",
     nargs=argparse.REMAINDER,
     help="Renderer command, use {} for the input file name, {frame} for the frame number, {out} for the suggested output filename"
@@ -85,3 +97,11 @@ def collect_directory(root: Path, path: Path):
 
 
 collect_directory(args.reference, Path())
+
+with open(args.output / "meta.json", "w") as f:
+    command_base = Path(args.command[0]).name
+    json.dump({
+        "title": args.title or (command_base[0].upper() + command_base[1:]),
+        "comment": args.comment,
+        "command": " ".join(map(shlex.quote, [command_base] + args.command[1:]))
+    }, f, indent=4)
