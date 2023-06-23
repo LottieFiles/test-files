@@ -5,19 +5,31 @@ import sys
 import json
 import argparse
 from pathlib import Path
+from xml.etree import ElementTree
 from PIL import Image, ImageChops
 import cv2
 import numpy
 import sewar.full_ref
 
-
 class Example:
     def __init__(self, name):
         self.name = name
         self.files = {}
+        self.features = set()
 
     def append(self, file):
         self.files[file.stem] = file
+
+    def mark_features(self, score, features):
+        if len(self.features) == 0:
+            self.features = {self.name}
+
+        for feat in self.features:
+            if feat in features:
+                features[feat]["max"] += 1
+                features[feat]["score"] += score
+            else:
+                features[feat] = {"max": 1, "score": score}
 
 
 class ExampleFile:
@@ -43,6 +55,13 @@ def collect_files(root: Path, path: Path, out: dict, suffix:str):
                 data = None
 
             out[example_name].append(ExampleFile(file, data))
+        elif file.name.endswith("-meta.json"):
+            example_name = str(path / file.stem[:-5])
+            if example_name not in out:
+                out[example_name] = Example(example_name)
+
+            with open(file) as f:
+                out[example_name].features = set(json.load(f).get("features", []))
 
 
 def collect_directory(path: Path, suffix:str = "png"):
@@ -75,7 +94,6 @@ def opencv_similarity(rendered: Image.Image, source: Image.Image):
     return sewar.full_ref.uqi(cv_source, cv_rendered)
 
 
-
 def compare_datum(test_item, reference_item, result, path_prefix):
     result["max"] += 1
     data = {
@@ -88,7 +106,7 @@ def compare_datum(test_item, reference_item, result, path_prefix):
     if test_item is None:
         data["source"] = None
         data["status"] = "missing-data"
-        return
+        return 0
 
     data["source"] = path_prefix + str(test_item.path)
     test_img = test_item.data
@@ -96,7 +114,7 @@ def compare_datum(test_item, reference_item, result, path_prefix):
 
     if test_img.width != ref_img.width or test_img.height != ref_img.height:
         data["status"] = "size-mismatch"
-        return
+        return 0
 
     data["status"] = "ok"
     # hist = ImageChops.difference(test_img, ref_img).histogram()
@@ -109,11 +127,13 @@ def compare_datum(test_item, reference_item, result, path_prefix):
         score = 1
     data["score"] = score
     result["score"] += score
+    return score
 
 
 def compare_data(test_data, reference_data, path_prefix):
     keys = set(test_data.keys()) | set(reference_data.keys())
 
+    features = {}
     results = {}
 
     for key in sorted(keys):
@@ -145,10 +165,57 @@ def compare_data(test_data, reference_data, path_prefix):
         results[key] = result
 
         for name, file in reference_item.files.items():
-            compare_datum(test_item.files.get(name), file, result, path_prefix)
+            score = compare_datum(test_item.files.get(name), file, result, path_prefix)
+            reference_item.mark_features(score, features)
 
-    return results
+    return {
+        "features": features,
+        "tests": results,
+    }
 
+
+def render_html(report, path):
+    html = ElementTree.Element("html")
+    head = ElementTree.SubElement(html, "head")
+    title = ElementTree.SubElement(head, "title")
+    body = ElementTree.SubElement(html, "body")
+    ElementTree.SubElement(body, "h1").text = "Features"
+    table = ElementTree.SubElement(body, "table")
+    tr = ElementTree.SubElement(table, "tr")
+    ElementTree.SubElement(tr, "th").text = "Feature"
+    ElementTree.SubElement(tr, "th").text = "Score"
+    for fname, fdata in report["features"].items():
+        tr = ElementTree.SubElement(table, "tr")
+        ElementTree.SubElement(tr, "td").text = fname
+        ElementTree.SubElement(tr, "td").text = "%g%%" % (
+            fdata["score"] / fdata["max"] * 100
+        )
+
+    ElementTree.SubElement(body, "h1").text = "Tests"
+    table = ElementTree.SubElement(body, "table")
+    tr = ElementTree.SubElement(table, "tr")
+    ElementTree.SubElement(tr, "th").text = "Name"
+    ElementTree.SubElement(tr, "th").text = "File"
+    ElementTree.SubElement(tr, "th").text = "Score"
+    ElementTree.SubElement(tr, "th").text = "Reference"
+    ElementTree.SubElement(tr, "th").text = "Render"
+
+    for name, result in report["tests"].items():
+        for item in result["items"]:
+            tr = ElementTree.SubElement(table, "tr")
+            ElementTree.SubElement(tr, "td").text = name
+            ElementTree.SubElement(tr, "td").text = item["reference"].rsplit("/", 1)[-1]
+            ElementTree.SubElement(tr, "td").text = "%g%%" % (item["score"] * 100)
+            td = ElementTree.SubElement(tr, "td")
+            if item["reference"]:
+                ElementTree.SubElement(td, "img").attrib["src"] = "file://" + str(Path(item["reference"]).absolute())
+            td = ElementTree.SubElement(tr, "td")
+            if item["source"]:
+                ElementTree.SubElement(td, "img").attrib["src"] = "file://" + str(Path(item["source"]).absolute())
+
+
+    with open(path, "wb") as f:
+        f.write(ElementTree.tostring(html, "utf8", "html"))
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(
@@ -177,6 +244,12 @@ if __name__ == "__main__":
         type=str,
         default=""
     )
+    parser.add_argument(
+        "--html",
+        help="File path for the HTML report",
+        type=Path,
+        default=None
+    )
 
     args = parser.parse_args()
     reference = collect_directory(args.reference)
@@ -185,3 +258,6 @@ if __name__ == "__main__":
     out = sys.stdout if args.output is None else open(args.output, "w")
     json.dump(data, out, indent=4)
     out.write("\n")
+
+    if args.html:
+        render_html(data, args.html)
