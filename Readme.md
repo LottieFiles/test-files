@@ -67,3 +67,8 @@ Tools
 
 `./tools/report` will generate a JSON file reporting on the status of a directory containing renders to examine.
 
+
+License
+-------
+
+Everything in `./data/` is public domain (CC0), everything else is MIT (see `LICENSE`).
