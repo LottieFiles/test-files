@@ -65,8 +65,20 @@ to compare renders.
 Tools
 -----
 
+`./tools/verify-examples` shows a table with all the examples, you should invoke after adding new examples
+`./tools/render` will use the given parameter to invoke scripts that render PNGs given a JSON
 `./tools/report` will generate a JSON file reporting on the status of a directory containing renders to examine.
 
+
+### Example
+
+Follows a practical example on how to generate a report with a given renderer
+(here `glaxnimate` is used as a renderer for demonstation).
+
+```bash
+tools/render -o /tmp/lottie-test/img glaxnimate {} -r {out} --frame {frame}
+tools/report /tmp/lottie-test/img -o /tmp/lottie-test/report.json
+```
 
 License
 -------

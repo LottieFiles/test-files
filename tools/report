@@ -72,9 +72,7 @@ def opencv_similarity(rendered: Image.Image, source: Image.Image):
     # rendered_hist = convert_img_to_hist(cv_rendered)
     # cv2.compareHist(orig_hist, rendered_hist, cv2.HISTCMP_CHISQR)
 
-    score = sewar.full_ref.uqi(cv_source, cv_rendered)
-    # Cube it to skew low results towards 0
-    return score ** 3
+    return sewar.full_ref.uqi(cv_source, cv_rendered)
 
 
 
@@ -104,7 +102,11 @@ def compare_datum(test_item, reference_item, result, path_prefix):
     # hist = ImageChops.difference(test_img, ref_img).histogram()
     # data["histogram"] = hist
     data["ok"] = True
-    score = opencv_similarity(test_img, ref_img)
+    uqi = opencv_similarity(test_img, ref_img)
+    data["uqi"] = uqi
+    score = uqi ** 3
+    if score > 0.99:
+        score = 1
     data["score"] = score
     result["score"] += score
 
@@ -149,7 +151,9 @@ def compare_data(test_data, reference_data, path_prefix):
 
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser()
+    parser = argparse.ArgumentParser(
+        description="Generate a report based on rendered files"
+    )
     parser.add_argument(
         "--reference",
         help="Root path for the reference data",
@@ -163,7 +167,7 @@ if __name__ == "__main__":
     )
     parser.add_argument(
         "--output", "-o",
-        help="Path for the output",
+        help="Output file path",
         type=Path,
         default=None
     )

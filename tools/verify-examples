@@ -45,8 +45,6 @@ def collect_directory(root: Path, path: Path, found: dict):
             found.setdefault(example_name, []).append(file.name)
 
 
-
-
 data_root = Path(__file__).parent.parent / "data"
 table = Table([
     Column("Example ID", "ljust"),

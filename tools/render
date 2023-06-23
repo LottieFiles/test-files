@@ -1,0 +1,78 @@
+#!/usr/bin/env python3
+
+import re
+import sys
+import argparse
+import subprocess
+from pathlib import Path
+
+
+def invoke(infile, outfile, frame):
+    cmd = list(args.command)
+    cmd[infile_index] = infile
+    if outfile_index != -1:
+        cmd[outfile_index] = outfile
+    if frame_index != -1:
+        cmd[frame_index] = str(int(frame))
+
+    print(cmd)
+    try:
+        rc = subprocess.call(cmd)
+        if rc == 0:
+            print("    OK")
+        else:
+            print("    FAIL")
+    except Exception as e:
+        print("    FAIL", e)
+
+
+parser = argparse.ArgumentParser(
+    description="Render example files"
+)
+parser.add_argument(
+    "--reference",
+    help="Root path for the reference data",
+    type=Path,
+    default=(Path(__file__).parent.parent / "data").relative_to(Path().absolute())
+)
+parser.add_argument(
+    "--output", "-o",
+    help="Output path",
+    type=Path,
+    default=Path("/tmp/out")
+)
+parser.add_argument(
+    "command",
+    nargs=argparse.REMAINDER,
+    help="Renderer command, use {} for the input file name, {frame} for the frame number, {out} for the suggested output filename"
+)
+args = parser.parse_args()
+
+if "{}" not in args.command:
+    sys.stderr.write("Missing {} in the command\n")
+    sys.exit(1)
+
+
+infile_index = args.command.index("{}")
+outfile_index = args.command.index("{out}")
+frame_index = args.command.index("{frame}")
+
+if frame_index == -1:
+    sys.stderr.write("TODO\n")
+    sys.exit(1)
+
+
+def collect_directory(root: Path, path: Path):
+    for file in (root / path).iterdir():
+        if file.is_dir():
+            collect_directory(root, path / file.name)
+        elif file.suffix == ".png":
+            m = re.match("(.*)-([0-9]+)$", file.stem)
+            basename = m.group(1)
+            frame_number = m.group(2)
+            out_file = args.output / path / ("%s-%s.png" % (basename, frame_number))
+            out_file.parent.mkdir(parents=True, exist_ok=True)
+            invoke(str(file), str(out_file), frame_number)
+
+
+collect_directory(args.reference, Path())
