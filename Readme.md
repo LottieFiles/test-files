@@ -77,7 +77,7 @@ Follows a practical example on how to generate a report with a given renderer
 
 ```bash
 tools/render -o /tmp/lottie-test/img glaxnimate {} -r {out} --frame {frame}
-tools/report /tmp/lottie-test/img -o /tmp/lottie-test/report.json
+tools/report /tmp/lottie-test/img -o /tmp/lottie-test/report.json --html /tmp/lottie-test/report.html
 ```
 
 License
