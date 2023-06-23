@@ -1,0 +1,10 @@
+{
+    "features": [
+        "shapes/rectangle",
+        "shapes/rectangle/rounded"
+    ],
+    "caniuse": [
+        "shape-rectangle"
+    ],
+    "docs": "https://lottiefiles.github.io/lottie-docs/shapes/#rectangle"
+}

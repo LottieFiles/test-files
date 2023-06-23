@@ -1,0 +1,92 @@
+#!/usr/bin/env python3
+import re
+import sys
+from pathlib import Path
+
+
+
+class Column:
+    def __init__(self, title, just="center"):
+        self.title = title
+        self.max = len(title)
+        self.just = just
+
+    def add(self, item):
+        if len(item) > self.max:
+            self.max = len(item)
+
+    def write(self, text="", dir=None, pad=" "):
+        sys.stdout.write(pad)
+        sys.stdout.write(getattr(text, dir or self.just)(self.max, pad))
+        sys.stdout.write(pad)
+        sys.stdout.write("|")
+
+
+class Table:
+    def __init__(self, columns):
+        self.columns = columns
+        self.rows = []
+
+    def row(self, row):
+        self.rows.append(row)
+        for it, col in zip(row, self.columns):
+            col.add(it)
+
+
+def collect_directory(root: Path, path: Path, found: dict):
+    for file in (root / path).iterdir():
+        if file.is_dir():
+            collect_directory(root, path / file.name, found)
+        else:
+            basename = re.sub("-[0-9]+$", "", file.stem)
+            if file.name.endswith("-meta.json"):
+                basename = basename[:-5]
+            example_name = str(path / basename)
+            found.setdefault(example_name, []).append(file.name)
+
+
+
+
+data_root = Path(__file__).parent.parent / "data"
+table = Table([
+    Column("Example ID", "ljust"),
+    Column("JSON"),
+    Column("AEP"),
+    Column("Meta"),
+    Column("Frames", "rjust"),
+])
+has_json = 1
+has_aep = 2
+has_meta = 3
+has_frames = 4
+found = {}
+collect_directory(data_root, Path(), found)
+for example, files in sorted(found.items()):
+    row = [example, "NO", "NO", "NO", 0]
+    for file in files:
+        if file.endswith("-meta.json"):
+            row[has_meta] = "X"
+        elif file.endswith(".json"):
+            row[has_json] = "X"
+        elif file.endswith(".aep"):
+            row[has_aep] = "X"
+        elif file.endswith(".png"):
+            row[has_frames] += 1
+    row[has_frames] = str(row[has_frames])
+    table.row(row)
+
+sys.stdout.write("|")
+for col in table.columns:
+    col.write(col.title, "ljust")
+sys.stdout.write("\n")
+
+sys.stdout.write("|")
+for col in table.columns:
+    col.write(pad="-")
+sys.stdout.write("\n")
+
+for row in table.rows:
+    sys.stdout.write("|")
+    for it, col in zip(row, table.columns):
+        col.write(it)
+    sys.stdout.write("\n")
