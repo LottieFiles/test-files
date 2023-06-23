@@ -1,0 +1,9 @@
+{
+    "features": [
+        "shapes/ellipse"
+    ],
+    "caniuse": [
+        "shape-ellipse"
+    ],
+    "docs": "https://lottiefiles.github.io/lottie-docs/shapes/#ellipse"
+}

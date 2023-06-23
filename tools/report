@@ -1,0 +1,183 @@
+#!/usr/bin/env python3
+
+import re
+import sys
+import json
+import argparse
+from pathlib import Path
+from PIL import Image, ImageChops
+import cv2
+import numpy
+import sewar.full_ref
+
+
+class Example:
+    def __init__(self, name):
+        self.name = name
+        self.files = {}
+
+    def append(self, file):
+        self.files[file.stem] = file
+
+
+class ExampleFile:
+    def __init__(self, path, data):
+        self.path = path
+        self.stem = path.stem
+        self.data = data
+
+
+def collect_files(root: Path, path: Path, out: dict, suffix:str):
+    for file in (root / path).iterdir():
+        if file.is_dir():
+            collect_files(root, path / file.name, out, suffix)
+        elif file.suffix == suffix:
+            basename = re.sub("-[0-9]+$", "", file.stem)
+            example_name = str(path / basename)
+            if example_name not in out:
+                out[example_name] = Example(example_name)
+
+            if suffix == ".png":
+                data = Image.open(file).convert("RGBA")
+            else:
+                data = None
+
+            out[example_name].append(ExampleFile(file, data))
+
+
+def collect_directory(path: Path, suffix:str = "png"):
+    out = {}
+    collect_files(path, Path(), out, "." + suffix)
+    return out
+
+
+def pil_to_cv(image: Image.Image):
+    return cv2.cvtColor(numpy.array(image), cv2.COLOR_RGBA2BGRA)
+
+
+def convert_img_to_hist(image):
+    hist = cv2.calcHist(
+        [image], [0, 1, 2], None, [256, 256, 256],
+        [0, 256, 0, 256, 0, 256]
+    )
+    hist = cv2.normalize(hist, hist).flatten()
+    return hist
+
+
+def opencv_similarity(rendered: Image.Image, source: Image.Image):
+    cv_source = pil_to_cv(source)
+    cv_rendered = pil_to_cv(rendered)
+
+    # orig_hist = convert_img_to_hist(cv_source)
+    # rendered_hist = convert_img_to_hist(cv_rendered)
+    # cv2.compareHist(orig_hist, rendered_hist, cv2.HISTCMP_CHISQR)
+
+    score = sewar.full_ref.uqi(cv_source, cv_rendered)
+    # Cube it to skew low results towards 0
+    return score ** 3
+
+
+
+def compare_datum(test_item, reference_item, result, path_prefix):
+    result["max"] += 1
+    data = {
+        "reference": path_prefix + str(reference_item.path),
+        "ok": False,
+        "score": 0,
+    }
+    result["items"].append(data)
+
+    if test_item is None:
+        data["source"] = None
+        data["status"] = "missing-data"
+        return
+
+    data["source"] = path_prefix + str(test_item.path)
+    test_img = test_item.data
+    ref_img = reference_item.data
+
+    if test_img.width != ref_img.width or test_img.height != ref_img.height:
+        data["status"] = "size-mismatch"
+        return
+
+    data["status"] = "ok"
+    # hist = ImageChops.difference(test_img, ref_img).histogram()
+    # data["histogram"] = hist
+    data["ok"] = True
+    score = opencv_similarity(test_img, ref_img)
+    data["score"] = score
+    result["score"] += score
+
+
+def compare_data(test_data, reference_data, path_prefix):
+    keys = set(test_data.keys()) | set(reference_data.keys())
+
+    results = {}
+
+    for key in sorted(keys):
+        test_item = test_data.get(key)
+
+        if test_item is None:
+            results[key] = {
+                "status": "missing-data",
+                "score": 0,
+                "max": 0,
+                "items": [],
+            }
+
+        reference_item = reference_data.get(key)
+        if reference_item is None:
+            results[key] = {
+                "status": "missing-reference",
+                "score": 0,
+                "max": 0,
+                "items": [],
+            }
+
+        result = {
+            "status": "ok",
+            "score": 0,
+            "max": 0,
+            "items": [],
+        }
+        results[key] = result
+
+        for name, file in reference_item.files.items():
+            compare_datum(test_item.files.get(name), file, result, path_prefix)
+
+    return results
+
+
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser()
+    parser.add_argument(
+        "--reference",
+        help="Root path for the reference data",
+        type=Path,
+        default=(Path(__file__).parent.parent / "data").relative_to(Path().absolute())
+    )
+    parser.add_argument(
+        "path",
+        help="Path to check against the reference",
+        type=Path
+    )
+    parser.add_argument(
+        "--output", "-o",
+        help="Path for the output",
+        type=Path,
+        default=None
+    )
+    parser.add_argument(
+        "--prefix",
+        help="Prefix for file names in the output",
+        type=str,
+        default=""
+    )
+
+    args = parser.parse_args()
+    reference = collect_directory(args.reference)
+    test = collect_directory(args.path)
+    data = compare_data(test, reference, args.prefix)
+    out = sys.stdout if args.output is None else open(args.output, "w")
+    json.dump(data, out, indent=4)
+    out.write("\n")
