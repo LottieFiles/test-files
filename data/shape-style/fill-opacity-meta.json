@@ -1,0 +1,9 @@
+{
+    "features": [
+        "shape-style/fill/opacity"
+    ],
+    "caniuse": [
+        "shape-fill"
+    ],
+    "docs": "https://lottiefiles.github.io/lottie-docs/shapes/#fill"
+}

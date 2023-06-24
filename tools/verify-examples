@@ -68,9 +68,9 @@ for example, files in sorted(found.items()):
             row[has_json] = "X"
         elif file.endswith(".aep"):
             row[has_aep] = "X"
-        elif file.endswith(".png"):
+        elif re.match(".*-[0-9]+.png$", file):
             row[has_frames] += 1
-    row[has_frames] = str(row[has_frames])
+    row[has_frames] = str(row[has_frames]) if row[has_frames] else "NO"
     table.row(row)
 
 sys.stdout.write("|")

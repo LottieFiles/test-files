@@ -1,0 +1,10 @@
+{
+    "features": [
+        "shape-style/fill/gradient",
+        "shape-style/gradient/linear"
+    ],
+    "caniuse": [
+        "shape-fill-gradient"
+    ],
+    "docs": "https://lottiefiles.github.io/lottie-docs/shapes/#gradients"
+}
