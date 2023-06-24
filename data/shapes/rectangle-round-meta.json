@@ -1,6 +1,5 @@
 {
     "features": [
-        "shapes/rectangle",
         "shapes/rectangle/rounded"
     ],
     "caniuse": [

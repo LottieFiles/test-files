@@ -63,7 +63,13 @@ def collect_files(root: Path, path: Path, out: dict, suffix:str):
                 out[example_name] = Example(example_name)
 
             with open(file) as f:
-                out[example_name].features = set(json.load(f).get("features", []))
+                features = set()
+                for feat in json.load(f).get("features", []):
+                    split = feat.split("/")
+                    for i in range(len(split)):
+                        features.add("/".join(split[0:i+1]))
+
+            out[example_name].features = features
 
 
 def collect_directory(path: Path, suffix:str = "png"):
@@ -150,6 +156,7 @@ def compare_data(test_data, reference_data, path_prefix, meta):
                 "max": 0,
                 "items": [],
             }
+            continue
 
         reference_item = reference_data.get(key)
         if reference_item is None:
@@ -159,6 +166,7 @@ def compare_data(test_data, reference_data, path_prefix, meta):
                 "max": 0,
                 "items": [],
             }
+            continue
 
         result = {
             "status": "ok",
@@ -269,7 +277,7 @@ def render_html(report, path):
     tr = ElementTree.SubElement(table, "tr")
     ElementTree.SubElement(tr, "th").text = "Feature"
     ElementTree.SubElement(tr, "th").text = "Score"
-    for fname, fdata in report["features"].items():
+    for fname, fdata in sorted(report["features"].items()):
         tr = ElementTree.SubElement(table, "tr")
         ElementTree.SubElement(tr, "td").text = fname
         html_percent(fdata["score"] / fdata["max"], ElementTree.SubElement(tr, "td"))

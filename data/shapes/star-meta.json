@@ -1,0 +1,9 @@
+{
+    "features": [
+        "shapes/star"
+    ],
+    "caniuse": [
+        "shape-polystar"
+    ],
+    "docs": "https://lottiefiles.github.io/lottie-docs/shapes/#polystar"
+}
