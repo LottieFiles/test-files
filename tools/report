@@ -246,7 +246,7 @@ def render_html(report, path):
         height: 100%;
     }
     """
-    title = report["meta"]["title"] + "test file report"
+    title = report["meta"]["title"] + " test file report"
     ElementTree.SubElement(head, "title").text = title
     body = ElementTree.SubElement(html, "body")
 

@@ -80,6 +80,12 @@ tools/render -o /tmp/lottie-test/img glaxnimate {} -r {out} --frame {frame}
 tools/report /tmp/lottie-test/img -o /tmp/lottie-test/report.json --html /tmp/lottie-test/report.html
 ```
 
+If you are OK with the default settings, you can also use the shorthand command `render-report`:
+
+```bash
+tools/render-report -o /tmp/lottie-test -f json glaxnimate {} -r {out} --frame {frame}
+```
+
 License
 -------
 

@@ -46,7 +46,7 @@ def collect_directory(root: Path, path: Path):
 
 
 parser = argparse.ArgumentParser(
-    description="Render example files"
+    description="Creates a render set from example files"
 )
 parser.add_argument(
     "--reference",
@@ -61,7 +61,7 @@ parser.add_argument(
     default=Path("/tmp/out")
 )
 parser.add_argument(
-    "--input-format", "-if",
+    "--input-format", "-f",
     help="Input Format",
     choices=["aep", "json"],
     default="json"
