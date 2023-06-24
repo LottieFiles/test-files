@@ -132,11 +132,13 @@ def compare_datum(test_item, reference_item, result, path_prefix):
     return score
 
 
-def compare_data(test_data, reference_data, path_prefix):
+def compare_data(test_data, reference_data, path_prefix, meta):
     keys = set(test_data.keys()) | set(reference_data.keys())
 
     features = {}
     results = {}
+    skipped = set(meta.get("skipped", []))
+    keys = keys - skipped
 
     for key in sorted(keys):
         test_item = test_data.get(key)
@@ -171,11 +173,7 @@ def compare_data(test_data, reference_data, path_prefix):
             reference_item.mark_features(score, features)
 
     return {
-        "meta": {
-            "title": "Report",
-            "comment": "",
-            "command": "",
-        },
+        "meta": meta,
         "features": features,
         "tests": results,
     }
@@ -248,13 +246,19 @@ def render_html(report, path):
         height: 100%;
     }
     """
-    title = "Report for " + report["meta"]["title"] if report["meta"]["title"] else "Lottie test files report"
+    title = report["meta"]["title"] + "test file report"
     ElementTree.SubElement(head, "title").text = title
     body = ElementTree.SubElement(html, "body")
 
     ElementTree.SubElement(body, "h1").text = title
+    p = ElementTree.SubElement(body, "p")
     if report["meta"]["comment"]:
-        ElementTree.SubElement(body, "p").text = report["meta"]["comment"]
+        p.text = ElementTree.SubElement(body, "p").text = report["meta"]["comment"]
+    else:
+        p.text = "Report for the "
+        c = ElementTree.SubElement(p, "code")
+        c.text = report["meta"]["format"]
+        c.tail = " format."
 
     if report["meta"]["command"]:
         ElementTree.SubElement(body, "p").text = "Render command:"
@@ -339,11 +343,19 @@ if __name__ == "__main__":
     args = parser.parse_args()
     reference = collect_directory(args.reference)
     test = collect_directory(args.path)
-    data = compare_data(test, reference, args.prefix)
-    meta = args.path / "meta.json"
-    if meta.exists:
-        with open(meta) as f:
-            data["meta"].update(json.load(f))
+    meta_path = args.path / "meta.json"
+    meta = {
+        "title": "Lottie",
+        "comment": "",
+        "command": "",
+        "skipped": [],
+        "format": "json",
+    }
+    if meta_path.exists:
+        with open(meta_path) as f:
+            meta.update(json.load(f))
+
+    data = compare_data(test, reference, args.prefix, meta)
     out = sys.stdout if args.output is None else open(args.output, "w")
     json.dump(data, out, indent=4)
     out.write("\n")

@@ -28,6 +28,23 @@ def invoke(infile, outfile, frame):
         print("    FAIL", e)
 
 
+def collect_directory(root: Path, path: Path):
+    for file in (root / path).iterdir():
+        if file.is_dir():
+            collect_directory(root, path / file.name)
+        elif file.suffix == ".png":
+            m = re.match("(.*)-([0-9]+)$", file.stem)
+            basename = m.group(1)
+            in_file = file.parent / (basename + input_suffix)
+            if in_file.exists():
+                frame_number = m.group(2)
+                out_file = args.output / path / ("%s-%s.png" % (basename, frame_number))
+                out_file.parent.mkdir(parents=True, exist_ok=True)
+                invoke(str(in_file), str(out_file), frame_number)
+            else:
+                skipped.add(str(path / basename))
+
+
 parser = argparse.ArgumentParser(
     description="Render example files"
 )
@@ -75,25 +92,11 @@ infile_index = args.command.index("{}")
 outfile_index = args.command.index("{out}")
 frame_index = args.command.index("{frame}")
 input_suffix = "." + args.input_format
+skipped = set()
 
 if frame_index == -1:
     sys.stderr.write("TODO\n")
     sys.exit(1)
-
-
-def collect_directory(root: Path, path: Path):
-    for file in (root / path).iterdir():
-        if file.is_dir():
-            collect_directory(root, path / file.name)
-        elif file.suffix == ".png":
-            m = re.match("(.*)-([0-9]+)$", file.stem)
-            basename = m.group(1)
-            in_file = file.parent / (basename + input_suffix)
-            if in_file.exists():
-                frame_number = m.group(2)
-                out_file = args.output / path / ("%s-%s.png" % (basename, frame_number))
-                out_file.parent.mkdir(parents=True, exist_ok=True)
-                invoke(str(in_file), str(out_file), frame_number)
 
 
 collect_directory(args.reference, Path())
@@ -103,5 +106,7 @@ with open(args.output / "meta.json", "w") as f:
     json.dump({
         "title": args.title or (command_base[0].upper() + command_base[1:]),
         "comment": args.comment,
-        "command": " ".join(map(shlex.quote, [command_base] + args.command[1:]))
+        "command": " ".join(map(shlex.quote, [command_base] + args.command[1:])),
+        "skipped": list(skipped),
+        "format": args.input_format,
     }, f, indent=4)
