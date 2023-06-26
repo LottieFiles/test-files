@@ -79,7 +79,13 @@ def collect_directory(path: Path, suffix:str = "png"):
 
 
 def pil_to_cv(image: Image.Image):
-    return cv2.cvtColor(numpy.array(image), cv2.COLOR_RGBA2BGRA)
+    transp = numpy.array([0, 0, 0, 0])
+    arr = numpy.array(image)
+    for y in range(len(arr)):
+        for x in range(len(arr[y])):
+            if arr[y][x][3] == 0:
+                arr[y][x] = transp
+    return cv2.cvtColor(arr, cv2.COLOR_RGBA2BGRA)
 
 
 def convert_img_to_hist(image):
