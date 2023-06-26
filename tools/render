@@ -6,6 +6,7 @@ import shlex
 import json
 import argparse
 import subprocess
+import multiprocessing
 from pathlib import Path
 
 
@@ -17,21 +18,21 @@ def invoke(infile, outfile, frame):
     if frame_index != -1:
         cmd[frame_index] = str(int(frame))
 
-    print(cmd)
+    cmd_string = " ".join(map(shlex.quote, cmd))
     try:
         rc = subprocess.call(cmd)
         if rc == 0:
-            print("    OK")
+            print("PASS", cmd_string)
         else:
-            print("    FAIL")
+            print("FAIL", cmd_string)
     except Exception as e:
-        print("    FAIL", e)
+        print("FAIL", cmd_string, e)
 
 
-def collect_directory(root: Path, path: Path):
+def collect_directory(root: Path, path: Path, jobs: list):
     for file in (root / path).iterdir():
         if file.is_dir():
-            collect_directory(root, path / file.name)
+            collect_directory(root, path / file.name, jobs)
         elif file.suffix == ".png":
             m = re.match("(.*)-([0-9]+)$", file.stem)
             basename = m.group(1)
@@ -40,7 +41,7 @@ def collect_directory(root: Path, path: Path):
                 frame_number = m.group(2)
                 out_file = args.output / path / ("%s-%s.png" % (basename, frame_number))
                 out_file.parent.mkdir(parents=True, exist_ok=True)
-                invoke(str(in_file), str(out_file), frame_number)
+                jobs.append((str(in_file), str(out_file), frame_number))
             else:
                 skipped.add(str(path / basename))
 
@@ -99,7 +100,12 @@ if frame_index == -1:
     sys.exit(1)
 
 
-collect_directory(args.reference, Path())
+jobs = []
+collect_directory(args.reference, Path(), jobs)
+
+with multiprocessing.Pool(multiprocessing.cpu_count()) as pool:
+    pool.starmap(invoke, jobs)
+
 
 with open(args.output / "meta.json", "w") as f:
     command_base = Path(args.command[0]).name
