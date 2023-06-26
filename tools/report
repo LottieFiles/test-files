@@ -326,7 +326,7 @@ if __name__ == "__main__":
     )
     parser.add_argument(
         "path",
-        help="Path to check against the reference",
+        help="Path of the render set to compare to the reference",
         type=Path
     )
     parser.add_argument(

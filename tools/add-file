@@ -1,0 +1,113 @@
+#!/usr/bin/env python3
+
+import os
+import sys
+import json
+import shutil
+import argparse
+import subprocess
+from pathlib import Path
+
+
+def die(msg):
+    sys.stderr.write("\x1b[31mERROR\x1b[m: %s\n" % msg)
+    sys.exit(1)
+
+def warn(msg):
+    sys.stderr.write("\x1b[33mWARNING\x1b[m: %s\n" % msg)
+
+
+parser = argparse.ArgumentParser(
+    description="Copies an example file in the right place"
+)
+parser.add_argument(
+    "path",
+    help="Directory of the files to copy",
+    type=Path
+)
+parser.add_argument(
+    "category",
+    help="Category name",
+)
+parser.add_argument(
+    "name",
+    help="Output file name",
+)
+parser.add_argument(
+    "--features", "-f",
+    nargs="+",
+    default=None,
+)
+parser.add_argument(
+    "--caniuse", "-c",
+    nargs="*",
+    default=None,
+)
+parser.add_argument(
+    "--docs", "-d",
+    nargs="*",
+    default=None,
+)
+parser.add_argument(
+    "--edit", "-e",
+    help="Opents the metadata file for editing",
+    action="store_true",
+
+)
+parser.add_argument(
+    "--", dest="gobble"
+)
+
+output_path = Path(__file__).parent.parent / "data"
+
+args = parser.parse_args()
+
+file_types = ["aep", "json", "png"]
+files = {
+    t: None
+    for t in file_types
+}
+
+for file in args.path.iterdir():
+    for t in file_types:
+        if file.suffix == "." + t:
+            if files[t]:
+                die("Multiple %s" %t)
+            files[t] = file
+
+for t in file_types:
+    if not files[t]:
+        warn("Missing %s" % t)
+
+
+path = output_path / args.category
+path.mkdir(parents=True, exist_ok=True)
+for type, file in files.items():
+    stem = args.name
+    if type == "png":
+        stem += "-00"
+    out_file = path / ("%s.%s" % (stem, type))
+    if type == "json":
+        with open(file, "r") as f:
+            data = json.load(f)
+        with open(out_file, "w") as f:
+            json.dump(data, f, indent=4)
+    else:
+        shutil.copyfile(str(file),  str(out_file))
+    if type == "png":
+        os.unlink(str(file))
+
+
+metadata = {
+    "features": args.features if args.features is not None else [args.category],
+    "caniuse": args.caniuse if args.caniuse is not None else [args.category],
+    "docs": args.docs if args.docs is not None else "https://lottiefiles.github.io/lottie-docs/%s/" % args.category,
+}
+metadata_file = path / ("%s-meta.json" % args.name)
+
+with open(metadata_file, "w") as f:
+    json.dump(metadata, f, indent=4)
+
+
+if args.edit:
+    subprocess.Popen(["xdg-open", str(metadata_file)], start_new_session=True)

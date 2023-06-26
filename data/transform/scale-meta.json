@@ -1,0 +1,11 @@
+{
+    "features": [
+        "transform/scale"
+    ],
+    "caniuse": [
+        "transform-scale"
+    ],
+    "docs": [
+        "https://lottiefiles.github.io/lottie-docs/concepts/#transform"
+    ]
+}
