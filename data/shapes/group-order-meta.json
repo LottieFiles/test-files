@@ -1,0 +1,11 @@
+{
+    "features": [
+        "layer-shape"
+    ],
+    "caniuse": [
+        "shapes/group"
+    ],
+    "docs": [
+        "https://lottiefiles.github.io/lottie-docs/shapes/#group"
+    ]
+}
