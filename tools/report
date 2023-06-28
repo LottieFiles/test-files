@@ -114,6 +114,7 @@ def compare_datum(test_item, reference_item, result, path_prefix):
         "reference": path_prefix + str(reference_item.path),
         "ok": False,
         "score": 0,
+        "uqi": 0,
     }
     result["items"].append(data)
 
@@ -155,15 +156,6 @@ def compare_data(test_data, reference_data, path_prefix, meta):
     for key in sorted(keys):
         test_item = test_data.get(key)
 
-        if test_item is None:
-            results[key] = {
-                "status": "missing-data",
-                "score": 0,
-                "max": 0,
-                "items": [],
-            }
-            continue
-
         reference_item = reference_data.get(key)
         if reference_item is None:
             results[key] = {
@@ -183,7 +175,7 @@ def compare_data(test_data, reference_data, path_prefix, meta):
         results[key] = result
 
         for name, file in reference_item.files.items():
-            score = compare_datum(test_item.files.get(name), file, result, path_prefix)
+            score = compare_datum(test_item.files.get(name) if test_item else None, file, result, path_prefix)
             reference_item.mark_features(score, features)
 
     return {

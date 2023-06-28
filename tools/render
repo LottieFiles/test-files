@@ -64,7 +64,7 @@ parser.add_argument(
 parser.add_argument(
     "--input-format", "-f",
     help="Input Format",
-    choices=["aep", "json"],
+    choices=["aep", "json", "svg"],
     default="json"
 )
 parser.add_argument(
@@ -99,13 +99,12 @@ if frame_index == -1:
     sys.stderr.write("TODO\n")
     sys.exit(1)
 
-
+args.output.mkdir(parents=True, exist_ok=True)
 jobs = []
 collect_directory(args.reference, Path(), jobs)
 
 with multiprocessing.Pool(multiprocessing.cpu_count()) as pool:
     pool.starmap(invoke, jobs)
-
 
 with open(args.output / "meta.json", "w") as f:
     command_base = Path(args.command[0]).name
