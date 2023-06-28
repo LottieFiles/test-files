@@ -1,0 +1,29 @@
+<svg xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:cc="http://creativecommons.org/ns#" xmlns:xlink="http://www.w3.org/1999/xlink" style="fill:none;stroke:none;" inkscape:export-xdpi="96" height="80" version="1.1" xmlns="http://www.w3.org/2000/svg" inkscape:export-ydpi="96" viewBox="0 0 80 80" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:osb="http://www.openswatchbook.org/uri/2009/osb" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:svg="http://www.w3.org/2000/svg" width="80">
+    <title>Comp 1</title>
+    <defs>
+        <linearGradient id="GradientColors_058cc6ada2054d178bf97dfb405add63">
+            <stop offset="0" stop-opacity="1" stop-color="#ff0000"/>
+            <stop offset="0.1375" stop-opacity="1" stop-color="#cc0233"/>
+            <stop offset="0.69" stop-opacity="1" stop-color="#000cff"/>
+            <stop offset="1" stop-opacity="1" stop-color="#000000"/>
+        </linearGradient>
+        <linearGradient x2="100" y2="0" x1="0" xlink:href="#GradientColors_058cc6ada2054d178bf97dfb405add63" gradientUnits="userSpaceOnUse" y1="0" id="Gradient_16321adc2e6b4d4f9557bfdb7280c041"/>
+    </defs>
+    <sodipodi:namedview bordercolor="#666666" inkscape:pagecheckerboard="true" borderlayer="true" pagecolor="#ffffff" inkscape:document-units="px"/>
+    <metadata>
+        <rdf:RDF>
+            <cc:Work>
+                <dc:format>image/svg+xml</dc:format>
+                <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+                <dc:title>Comp 1</dc:title>
+            </cc:Work>
+        </rdf:RDF>
+    </metadata>
+    <g inkscape:label="Comp 1" inkscape:groupmode="layer" id="Composition_039c228a2e5c438d90b5f332c3a602b6">
+        <g inkscape:label="Shape Layer 1" opacity="1" transform="matrix(1, 0, 0, 1, 0, 0)" inkscape:groupmode="layer" id="Layer_748e6ebdc1884d188f25ec5312b65cc5">
+            <g fill="url(#Gradient_16321adc2e6b4d4f9557bfdb7280c041)" inkscape:label="Group" opacity="1" transform="matrix(1, 0, 0, 1, 0, 0)" id="Fill_67721be23e1e480a8a434755cbc6d4fd">
+                <rect ry="0" style="" x="5" y="5" height="70" width="70"/>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,28 @@
+<svg xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:cc="http://creativecommons.org/ns#" xmlns:xlink="http://www.w3.org/1999/xlink" style="fill:none;stroke:none;" inkscape:export-xdpi="96" height="80" version="1.1" xmlns="http://www.w3.org/2000/svg" inkscape:export-ydpi="96" viewBox="0 0 80 80" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:osb="http://www.openswatchbook.org/uri/2009/osb" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:svg="http://www.w3.org/2000/svg" width="80">
+    <title>Comp 1</title>
+    <defs>
+        <linearGradient id="GradientColors_e51828d95b4d409398f75babdc1a1eef">
+            <stop offset="0" stop-opacity="1" stop-color="#ff0000"/>
+            <stop offset="0.69" stop-opacity="1" stop-color="#000cff"/>
+            <stop offset="1" stop-opacity="1" stop-color="#000000"/>
+        </linearGradient>
+        <linearGradient x2="100" y2="0" x1="0" xlink:href="#GradientColors_e51828d95b4d409398f75babdc1a1eef" gradientUnits="userSpaceOnUse" y1="0" id="Gradient_e916c0b0b7e0438eb884503f5c287242"/>
+    </defs>
+    <sodipodi:namedview bordercolor="#666666" inkscape:pagecheckerboard="true" borderlayer="true" pagecolor="#ffffff" inkscape:document-units="px"/>
+    <metadata>
+        <rdf:RDF>
+            <cc:Work>
+                <dc:format>image/svg+xml</dc:format>
+                <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+                <dc:title>Comp 1</dc:title>
+            </cc:Work>
+        </rdf:RDF>
+    </metadata>
+    <g inkscape:label="Comp 1" inkscape:groupmode="layer" id="Composition_ccdb633b6f4840599db9d9f3985d9273">
+        <g inkscape:label="Shape Layer 1" opacity="1" transform="matrix(1, 0, 0, 1, 0, 0)" inkscape:groupmode="layer" id="Layer_80a18e4333f34bb0a33bca4614f0c61c">
+            <g fill="url(#Gradient_e916c0b0b7e0438eb884503f5c287242)" inkscape:label="Group" opacity="1" transform="matrix(1, 0, 0, 1, 0, 0)" id="Fill_0ed02fd005254c90b828eb090d7e706c">
+                <rect ry="0" style="" x="5" y="5" height="70" width="70"/>
+            </g>
+        </g>
+    </g>
+</svg>

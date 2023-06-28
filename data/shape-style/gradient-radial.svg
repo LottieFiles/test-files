@@ -1,0 +1,28 @@
+<svg xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:cc="http://creativecommons.org/ns#" xmlns:xlink="http://www.w3.org/1999/xlink" style="fill:none;stroke:none;" inkscape:export-xdpi="96" height="80" version="1.1" xmlns="http://www.w3.org/2000/svg" inkscape:export-ydpi="96" viewBox="0 0 80 80" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:osb="http://www.openswatchbook.org/uri/2009/osb" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:svg="http://www.w3.org/2000/svg" width="80">
+    <title>Comp 1</title>
+    <defs>
+        <linearGradient id="GradientColors_d27012d1ae1b48e58bff5c32ddb24c41">
+            <stop offset="0" stop-opacity="1" stop-color="#ff0000"/>
+            <stop offset="0.69" stop-opacity="1" stop-color="#000cff"/>
+            <stop offset="1" stop-opacity="1" stop-color="#000000"/>
+        </linearGradient>
+        <radialGradient fx="40" r="40" cy="40" xlink:href="#GradientColors_d27012d1ae1b48e58bff5c32ddb24c41" gradientUnits="userSpaceOnUse" fy="40" cx="40" id="Gradient_3a15aa27af754ca0987beb187decdc2b"/>
+    </defs>
+    <sodipodi:namedview bordercolor="#666666" inkscape:pagecheckerboard="true" borderlayer="true" pagecolor="#ffffff" inkscape:document-units="px"/>
+    <metadata>
+        <rdf:RDF>
+            <cc:Work>
+                <dc:format>image/svg+xml</dc:format>
+                <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+                <dc:title>Comp 1</dc:title>
+            </cc:Work>
+        </rdf:RDF>
+    </metadata>
+    <g inkscape:label="Comp 1" inkscape:groupmode="layer" id="Composition_1ad7f2ba7c1748e0ba503f28dc251e4f">
+        <g inkscape:label="Shape Layer 1" opacity="1" transform="matrix(1, 0, 0, 1, 0, 0)" inkscape:groupmode="layer" id="Layer_7d7f655ff2fa49a5bf520dfdfcb8f003">
+            <g fill="url(#Gradient_3a15aa27af754ca0987beb187decdc2b)" inkscape:label="Group" opacity="1" transform="matrix(1, 0, 0, 1, 0, 0)" id="Fill_7636fe6ac13f4561a9503d7f739995a3">
+                <rect ry="0" style="" x="5" y="5" height="70" width="70"/>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,21 @@
+<svg xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:cc="http://creativecommons.org/ns#" xmlns:xlink="http://www.w3.org/1999/xlink" style="fill:none;stroke:none;" inkscape:export-xdpi="96" height="80" version="1.1" xmlns="http://www.w3.org/2000/svg" inkscape:export-ydpi="96" viewBox="0 0 80 80" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:osb="http://www.openswatchbook.org/uri/2009/osb" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:svg="http://www.w3.org/2000/svg" width="80">
+    <title>Comp 1</title>
+    <defs/>
+    <sodipodi:namedview bordercolor="#666666" inkscape:pagecheckerboard="true" borderlayer="true" pagecolor="#ffffff" inkscape:document-units="px"/>
+    <metadata>
+        <rdf:RDF>
+            <cc:Work>
+                <dc:format>image/svg+xml</dc:format>
+                <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+                <dc:title>Comp 1</dc:title>
+            </cc:Work>
+        </rdf:RDF>
+    </metadata>
+    <g inkscape:label="Comp 1" inkscape:groupmode="layer" id="Composition_1a5249527b924b81a416f9b5d736e299">
+        <g inkscape:label="Shape Layer 1" opacity="1" transform="matrix(1, 0, 0, 1, 0, 0)" inkscape:groupmode="layer" id="Layer_aca10cd8f8c34420906bd45eff32da8f">
+            <g fill="#3150af" fill-opacity="1" inkscape:label="Group" opacity="1" transform="matrix(1, 0, 0, 1, 0, 0)" id="Fill_d2b10dcff43544d38dc539cdc4be5ad7">
+                <path inkscape:rounded="0" sodipodi:nodetypes="cccccccccc" style="" sodipodi:type="star" sodipodi:cx="40" sodipodi:r2="20" d="M 50.3528,1.36297 C 53.9942,2.33869 53.5659,24.9721 55.5429,27.4136 57.52,29.8551 79.7479,34.1418 79.9452,37.9066 80.1425,41.6713 58.4844,48.258 56.7734,50.8928 55.0624,53.5275 57.8542,75.9922 54.3347,77.3432 50.8152,78.6942 37.8582,60.1316 34.8236,59.3185 31.7891,58.5054 11.2866,68.1026 8.91416,65.1728 6.54168,62.243 20.1918,44.184 20.0274,41.0467 19.863,37.9094 4.39994,21.3762 6.45318,18.2144 8.50642,15.0527 29.8997,22.4542 32.8326,21.3284 35.7656,20.2025 46.7113,0.387242 50.3528,1.36297 Z" sodipodi:cy="40" sodipodi:r1="40" sodipodi:sides="5" inkscape:flatsided="false" sodipodi:arg1="-1.309" inkscape:randomized="0" sodipodi:arg2="-0.680678"/>
+            </g>
+        </g>
+    </g>
+</svg>
