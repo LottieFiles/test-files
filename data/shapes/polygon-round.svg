@@ -1,7 +1,7 @@
-<svg xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:cc="http://creativecommons.org/ns#" xmlns:xlink="http://www.w3.org/1999/xlink" style="fill:none;stroke:none;" inkscape:export-xdpi="96" height="80" version="1.1" xmlns="http://www.w3.org/2000/svg" inkscape:export-ydpi="96" viewBox="0 0 80 80" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:osb="http://www.openswatchbook.org/uri/2009/osb" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:svg="http://www.w3.org/2000/svg" width="80">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:osb="http://www.openswatchbook.org/uri/2009/osb" style="fill:none;stroke:none;" version="1.1" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:cc="http://creativecommons.org/ns#" height="80" inkscape:export-xdpi="96" xmlns:svg="http://www.w3.org/2000/svg" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" inkscape:export-ydpi="96" width="80" viewBox="0 0 80 80">
     <title>Comp 1</title>
     <defs/>
-    <sodipodi:namedview bordercolor="#666666" inkscape:pagecheckerboard="true" borderlayer="true" pagecolor="#ffffff" inkscape:document-units="px"/>
+    <sodipodi:namedview inkscape:document-units="px" borderlayer="true" bordercolor="#666666" inkscape:pagecheckerboard="true" pagecolor="#ffffff"/>
     <metadata>
         <rdf:RDF>
             <cc:Work>
@@ -11,10 +11,10 @@
             </cc:Work>
         </rdf:RDF>
     </metadata>
-    <g inkscape:label="Comp 1" inkscape:groupmode="layer" id="Composition_045eb77ae0b34a0abf422197474fef66">
-        <g inkscape:label="Shape Layer 1" opacity="1" transform="matrix(1, 0, 0, 1, 0, 0)" inkscape:groupmode="layer" id="Layer_98338ab5db3c479f8927cb9908f73da3">
-            <g fill="#3150af" fill-opacity="1" inkscape:label="Group" opacity="1" transform="matrix(1, 0, 0, 1, 0, 0)" id="Fill_b7da64dacf504c2ab632a2ea7ef043f7">
-                <path inkscape:rounded="0" sodipodi:nodetypes="cccccc" style="" sodipodi:type="star" sodipodi:cx="40" sodipodi:r2="15.3236" d="M 50.3528,1.36297 C 53.3873,2.17607 77.8239,26.6127 78.637,29.6472 79.4501,32.6818 70.5057,66.0628 68.2843,68.2843 66.0628,70.5057 32.6818,79.4501 29.6472,78.637 26.6127,77.8239 2.17607,53.3873 1.36297,50.3528 0.549863,47.3182 9.49429,13.9372 11.7157,11.7157 13.9372,9.49429 47.3182,0.549863 50.3528,1.36297 Z" sodipodi:cy="40" sodipodi:r1="40" sodipodi:sides="6" inkscape:flatsided="true" sodipodi:arg1="-1.309" inkscape:randomized="0" sodipodi:arg2="-0.785398"/>
+    <g id="Composition_5ea4c389b5204fc6b8e91dbfd5551769" inkscape:label="Comp 1" inkscape:groupmode="layer">
+        <g id="Layer_b9aa04aeea104850888036e819b5b03f" transform="matrix(1, 0, 0, 1, 0, 0)" opacity="1" inkscape:label="Shape Layer 1" inkscape:groupmode="layer">
+            <g id="Fill_cd3c7a2698274da2a542b0bc9171ee72" fill="#3150af" transform="matrix(1, 0, 0, 1, 0, 0)" fill-opacity="1" opacity="1" inkscape:label="Group">
+                <path style="" d="M 50.3528,1.36297 C 53.3873,2.17607 77.8239,26.6127 78.637,29.6472 79.4501,32.6818 70.5057,66.0628 68.2843,68.2843 66.0628,70.5057 32.6818,79.4501 29.6472,78.637 26.6127,77.8239 2.17607,53.3873 1.36297,50.3528 0.549863,47.3182 9.49429,13.9372 11.7157,11.7157 13.9372,9.49429 47.3182,0.549863 50.3528,1.36297 Z" sodipodi:nodetypes="cccccc"/>
             </g>
         </g>
     </g>

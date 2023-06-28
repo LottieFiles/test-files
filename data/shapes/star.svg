@@ -1,7 +1,7 @@
-<svg xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:cc="http://creativecommons.org/ns#" xmlns:xlink="http://www.w3.org/1999/xlink" style="fill:none;stroke:none;" inkscape:export-xdpi="96" height="80" version="1.1" xmlns="http://www.w3.org/2000/svg" inkscape:export-ydpi="96" viewBox="0 0 80 80" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:osb="http://www.openswatchbook.org/uri/2009/osb" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:svg="http://www.w3.org/2000/svg" width="80">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:osb="http://www.openswatchbook.org/uri/2009/osb" style="fill:none;stroke:none;" version="1.1" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:cc="http://creativecommons.org/ns#" height="80" inkscape:export-xdpi="96" xmlns:svg="http://www.w3.org/2000/svg" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" inkscape:export-ydpi="96" width="80" viewBox="0 0 80 80">
     <title>Comp 1</title>
     <defs/>
-    <sodipodi:namedview bordercolor="#666666" inkscape:pagecheckerboard="true" borderlayer="true" pagecolor="#ffffff" inkscape:document-units="px"/>
+    <sodipodi:namedview inkscape:document-units="px" borderlayer="true" bordercolor="#666666" inkscape:pagecheckerboard="true" pagecolor="#ffffff"/>
     <metadata>
         <rdf:RDF>
             <cc:Work>
@@ -11,10 +11,10 @@
             </cc:Work>
         </rdf:RDF>
     </metadata>
-    <g inkscape:label="Comp 1" inkscape:groupmode="layer" id="Composition_2db3c2261a1b421c99b2eb19382f28ed">
-        <g inkscape:label="Shape Layer 1" opacity="1" transform="matrix(1, 0, 0, 1, 0, 0)" inkscape:groupmode="layer" id="Layer_1ef2409655ce478f9513827133afb973">
-            <g fill="#3150af" fill-opacity="1" inkscape:label="Group" opacity="1" transform="matrix(1, 0, 0, 1, 0, 0)" id="Fill_ad9b644d12944f4eb08e91ee563388a3">
-                <path inkscape:rounded="0" sodipodi:nodetypes="cccccccccc" style="" sodipodi:type="star" sodipodi:cx="40" sodipodi:r2="20" d="M 50.3528,1.36297 C 50.3528,1.36297 55.5429,27.4136 55.5429,27.4136 55.5429,27.4136 79.9452,37.9066 79.9452,37.9066 79.9452,37.9066 56.7734,50.8928 56.7734,50.8928 56.7734,50.8928 54.3347,77.3432 54.3347,77.3432 54.3347,77.3432 34.8236,59.3185 34.8236,59.3185 34.8236,59.3185 8.91416,65.1728 8.91416,65.1728 8.91416,65.1728 20.0274,41.0467 20.0274,41.0467 20.0274,41.0467 6.45318,18.2144 6.45318,18.2144 6.45318,18.2144 32.8326,21.3284 32.8326,21.3284 32.8326,21.3284 50.3528,1.36297 50.3528,1.36297 Z" sodipodi:cy="40" sodipodi:r1="40" sodipodi:sides="5" inkscape:flatsided="false" sodipodi:arg1="-1.309" inkscape:randomized="0" sodipodi:arg2="-0.680678"/>
+    <g id="Composition_6579ca8ddacb4db0adb9d983e4829366" inkscape:label="Comp 1" inkscape:groupmode="layer">
+        <g id="Layer_54f0d8673e89462eb21fedf854725fb2" transform="matrix(1, 0, 0, 1, 0, 0)" opacity="1" inkscape:label="Shape Layer 1" inkscape:groupmode="layer">
+            <g id="Fill_7283d73b35ba4ecd98fc29b51e714787" fill="#3150af" transform="matrix(1, 0, 0, 1, 0, 0)" fill-opacity="1" opacity="1" inkscape:label="Group">
+                <path sodipodi:arg2="-0.680678" inkscape:randomized="0" sodipodi:cx="40" style="" sodipodi:cy="40" inkscape:rounded="0" sodipodi:r1="40" sodipodi:r2="20" sodipodi:arg1="-1.309" d="M 50.3528,1.36297 C 50.3528,1.36297 55.5429,27.4136 55.5429,27.4136 55.5429,27.4136 79.9452,37.9066 79.9452,37.9066 79.9452,37.9066 56.7734,50.8928 56.7734,50.8928 56.7734,50.8928 54.3347,77.3432 54.3347,77.3432 54.3347,77.3432 34.8236,59.3185 34.8236,59.3185 34.8236,59.3185 8.91416,65.1728 8.91416,65.1728 8.91416,65.1728 20.0274,41.0467 20.0274,41.0467 20.0274,41.0467 6.45318,18.2144 6.45318,18.2144 6.45318,18.2144 32.8326,21.3284 32.8326,21.3284 32.8326,21.3284 50.3528,1.36297 50.3528,1.36297 Z" sodipodi:sides="5" sodipodi:type="star" inkscape:flatsided="false" sodipodi:nodetypes="cccccccccc"/>
             </g>
         </g>
     </g>
