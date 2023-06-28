@@ -47,7 +47,7 @@ function stringify(val, indent)
     return out;
 }
 
-function bodymovin_export(comp, file_name)
+function bodymovin_export(comp, file_name, smil)
 {
     var default_settings = {
         themeColor: '',
@@ -95,7 +95,7 @@ function bodymovin_export(comp, file_name)
             banner: false,
             avd: false,
             // Changed from the default
-            smil: true,
+            smil: smil,
             rive: false,
             reports: false,
         },
@@ -148,6 +148,18 @@ function bodymovin_export(comp, file_name)
     $.__bodymovin.bm_compsManager.renderComposition(lottie_comp);
 }
 
+function cleanup_smil()
+{
+    var basename = app.project.file.name.replace(".aep", "");
+    var src_smil = new File(app.project.file.parent.fullName + "/smil/" + basename + ".svg");
+    var dest_smil = new File(app.project.file.parent.fullName + "/" + basename + ".svg");
+    src_smil.copy(dest_smil);
+    text_output.text += "\n" + src_smil.fullName + "\n" + dest_smil.fullName;
+
+    src_smil.remove();
+    src_smil.parent.remove();
+}
+
 function make_group(parent)
 {
     var grp = parent.add("group", undefined, "");
@@ -168,7 +180,15 @@ var btn_test = row.add("button", undefined, "Test Value");
 btn_test.alignment = ["right", "top"];
 btn_test.preferredSize.width = 100;
 
-var btn_export = panel.add("button", undefined, "Export");
+var opts = make_group(panel);
+var btn_export = opts.add("button", undefined, "Export");
+var cb_aep = opts.add("checkbox", undefined, "aep");
+var cb_json = opts.add("checkbox", undefined, "json");
+var cb_svg = opts.add("checkbox", undefined, "svg");
+var cb_pag = opts.add("checkbox", undefined, "pag");
+var cb_png = opts.add("checkbox", undefined, "png");
+cb_aep.value = cb_json.value = cb_svg.value = cb_png.value = true;
+cb_pag.value = false;
 
 var text_output = panel.add("statictext", undefined, "", {multiline: true, scrolling: true});
 text_output.alignment = ["fill", "fill"];
@@ -219,45 +239,53 @@ btn_export.onClick = function()
             return;
         }
 
-        text_output.text = "Saving project";
-        app.project.save();
-
-        text_output.text = "Exporting Lottie";
-        var lottie_name = app.project.file.fullName.replace(".aep", ".json");
-
-        function cleanup_smil()
+        if ( cb_aep.value || !app.project.file )
         {
-            var basename = app.project.file.name.replace(".aep", "");
-            var src_smil = new File(app.project.file.parent.fullName + "/smil/" + basename + ".svg");
-            var dest_smil = new File(app.project.file.parent.fullName + "/" + basename + ".svg");
-            src_smil.copy(dest_smil);
-
-            src_smil.remove();
-            src_smil.parent.remove();
+            text_output.text = "Saving project";
+            app.project.save();
         }
 
-        var old_send_event = $.__bodymovin.bm_eventDispatcher.sendEvent;
-        $.__bodymovin.bm_eventDispatcher.sendEvent = function(type, data)
+        if ( cb_json.value || cb_svg.value )
         {
-            old_send_event(type, data);
-            if ( type == 'bm:render:update' && data.isFinished )
+            text_output.text = "Exporting Lottie";
+            var lottie_name = app.project.file.fullName.replace(".aep", ".json");
+
+            if ( cb_svg.value )
             {
-                $.__bodymovin.bm_eventDispatcher.sendEvent = old_send_event;
-                cleanup_smil();
+                var old_send_event = $.__bodymovin.bm_eventDispatcher.sendEvent;
+                $.__bodymovin.bm_eventDispatcher.sendEvent = function(type, data)
+                {
+                    old_send_event(type, data);
+                    if ( type == 'bm:render:update' && data.isFinished )
+                    {
+                        $.__bodymovin.bm_eventDispatcher.sendEvent = old_send_event;
+                        cleanup_smil();
+                    }
+                };
+                $.__bodymovin.bm_eventDispatcher.sendEvent.old = old_send_event;
             }
-        };
-        $.__bodymovin.bm_eventDispatcher.sendEvent.old = old_send_event;
 
-        bodymovin_export(app.project.activeItem, lottie_name);
+            bodymovin_export(app.project.activeItem, lottie_name, cb_svg.value);
+        }
 
-        text_output.text = "Rendering Frame";
-        item = app.project.renderQueue.items.add(app.project.activeItem);
-        item.timeSpanDuration = app.project.activeItem.frameDuration;
-        item.timeSpanStart = 0;
-        item.outputModule(1).applyTemplate("Lossless");
-        item.outputModule(1).file = new File([app.project.file.fullName.replace(".aep", "-[##].png")]);
-        item.render = true;
-        app.project.renderQueue.render();
+        if ( cb_png.value )
+        {
+            text_output.text = "Rendering Frame";
+            item = app.project.renderQueue.items.add(app.project.activeItem);
+            item.timeSpanDuration = app.project.activeItem.frameDuration;
+            item.timeSpanStart = 0;
+            item.outputModule(1).applyTemplate("Lossless");
+            item.outputModule(1).file = new File([app.project.file.fullName.replace(".aep", "-[##].png")]);
+            item.render = true;
+            app.project.renderQueue.render();
+        }
+
+        // Bit slow so disabled by default
+        if ( cb_pag.value )
+        {
+            text_output.text = "Exporting PAG";
+            app.executeCommand(5006);
+        }
 
         text_output.text = "All done!\n";
     } catch ( e ) {
