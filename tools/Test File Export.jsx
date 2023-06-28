@@ -47,11 +47,142 @@ function stringify(val, indent)
     return out;
 }
 
-var len = 300;
-var text_input = panel.add("edittext", [10, 10, len, 30], "");
-var btn_test = panel.add("button", [len + 10, 10, len + 100, 30], "Test Value");
-var btn_export = panel.add("button", [10, 40, 100, 60], "Export");
-var text_output = panel.add("statictext", [10, 70, 500, 100], "");
+function bodymovin_export(comp, file_name)
+{
+    var default_settings = {
+        themeColor: '',
+        description: '',
+        keywords: '',
+        author: '',
+        demo: false,
+        fonts: [],
+        generatorVersion: $.__bodymovin.bm_versionHelper.get(),
+        segmented: false,
+        segmentedTime: 10,
+        standalone: false,
+        avd: false,
+        glyphs: true,
+        includeExtraChars: false,
+        bundleFonts: false,
+        inlineFonts: false,
+        hiddens: false,
+        original_assets: false,
+        original_names: false,
+        should_encode_images: true,
+        should_compress: true,
+        should_skip_images: false,
+        should_reuse_images: true,
+        should_include_av_assets: false,
+        compression_rate: 80,
+        extraComps: {
+            active: false,
+            list: [],
+        },
+        guideds: false,
+        ignore_expression_properties: false,
+        export_old_format: false,
+        use_source_names: false,
+        shouldTrimData: false,
+        skip_default_properties: false,
+        not_supported_properties: false,
+        pretty_print: false,
+        useCompNamesAsIds: false,
+        export_mode: "standard",
+        export_modes: {
+            standard: true,
+            demo: false,
+            standalone: false,
+            banner: false,
+            avd: false,
+            // Changed from the default
+            smil: true,
+            rive: false,
+            reports: false,
+        },
+        demoData: {
+            backgroundColor: '#fff',
+        },
+        banner: {
+            lottie_origin: "local",
+            lottie_path: 'https://',
+            lottie_library: $.__bodymovin.bm_versionHelper.get(),
+            lottie_renderer: 'svg',
+            width: 500,
+            height: 500,
+            use_original_sizes: true,
+            original_width: 500,
+            original_height: 500,
+            click_tag: 'https://',
+            zip_files: true,
+            shouldIncludeAnimationDataInTemplate: false,
+            shouldLoop: false,
+            loopCount: 0,
+            localPath: null,
+        },
+        expressions: {
+            shouldBake: false,
+            shouldCacheExport: false,
+            shouldBakeBeyondWorkArea: false,
+            sampleSize: 1,
+        },
+        audio: {
+            isEnabled: true,
+            shouldRaterizeWaveform: true,
+            bitrate: '16kbps',
+        },
+        essentialProperties: {
+            active: false,
+            useSlots: false,
+            skipExternalComp: true,
+        },
+    };
+
+    var lottie_comp = {
+        id: comp.id,
+        absoluteURI: file_name,
+        destination: file_name,
+        settings: default_settings,
+        uid: comp.id,
+    };
+
+    $.__bodymovin.bm_compsManager.renderComposition(lottie_comp);
+}
+
+function make_group(parent)
+{
+    var grp = parent.add("group", undefined, "");
+    grp.orientation = "row";
+    grp.alignChildren = ["left", "top"];
+    grp.spacing = 10;
+    return grp;
+}
+
+panel.orientation = "column";
+panel.alignChildren = ["fill", "top"];
+panel.margins = 10;
+
+var row = make_group(panel);
+var text_input = row.add("edittext", undefined, "");
+text_input.alignment = ["fill", "fill"];
+var btn_test = row.add("button", undefined, "Test Value");
+btn_test.alignment = ["right", "top"];
+btn_test.preferredSize.width = 100;
+
+var btn_export = panel.add("button", undefined, "Export");
+
+var text_output = panel.add("statictext", undefined, "", {multiline: true, scrolling: true});
+text_output.alignment = ["fill", "fill"];
+
+panel.minimumSize.width = 100;
+panel.minimumSize.height = 600;
+panel.preferredSize.height = 600;
+panel.size.height = 600;
+panel.onResizing = panel.onResize = function(e) {
+    this.layout.resize();
+}
+panel.layout.layout(true);
+panel.layout.resize();
+
 
 btn_test.onClick = function()
 {
@@ -93,94 +224,31 @@ btn_export.onClick = function()
 
         text_output.text = "Exporting Lottie";
         var lottie_name = app.project.file.fullName.replace(".aep", ".json");
-        var default_settings = {
-            themeColor: '',
-            description: '',
-            keywords: '',
-            author: '',
-            demo: false,
-            fonts: [],
-            generatorVersion: $.__bodymovin.bm_versionHelper.get(),
-            segmented: false,
-            segmentedTime: 10,
-            standalone: false,
-            avd: false,
-            glyphs: true,
-            bundleFonts: false,
-            inlineFonts: false,
-            hiddens: false,
-            original_assets: false,
-            original_names: false,
-            should_encode_images: true,
-            should_compress: true,
-            should_skip_images: false,
-            should_include_av_assets: false,
-            compression_rate: 80,
-            extraComps: {
-                active: false,
-                list: [],
-            },
-            guideds: false,
-            ignore_expression_properties: false,
-            export_old_format: false,
-            skip_default_properties: false,
-            not_supported_properties: false,
-            pretty_print: false,
-            export_mode: "standard",
-            export_modes: {
-                standard: true,
-                demo: false,
-                standalone: false,
-                banner: false,
-                avd: false,
-                rive: false,
-                reports: false,
-            },
-            demoData: {
-                backgroundColor: '#fff',
-            },
-            banner: {
-                lottie_origin: "local",
-                lottie_path: 'https://',
-                lottie_library: $.__bodymovin.bm_versionHelper.get(),
-                lottie_renderer: 'svg',
-                width: 500,
-                height: 500,
-                use_original_sizes: true,
-                original_width: 500,
-                original_height: 500,
-                click_tag: 'https://',
-                zip_files: true,
-                shouldIncludeAnimationDataInTemplate: false,
-                shouldLoop: false,
-                loopCount: 0,
-                localPath: null,
-            },
-            expressions: {
-                shouldBake: false,
-                shouldCacheExport: false,
-                shouldBakeBeyondWorkArea: false,
-                sampleSize: 1,
-            },
-            audio: {
-                isEnabled: true,
-                bitrate: '16kbps',
-            },
-            essentialProperties: {
-                active: false,
-                useSlots: false,
-                skipExternalComp: true,
-            },
-        };
-        var lottie_comp = {
-            id: app.project.activeItem.id,
-            absoluteURI: lottie_name,
-            destination: lottie_name,
-            settings: default_settings,
-            uid: app.project.activeItem.id,
-        };
 
-        $.__bodymovin.bm_compsManager.renderComposition(lottie_comp);
+        function cleanup_smil()
+        {
+            var basename = app.project.file.name.replace(".aep", "");
+            var src_smil = new File(app.project.file.parent.fullName + "/smil/" + basename + ".svg");
+            var dest_smil = new File(app.project.file.parent.fullName + "/" + basename + ".svg");
+            src_smil.copy(dest_smil);
+
+            src_smil.remove();
+            src_smil.parent.remove();
+        }
+
+        var old_send_event = $.__bodymovin.bm_eventDispatcher.sendEvent;
+        $.__bodymovin.bm_eventDispatcher.sendEvent = function(type, data)
+        {
+            old_send_event(type, data);
+            if ( type == 'bm:render:update' && data.isFinished )
+            {
+                $.__bodymovin.bm_eventDispatcher.sendEvent = old_send_event;
+                cleanup_smil();
+            }
+        };
+        $.__bodymovin.bm_eventDispatcher.sendEvent.old = old_send_event;
+
+        bodymovin_export(app.project.activeItem, lottie_name);
 
         text_output.text = "Rendering Frame";
         item = app.project.renderQueue.items.add(app.project.activeItem);
@@ -199,4 +267,3 @@ btn_export.onClick = function()
 };
 
 })(this);
-

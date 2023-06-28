@@ -62,7 +62,7 @@ output_path = Path(__file__).parent.parent / "data"
 
 args = parser.parse_args()
 
-file_types = ["aep", "json", "png"]
+file_types = ["aep", "json", "png", "svg"]
 files = {
     t: None
     for t in file_types
