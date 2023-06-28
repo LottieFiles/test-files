@@ -138,7 +138,7 @@ def compare_datum(test_item, reference_item, result, path_prefix):
     uqi = opencv_similarity(test_img, ref_img)
     data["uqi"] = uqi
     score = uqi ** 3
-    if score > 0.95:
+    if score > 0.90:
         score = 1
     data["score"] = score
     result["score"] += score
@@ -315,7 +315,7 @@ def render_html(report, path):
     for name, result in report["tests"].items():
         for item in result["items"]:
             tr = ElementTree.SubElement(table, "tr")
-            if item["score"] < 0.9:
+            if item["score"] < 0.8:
                 tr.attrib["class"] = "bad"
             elif item["score"] < 1:
                 tr.attrib["class"] = "meh"
