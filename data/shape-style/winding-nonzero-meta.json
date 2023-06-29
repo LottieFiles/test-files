@@ -1,0 +1,11 @@
+{
+    "features": [
+        "shapes/fill/rule"
+    ],
+    "caniuse": [
+        "shape-fill"
+    ],
+    "docs": [
+        "https://lottiefiles.github.io/lottie-docs/constants/#fill-rule"
+    ]
+}

@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 80 80" style="fill:none;stroke:none;" height="80" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:svg="http://www.w3.org/2000/svg" xmlns:cc="http://creativecommons.org/ns#" width="80" xmlns:osb="http://www.openswatchbook.org/uri/2009/osb" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" inkscape:export-xdpi="96" version="1.1" inkscape:export-ydpi="96" xmlns:dc="http://purl.org/dc/elements/1.1/">
+    <title>Comp 1</title>
+    <defs/>
+    <sodipodi:namedview borderlayer="true" bordercolor="#666666" inkscape:pagecheckerboard="true" pagecolor="#ffffff" inkscape:document-units="px"/>
+    <metadata>
+        <rdf:RDF>
+            <cc:Work>
+                <dc:format>image/svg+xml</dc:format>
+                <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+                <dc:title>Comp 1</dc:title>
+            </cc:Work>
+        </rdf:RDF>
+    </metadata>
+    <g inkscape:groupmode="layer" id="Composition_ad35fb042a9344cab4ed7651bbee8891" inkscape:label="Comp 1">
+        <g transform="matrix(1, 0, 0, 1, 40, 40)" inkscape:groupmode="layer" opacity="1" id="Layer_b5066dea5de1484b8c8091ac85aae253" inkscape:label="Shape Layer 1">
+            <g transform="matrix(1, 0, 0, 1, 0, 0)" opacity="1" id="Group_ee2aacadc61a423d80625a4e0a9792d7" inkscape:label="Group">
+                <g style="" fill="#3150af" id="Fill_22eb3c7ccf074101bf47702484e3718d" inkscape:label="Fill" fill-opacity="1">
+                    <path fill-rule="evenodd" d="
+                        M 20,-10 C 14.5142,-10 10,-5.48584 10,1.22465e-15 10,5.48584 14.5142,10 20,10 25.4858,10 30,5.48584 30,0 30,-5.48584 25.4858,-10 20,-10 Z
+                        M 6.12323e-16,10 C -5.48584,10 -10,14.5142 -10,20 -10,25.4858 -5.48584,30 6.12323e-16,30 5.48584,30 10,25.4858 10,20 10,14.5142 5.48584,10 6.12323e-16,10 Z
+                        M 6.12323e-16,-30 C 5.48584,-30 10,-25.4858 10,-20 10,-14.5142 5.48584,-10 6.12323e-16,-10 -5.48584,-10 -10,-14.5142 -10,-20 -10,-25.4858 -5.48584,-30 6.12323e-16,-30 Z
+                        M -20,-10 C -14.5142,-10 -10,-5.48584 -10,0 -10,5.48584 -14.5142,10 -20,10 -25.4858,10 -30,5.48584 -30,1.22465e-15 -30,-5.48584 -25.4858,-10 -20,-10 Z
+                        M 40,-20 C 40,-20 40,20 40,20 40,20 -40,20 -40,20 -40,20 -40,-20 -40,-20 -40,-20 40,-20 40,-20 Z
+                    "/>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

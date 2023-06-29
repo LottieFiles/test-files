@@ -77,14 +77,13 @@ for file in args.path.iterdir():
                 die("Multiple %s" %t)
             files[t] = file
 
-for t in file_types:
-    if not files[t]:
-        warn("Missing %s" % t)
-
-
 path = output_path / args.category
 path.mkdir(parents=True, exist_ok=True)
 for type, file in files.items():
+    if not file:
+        warn("Missing %s" % type)
+        continue
+
     stem = args.name
     if type == "png":
         stem += "-00"
