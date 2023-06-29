@@ -45,6 +45,8 @@ def collect_files(root: Path, path: Path, out: dict, suffix:str):
             collect_files(root, path / file.name, out, suffix)
         elif file.name == "meta.json":
             continue
+        elif "asset" in file.name:
+            continue
         elif file.suffix == suffix:
             basename = re.sub("-[0-9]+$", "", file.stem)
             example_name = str(path / basename)

@@ -70,6 +70,8 @@ files = {
 
 for file in args.path.iterdir():
     for t in file_types:
+        if "asset" in file.stem:
+            continue
         if file.suffix == "." + t:
             if files[t]:
                 die("Multiple %s" %t)

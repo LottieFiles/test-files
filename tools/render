@@ -33,7 +33,7 @@ def collect_directory(root: Path, path: Path, jobs: list):
     for file in (root / path).iterdir():
         if file.is_dir():
             collect_directory(root, path / file.name, jobs)
-        elif file.suffix == ".png":
+        elif file.suffix == ".png" and "asset" not in file.stem:
             m = re.match("(.*)-([0-9]+)$", file.stem)
             basename = m.group(1)
             in_file = file.parent / (basename + input_suffix)

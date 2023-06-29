@@ -1,0 +1,19 @@
+<svg style="fill:none;stroke:none;" height="80" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:osb="http://www.openswatchbook.org/uri/2009/osb" inkscape:export-xdpi="96" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" inkscape:export-ydpi="96" xmlns:cc="http://creativecommons.org/ns#" viewBox="0 0 80 80" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" width="80" version="1.1" xmlns:svg="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd">
+    <title>Comp 1</title>
+    <defs/>
+    <sodipodi:namedview inkscape:pagecheckerboard="true" borderlayer="true" inkscape:document-units="px" pagecolor="#ffffff" bordercolor="#666666"/>
+    <metadata>
+        <rdf:RDF>
+            <cc:Work>
+                <dc:format>image/svg+xml</dc:format>
+                <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+                <dc:title>Comp 1</dc:title>
+            </cc:Work>
+        </rdf:RDF>
+    </metadata>
+    <g inkscape:groupmode="layer" inkscape:label="Comp 1" id="Composition_bc333f94681d42abb6259a4580001a25">
+        <g inkscape:groupmode="layer" inkscape:label="asset.png" opacity="1" id="Layer_f145b90409f6490684fe1ef7c0798fd0" transform="matrix(1, 0, 0, 1, 20, 20)">
+            <image height="40" x="0" xlink:href="asset.png" width="40" y="0" transform="matrix(1, 0, 0, 1, 0, 0)"/>
+        </g>
+    </g>
+</svg>

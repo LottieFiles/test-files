@@ -47,6 +47,8 @@ the contents are assumed to be
 ]
 ```
 
+If you need additional files for a test file, use `asset` in their file name, so they will be ignored by the tooling.
+This also means that you cannot have the word `asset` appear in the test name.
 
 Guidelines
 ----------
