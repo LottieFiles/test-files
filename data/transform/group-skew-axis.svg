@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   preserveAspectRatio="xMidYMid meet"
+   width="80"
+   height="80"
+   viewBox="0 0 80 80"
+   style="width:100%;height:100%"
+   version="1.1"
+   id="svg11"
+   sodipodi:docname="group-skew-axis.svg"
+   inkscape:version="1.1.2 (0a00cf5339, 2022-02-04)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview13"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     showgrid="false"
+     inkscape:zoom="9.6375"
+     inkscape:cx="40"
+     inkscape:cy="40"
+     inkscape:current-layer="_R_G_L_0_G_D_1_P_0_G_0_T_0" />
+  <defs
+     id="defs2">
+    <animate
+       attributeType="XML"
+       attributeName="opacity"
+       dur="2s"
+       from="0"
+       to="1"
+       xlink:href="#time_group" />
+  </defs>
+  <g
+     id="_R_G">
+    <g
+       id="_R_G_L_0_G"
+       transform="translate(40,40)">
+      <path
+         id="_R_G_L_0_G_D_0_P_0"
+         fill="#fb0f1a"
+         fill-opacity="1"
+         fill-rule="nonzero"
+         d="m 20,-20 c 0,0 0,40 0,40 0,0 -40,0 -40,0 0,0 0,-40 0,-40 0,0 40,0 40,0 z" />
+      <g
+         id="_R_G_L_0_G_D_1_P_0_G_0_T_0">
+        <g
+           id="_R_G_L_0_G_D_1_P_0_G_1_T_0"
+           transform="rotate(-45) skewX(-45) rotate(45)">
+          <path
+             id="_R_G_L_0_G_D_1_P_0"
+             fill="#3250b0"
+             fill-opacity="1"
+             fill-rule="nonzero"
+             opacity="0.5"
+             d="m 20,-20 c 0,0 0,40 0,40 0,0 -40,0 -40,0 0,0 0,-40 0,-40 0,0 40,0 40,0 z" />
+        </g>
+      </g>
+    </g>
+  </g>
+  <g
+     id="time_group" />
+</svg>

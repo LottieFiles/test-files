@@ -60,6 +60,7 @@ has_svg = 3
 has_meta = 4
 has_frames = 5
 found = {}
+file_count = 0
 collect_directory(data_root, Path(), found)
 for example, files in sorted(found.items()):
     row = [example, "NO", "NO", "NO", "NO", 0]
@@ -67,10 +68,13 @@ for example, files in sorted(found.items()):
         if file.endswith("-meta.json"):
             row[has_meta] = "X"
         elif file.endswith(".json"):
+            file_count += 1
             row[has_json] = "X"
         elif file.endswith(".aep"):
+            file_count += 1
             row[has_aep] = "X"
         elif file.endswith(".svg"):
+            file_count += 1
             row[has_svg] = "X"
         elif re.match(".*-[0-9]+.png$", file):
             row[has_frames] += 1
@@ -92,3 +96,5 @@ for row in table.rows:
     for it, col in zip(row, table.columns):
         col.write(it)
     sys.stdout.write("\n")
+
+sys.stdout.write("\nTotal: %s tests %s files\n" % (len(found), file_count))

@@ -1,0 +1,12 @@
+{
+    "features": [
+        "shapes/group",
+        "transform/rotation"
+    ],
+    "caniuse": [
+        "transform-rotation"
+    ],
+    "docs": [
+        "https://lottiefiles.github.io/lottie-docs/concepts/#transform"
+    ]
+}
