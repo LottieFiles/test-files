@@ -78,6 +78,11 @@ parser.add_argument(
     default=None
 )
 parser.add_argument(
+    "--label", "-l",
+    help="Render set label",
+    default=None
+)
+parser.add_argument(
     "command",
     nargs=argparse.REMAINDER,
     help="Renderer command, use {} for the input file name, {frame} for the frame number, {out} for the suggested output filename"
@@ -108,8 +113,10 @@ with multiprocessing.Pool(multiprocessing.cpu_count()) as pool:
 
 with open(args.output / "meta.json", "w") as f:
     command_base = Path(args.command[0]).name
+    title = args.title or (command_base[0].upper() + command_base[1:])
     json.dump({
-        "title": args.title or (command_base[0].upper() + command_base[1:]),
+        "title": title,
+        "label": args.label or ("%s %s" % args.title, args.input_format),
         "comment": args.comment,
         "command": " ".join(map(shlex.quote, [command_base] + args.command[1:])),
         "skipped": list(skipped),

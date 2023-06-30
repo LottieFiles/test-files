@@ -23,7 +23,8 @@ parser.add_argument(
 parser.add_argument(
     "--input-format", "-f",
     help="Input Format",
-    default="json"
+    default=[],
+    action="append"
 )
 parser.add_argument(
     "command",
@@ -33,7 +34,19 @@ parser.add_argument(
 
 args = parser.parse_args()
 cmd_root = Path(__file__).parent
-out_path = args.output / args.input_format
-render_out = out_path / "images"
-call([str(cmd_root / "render"), "-f", args.input_format, "-o", str(render_out)] + args.command)
-call([str(cmd_root / "report"), str(render_out), "-o", str(out_path / "report.json"), "--html", str(out_path / "report.html")])
+paths = []
+formats = args.input_format or ["json"]
+
+for format in formats:
+    out_path = args.output / format
+    render_out = out_path / "images"
+    call([str(cmd_root / "render"), "-f", format, "-o", str(render_out), "-l", format] + args.command)
+    paths.append(str(render_out))
+    print("")
+
+
+if len(formats) > 1:
+    out_path = args.output
+
+
+call([str(cmd_root / "report"), "-o", str(out_path / "report.json"), "--html", str(out_path / "report.html")] + paths)

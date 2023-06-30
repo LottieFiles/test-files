@@ -72,6 +72,27 @@ Tools
 `./tools/report` will generate a JSON file reporting on the status of a directory containing renders to examine.
 
 
+### Render Sets
+
+`./tools/render` generates a "render set", which contains the png files in the same structure as `./data/`.
+Additionally, it creates a metadata file (`meta.json`) which is used by `./tools/report`.
+
+The metadata file has the following structure:
+
+```json
+{
+    "title": "Title of the report",
+    "label": "Label for the columns in the report",
+    "comment": "Optional comment",
+    "command": "Command used to render the images",
+    "skipped": ["list of skipped tests"],
+    "format": "Input format"
+}
+```
+
+You can genrate a report on a single render set or from multiple ones.
+If you generate a report formn multiple render sets, you should ensure they have different labels.
+
 ### Example
 
 Follows a practical example on how to generate a report with a given renderer

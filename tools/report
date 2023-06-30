@@ -20,16 +20,17 @@ class Example:
     def append(self, file):
         self.files[file.stem] = file
 
-    def mark_features(self, score, features):
+    def mark_features(self, score, features, index, count):
         if len(self.features) == 0:
             self.features = {self.name}
 
         for feat in self.features:
-            if feat in features:
+            if feat not in features:
+                features[feat] = {"max": 1, "score": [0] * count}
+            elif index == 0:
                 features[feat]["max"] += 1
-                features[feat]["score"] += score
-            else:
-                features[feat] = {"max": 1, "score": score}
+
+            features[feat]["score"][index] += score
 
 
 class ExampleFile:
@@ -111,85 +112,92 @@ def opencv_similarity(rendered: Image.Image, source: Image.Image):
 
 
 def compare_datum(test_item, reference_item, result, path_prefix):
-    result["max"] += 1
-    data = {
-        "reference": path_prefix + str(reference_item.path),
-        "ok": False,
-        "score": 0,
-        "uqi": 0,
-    }
-    result["items"].append(data)
-
     if test_item is None:
-        data["source"] = None
-        data["status"] = "missing-data"
+        result["status"] = "missing-data"
         return 0
 
-    data["source"] = path_prefix + str(test_item.path)
+    result["source"] = path_prefix + str(test_item.path)
     test_img = test_item.data
     ref_img = reference_item.data
 
     if test_img.width != ref_img.width or test_img.height != ref_img.height:
-        data["status"] = "size-mismatch"
+        result["status"] = "size-mismatch"
         return 0
 
-    data["status"] = "ok"
+    result["status"] = "ok"
     # hist = ImageChops.difference(test_img, ref_img).histogram()
-    # data["histogram"] = hist
-    data["ok"] = True
+    # result["histogram"] = hist
+    result["ok"] = True
     uqi = opencv_similarity(test_img, ref_img)
-    data["uqi"] = uqi
+    result["uqi"] = uqi
     score = uqi ** 3
     if score > 0.90:
         score = 1
-    data["score"] = score
-    result["score"] += score
+    result["score"] = score
     return score
 
 
-def compare_data(test_data, reference_data, path_prefix, meta):
-    keys = set(test_data.keys()) | set(reference_data.keys())
+def compare_data(render_sets, reference_data, path_prefix):
+    keys = set(reference_data.keys())
+
+    for render_set in render_sets:
+        skipped = set(render_set.meta.get("skipped", []))
+        keys |= set(render_set.data.keys())
+        keys -= skipped
 
     features = {}
     results = {}
-    skipped = set(meta.get("skipped", []))
-    keys = keys - skipped
 
-    for key in sorted(keys):
-        test_item = test_data.get(key)
 
-        reference_item = reference_data.get(key)
-        if reference_item is None:
-            results[key] = {
-                "status": "missing-reference",
-                "score": 0,
-                "max": 0,
-                "items": [],
-            }
-            continue
+    for index, render_set in enumerate(render_sets):
+        for key in sorted(keys):
+            test_item = render_set.data.get(key)
 
-        result = {
-            "status": "ok",
-            "score": 0,
-            "max": 0,
-            "items": [],
-        }
-        results[key] = result
+            reference_item = reference_data.get(key)
+            if reference_item is None:
+                continue
 
-        for name, file in reference_item.files.items():
-            score = compare_datum(test_item.files.get(name) if test_item else None, file, result, path_prefix)
-            reference_item.mark_features(score, features)
+            for name, file in reference_item.files.items():
+                results_key = str(file.path)
+
+                if index == 0:
+                    results[results_key] = {
+                        "test": key,
+                        "file": file.path.name,
+                        "reference": path_prefix + str(file.path),
+                        "score": 0,
+                        "max": 0,
+                        "results": [
+                            {
+                                "source": None,
+                                "status": "unknown",
+                                "ok": False,
+                                "score": 0,
+                                "uqi": 0,
+                            }
+                            for i in range(len(render_sets))],
+                    }
+
+                result = results[results_key]["results"][index]
+
+                score = compare_datum(test_item.files.get(name) if test_item else None, file, result, path_prefix)
+
+                results[results_key]["score"] += score
+                results[results_key]["max"] += 1
+
+                reference_item.mark_features(score, features, index, len(render_sets))
 
     return {
-        "meta": meta,
+        "meta": [render_set.meta for render_set in render_sets],
         "features": features,
-        "tests": results,
+        "tests": sorted(results.values(), key=lambda r: (r["test"], r["file"])),
     }
 
 
-def html_percent(value, parent):
+def html_percent(value, parent, title):
     e = ElementTree.SubElement(parent, "div")
     e.attrib["class"] = "percent-parent"
+    e.attrib["title"] = title
     ElementTree.SubElement(e, "span").text = "%.3g%%" % (value * 100)
     bar = ElementTree.SubElement(e, "span")
     bar.attrib["class"] = "percent-bar"
@@ -214,6 +222,7 @@ def render_html(report, path):
         border: 1px solid silver;
         padding: 5px;
         white-space: nowrap;
+        /*height: inherit;*/
     }
 
     th {
@@ -223,6 +232,7 @@ def render_html(report, path):
     table {
         border-collapse: collapse;
         width: 100%;
+        height: 1px; /* ignored but needed for height:100% in td o_O */
     }
 
     table img {
@@ -230,10 +240,10 @@ def render_html(report, path):
         margin: 0 auto;
     }
 
-    .bad {
+    td.bad {
         background: #fcc;
     }
-    .meh {
+    td.meh {
         background: #eea;
     }
 
@@ -253,34 +263,70 @@ def render_html(report, path):
         display: block;
         height: 100%;
     }
+
+    .score-set {
+        display: flex;
+        justify-content: space-around;
+        border-top: 1px solid silver;
+        margin: 0 -5px;
+        padding: 0 5px;
+    }
+
+    .result-pic {
+        display: flex;
+        flex-flow: column;
+        height: 100%;
+    }
     """
-    title = "%s %s report" % (report["meta"]["title"], report["meta"]["format"])
+    if len(report["meta"]) == 1:
+        meta = report["meta"][0]
+        column_titles = [report["meta"][0]["label"] or "Result"]
+    else:
+        formats = []
+        commands = []
+        column_titles = []
+
+        def push(ls, item):
+            if not ls or ls[-1] != item:
+                ls.append(item)
+
+        for rm in report["meta"]:
+            push(formats, rm["format"])
+            push(commands, rm["command"])
+            column_titles.append(rm["label"])
+
+        meta = {
+            "title": report["meta"][0]["title"],
+            "format": ", ".join(formats),
+            "command": "\n".join(commands),
+            "comment": "",
+        }
+
+    title = "%s %s report" % (meta["title"], meta["format"])
     ElementTree.SubElement(head, "title").text = title
     body = ElementTree.SubElement(html, "body")
 
     ElementTree.SubElement(body, "h1").text = title
-    p = ElementTree.SubElement(body, "p")
-    if report["meta"]["comment"]:
-        p.text = ElementTree.SubElement(body, "p").text = report["meta"]["comment"]
-    else:
-        p.text = "Report for the "
-        c = ElementTree.SubElement(p, "code")
-        c.text = report["meta"]["format"]
-        c.tail = " format."
+    if meta["comment"]:
+        p = ElementTree.SubElement(body, "p")
+        p.text = ElementTree.SubElement(body, "p").text = meta["comment"]
 
-    if report["meta"]["command"]:
+    if meta["command"]:
         ElementTree.SubElement(body, "p").text = "Render command:"
-        ElementTree.SubElement(ElementTree.SubElement(body, "pre"), "code").text = report["meta"]["command"]
+        ElementTree.SubElement(ElementTree.SubElement(body, "pre"), "code").text = meta["command"]
 
     ElementTree.SubElement(body, "h2").text = "Features"
     table = ElementTree.SubElement(body, "table")
     tr = ElementTree.SubElement(table, "tr")
     ElementTree.SubElement(tr, "th").text = "Feature"
-    ElementTree.SubElement(tr, "th").text = "Score"
+    for col in column_titles:
+        ElementTree.SubElement(tr, "th").text = col
+
     for fname, fdata in sorted(report["features"].items()):
         tr = ElementTree.SubElement(table, "tr")
         ElementTree.SubElement(tr, "td").text = fname
-        html_percent(fdata["score"] / fdata["max"], ElementTree.SubElement(tr, "td"))
+        for score in fdata["score"]:
+            html_percent(score / fdata["max"], ElementTree.SubElement(tr, "td"), "Score")
 
     ElementTree.SubElement(body, "h2").text = "Tests"
 
@@ -293,7 +339,7 @@ def render_html(report, path):
     button = ElementTree.SubElement(body, "button")
     button.text = "Only Failures"
     button.attrib["onclick"] = '''document.getElementById("table-tests").querySelectorAll("tr:not(.title)").forEach(tr => {
-        tr.style.display = tr.classList.contains("good") ? "none" : "table-row";
+        tr.style.display = tr.dataset.status == "ok" ? "none" : "table-row";
     });'''
 
     input = ElementTree.SubElement(body, "input")
@@ -309,33 +355,74 @@ def render_html(report, path):
     tr.attrib["class"] = "title"
     ElementTree.SubElement(tr, "th").text = "Name"
     ElementTree.SubElement(tr, "th").text = "File"
-    ElementTree.SubElement(tr, "th").text = "UQI"
     ElementTree.SubElement(tr, "th").text = "Score"
     ElementTree.SubElement(tr, "th").text = "Reference"
-    ElementTree.SubElement(tr, "th").text = "Render"
+    for col in column_titles:
+        ElementTree.SubElement(tr, "th").text = col
 
-    for name, result in report["tests"].items():
-        for item in result["items"]:
-            tr = ElementTree.SubElement(table, "tr")
-            if item["score"] < 0.8:
-                tr.attrib["class"] = "bad"
-            elif item["score"] < 1:
-                tr.attrib["class"] = "meh"
+    def score_class(element, score):
+        if score < 0.8:
+            element.attrib["class"] = "bad"
+        elif score < 1:
+            element.attrib["class"] = "meh"
+        else:
+            element.attrib["class"] = "good"
+        element.attrib["title"] = str(score)
+
+
+    for item in report["tests"]:
+        tr = ElementTree.SubElement(table, "tr")
+        avg_score = item["score"] / item["max"]
+
+        ElementTree.SubElement(tr, "td").text = item["test"]
+        ElementTree.SubElement(tr, "td").text = item["file"]
+        html_percent(avg_score, ElementTree.SubElement(tr, "td"), "Average Score")
+
+        col = ElementTree.SubElement(ElementTree.SubElement(tr, "td"), "div")
+        col.attrib["class"] = "result-pic"
+        if item["reference"]:
+            ElementTree.SubElement(col, "img").attrib["src"] = "file://" + str(Path(item["reference"]).absolute())
+
+        ElementTree.SubElement(col, "div").attrib["class"] = "score-set"
+
+        for result in item["results"]:
+            td = ElementTree.SubElement(tr, "td")
+            score_class(td, result["score"])
+
+            tr.attrib["data-status"] = "fail" if result["score"] < 1 else "ok"
+
+            col = ElementTree.SubElement(td, "div")
+            col.attrib["class"] = "result-pic"
+
+            if result["source"]:
+                ElementTree.SubElement(col, "img").attrib["src"] = "file://" + str(Path(result["source"]).absolute())
             else:
-                tr.attrib["class"] = "good"
-            ElementTree.SubElement(tr, "td").text = name
-            ElementTree.SubElement(tr, "td").text = item["reference"].rsplit("/", 1)[-1]
-            html_percent(item["uqi"], ElementTree.SubElement(tr, "td"))
-            html_percent(item["score"], ElementTree.SubElement(tr, "td"))
-            td = ElementTree.SubElement(tr, "td")
-            if item["reference"]:
-                ElementTree.SubElement(td, "img").attrib["src"] = "file://" + str(Path(item["reference"]).absolute())
-            td = ElementTree.SubElement(tr, "td")
-            if item["source"]:
-                ElementTree.SubElement(td, "img").attrib["src"] = "file://" + str(Path(item["source"]).absolute())
+                ElementTree.SubElement(col, "div")
+
+            div = ElementTree.SubElement(col, "div")
+            div.attrib["class"] = "score-set"
+            html_percent(result["uqi"], div, "UQI")
+            html_percent(result["score"], div, "Score")
 
     with open(path, "wb") as f:
         f.write(ElementTree.tostring(html, "utf8", "html"))
+
+
+class RenderSet:
+    def __init__(self, path):
+        self.data = collect_directory(path)
+        meta_path = path / "meta.json"
+        self.meta = {
+            "title": "Lottie",
+            "label": "",
+            "comment": "",
+            "command": "",
+            "skipped": [],
+            "format": "json",
+        }
+        if meta_path.exists:
+            with open(meta_path) as f:
+                self.meta.update(json.load(f))
 
 
 if __name__ == "__main__":
@@ -351,6 +438,7 @@ if __name__ == "__main__":
     parser.add_argument(
         "path",
         help="Path of the render set to compare to the reference",
+        nargs="+",
         type=Path
     )
     parser.add_argument(
@@ -374,20 +462,9 @@ if __name__ == "__main__":
 
     args = parser.parse_args()
     reference = collect_directory(args.reference)
-    test = collect_directory(args.path)
-    meta_path = args.path / "meta.json"
-    meta = {
-        "title": "Lottie",
-        "comment": "",
-        "command": "",
-        "skipped": [],
-        "format": "json",
-    }
-    if meta_path.exists:
-        with open(meta_path) as f:
-            meta.update(json.load(f))
+    render_sets = [RenderSet(path) for path in args.path]
 
-    data = compare_data(test, reference, args.prefix, meta)
+    data = compare_data(render_sets, reference, args.prefix)
     out = sys.stdout if args.output is None else open(args.output, "w")
     json.dump(data, out, indent=4)
     out.write("\n")
