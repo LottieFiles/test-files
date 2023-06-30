@@ -17,7 +17,8 @@ An example is composed of multiple files. Assuming the example
 
 * `example.aep`: (optional) The Aftereffects project file corresponding to this example
 * `example.json`: (required) The lottie to test
-* `example-meta.json`: (optional) Example metadata (more on this later)
+* `example.svg`: (optional) An equivalent SVG, it's important it should be rendered the same as the AE project
+* `example-meta.json`: (required) Example metadata (more on this later)
 * `example-XX.png`: (recommended) Reference render of the example, `XX` is the frame number.
 
 The metadata file will have contents like these:
@@ -80,6 +81,8 @@ If the project has not been saved, you'll be prompted to select the file, otherw
 file name.
 
 You will need to create the metadata file by other means.
+
+This script can also be used to generate missing files for an example.
 
 
 ### `add-file` script
