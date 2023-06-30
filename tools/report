@@ -367,7 +367,6 @@ def render_html(report, path):
             element.attrib["class"] = "meh"
         else:
             element.attrib["class"] = "good"
-        element.attrib["title"] = str(score)
 
 
     for item in report["tests"]:
