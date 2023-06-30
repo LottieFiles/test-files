@@ -50,8 +50,11 @@ the contents are assumed to be
 If you need additional files for a test file, use `asset` in their file name, so they will be ignored by the tooling.
 This also means that you cannot have the word `asset` appear in the test name.
 
-Guidelines
-----------
+
+Creating Test Files
+-------------------
+
+### Guidelines
 
 Please keep the features in a file to a minimum, and keep duration under 100 frames.
 
@@ -64,12 +67,43 @@ Keep the animation dimensions (width, height) to a minimum so it's easier
 to compare renders.
 
 
+### AE script
+
+To export everything needed for a test file you can install `./tools/Test File Export.jsx` in the After Effects
+ScriptUI folder. Once installed, restart after effects and the you can toggle the panel from the _Window_ menu.
+
+In order to export PNG, you need to update the AE _Lossless_ template to export as "PNG Sequence" "RGB + Alpha".
+
+In the panel you can find a text box used to debug values, and the export button.
+Clicking on _Export_ will save a bunch of files based on the ticked checkboxes.
+If the project has not been saved, you'll be prompted to select the file, otherwise it will use the current project
+file name.
+
+You will need to create the metadata file by other means.
+
+
+### `add-file` script
+
+This script will copy all the matching files in a directory, this is ueseful if you have a test file set up somewhere
+and you want to import it. It will also generate a basic metadata file.
+
+Note that this script expect a single test file in the given directory.
+
+
+### Verifying the new example
+
+Always call `./tools/verify-examples` after adding some example, as this will highlight missing files and other problems.
+
+Ideally also run a render and report to check the new test files work as intended.
+
 Tools
 -----
 
+`./tools/add-file` imports a test and generates its metadata
 `./tools/verify-examples` shows a table with all the examples, you should invoke after adding new examples
-`./tools/render` will use the given parameter to invoke scripts that render PNGs given a JSON
-`./tools/report` will generate a JSON file reporting on the status of a directory containing renders to examine.
+`./tools/render` uses the given parameter to invoke scripts that render PNGs given a JSON
+`./tools/report` generates a JSON file reporting on the status of a directory containing renders to examine
+`./tools/render-report` shorthand script to call `render` and `report` with some sensible defaults
 
 
 ### Render Sets
@@ -92,6 +126,7 @@ The metadata file has the following structure:
 
 You can genrate a report on a single render set or from multiple ones.
 If you generate a report formn multiple render sets, you should ensure they have different labels.
+
 
 ### Example
 

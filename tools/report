@@ -403,6 +403,13 @@ def render_html(report, path):
             html_percent(result["uqi"], div, "UQI")
             html_percent(result["score"], div, "Score")
 
+    footer = ElementTree.SubElement(ElementTree.SubElement(body, "footer"), "p")
+    footer.text = "Report generated from "
+    link = ElementTree.SubElement(footer, "a")
+    link.text = "Lottie test files"
+    link.attrib["href"] = "https://github.com/LottieFiles/test-files"
+    link.tail = "."
+
     with open(path, "wb") as f:
         f.write(ElementTree.tostring(html, "utf8", "html"))
 
