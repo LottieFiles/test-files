@@ -29,13 +29,7 @@ The metadata file will have contents like these:
     "features": [
         "category/example/feature-1",
         "category/example/feature-2"
-    ],
-    // Features from canilottie
-    "caniuse": [
-        "category-example"
-    ],
-    // (optional) lottie-docs link
-    "docs": "https://lottiefiles.github.io/lottie-docs/category/#example"
+    ]
 }
 ```
 
@@ -93,6 +87,13 @@ and you want to import it. It will also generate a basic metadata file.
 Note that this script expect a single test file in the given directory.
 
 
+### Metadata
+
+Ensure the file `(example)-meta.json` is valid and has the features listed.
+
+You should also add feature-specific metadata in the features file (`./tools/features.json`).
+
+
 ### Verifying the new example
 
 Always call `./tools/verify-examples` after adding some example, as this will highlight missing files and other problems.
@@ -102,6 +103,7 @@ Ideally also run a render and report to check the new test files work as intende
 Tools
 -----
 
+`./tools/tested-features` shows the features being tested (and missing ones if the data is there)
 `./tools/add-file` imports a test and generates its metadata
 `./tools/verify-examples` shows a table with all the examples, you should invoke after adding new examples
 `./tools/render` uses the given parameter to invoke scripts that render PNGs given a JSON
@@ -146,6 +148,7 @@ If you are OK with the default settings, you can also use the shorthand command 
 ```bash
 tools/render-report -o /tmp/lottie-test -f json glaxnimate {} -r {out} --frame {frame}
 ```
+
 
 License
 -------

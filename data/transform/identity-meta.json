@@ -1,10 +1,5 @@
 {
     "features": [
         "transform/opacity"
-    ],
-    "caniuse": [
-        "transform",
-        "transform-opacity"
-    ],
-    "docs": "https://lottiefiles.github.io/lottie-docs/concepts/#transform"
+    ]
 }

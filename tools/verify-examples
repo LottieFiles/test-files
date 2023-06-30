@@ -2,42 +2,14 @@
 import re
 import sys
 from pathlib import Path
-
-
-
-class Column:
-    def __init__(self, title, just="center"):
-        self.title = title
-        self.max = len(title)
-        self.just = just
-
-    def add(self, item):
-        if len(item) > self.max:
-            self.max = len(item)
-
-    def write(self, text="", dir=None, pad=" "):
-        sys.stdout.write(pad)
-        sys.stdout.write(getattr(text, dir or self.just)(self.max, pad))
-        sys.stdout.write(pad)
-        sys.stdout.write("|")
-
-
-class Table:
-    def __init__(self, columns):
-        self.columns = columns
-        self.rows = []
-
-    def row(self, row):
-        self.rows.append(row)
-        for it, col in zip(row, self.columns):
-            col.add(it)
+from script_utils import Column, Table
 
 
 def collect_directory(root: Path, path: Path, found: dict):
     for file in (root / path).iterdir():
         if file.is_dir():
             collect_directory(root, path / file.name, found)
-        else:
+        elif "asset" not in file.name:
             basename = re.sub("-[0-9]+$", "", file.stem)
             if file.name.endswith("-meta.json"):
                 basename = basename[:-5]
@@ -81,20 +53,6 @@ for example, files in sorted(found.items()):
     row[has_frames] = str(row[has_frames]) if row[has_frames] else "NO"
     table.row(row)
 
-sys.stdout.write("|")
-for col in table.columns:
-    col.write(col.title, "ljust")
-sys.stdout.write("\n")
+table.write()
 
-sys.stdout.write("|")
-for col in table.columns:
-    col.write(pad="-")
-sys.stdout.write("\n")
-
-for row in table.rows:
-    sys.stdout.write("|")
-    for it, col in zip(row, table.columns):
-        col.write(it)
-    sys.stdout.write("\n")
-
-sys.stdout.write("\nTotal: %s tests %s files\n" % (len(found), file_count))
+sys.stdout.write("Total: %s tests %s files\n" % (len(found), file_count))

@@ -1,0 +1,670 @@
+{
+    "features": {
+        "layers": {
+            "canilottie": null,
+            "docs": "https://lottiefiles.github.io/lottie-docs/concepts/#lists-of-layers-and-shapes",
+            "match_names": []
+        },
+        "layers/image": {
+            "canilottie": "layer-image",
+            "docs": "https://lottiefiles.github.io/lottie-docs/layers/#image-layer",
+            "match_names": []
+        },
+        "layers/solid": {
+            "canilottie": "layer-solid",
+            "docs": "https://lottiefiles.github.io/lottie-docs/layers/#solid-color-layer",
+            "match_names": []
+        },
+        "shape-style": {
+            "canilottie": null,
+            "docs": "https://lottiefiles.github.io/lottie-docs/shapes/#style",
+            "match_names": []
+        },
+        "shape-style/fill": {
+            "canilottie": "shape-fill",
+            "docs": "https://lottiefiles.github.io/lottie-docs/shapes/#fill",
+            "match_names": ["ADBE Vector Graphic - Fill"]
+        },
+        "shape-style/fill/color": {
+            "canilottie": "shape-fill",
+            "docs": "https://lottiefiles.github.io/lottie-docs/shapes/#fill",
+            "match_names": ["ADBE Vector Fill Color"]
+        },
+        "shape-style/fill/opacity": {
+            "canilottie": "shape-fill",
+            "docs": "https://lottiefiles.github.io/lottie-docs/shapes/#fill",
+            "match_names": ["ADBE Vector Fill Opacity"]
+        },
+        "shape-style/fill/rule": {
+            "canilottie": "shape-fill",
+            "docs": "https://lottiefiles.github.io/lottie-docs/constants/#fill-rule",
+            "match_names": [
+                "ADBE Vector Fill Rule"
+            ]
+        },
+        "shape-style/fill/gradient": {
+            "canilottie": "shape-fill-gradient",
+            "docs": "https://lottiefiles.github.io/lottie-docs/shapes/#gradients",
+            "match_names": [
+                "ADBE Vector Graphic - G-Fill"
+            ]
+        },
+        "shape-style/blend": {
+            "canilottie": "blend-mode",
+            "docs": "https://lottiefiles.github.io/lottie-docs/constants/#blend-mode",
+            "match_names": ["ADBE Vector Blend Mode"]
+        },
+        "shape-style/order": {
+            "caniuse": null,
+            "docs": null,
+            "match_names": ["ADBE Vector Composite Order"]
+        },
+        "shape-style/stroke": {
+            "canilottie": "shape-stroke",
+            "docs": "https://lottiefiles.github.io/lottie-docs/shapes/#stroke",
+            "match_names": [
+                "ADBE Vector Graphic - Stroke",
+                "ADBE Vector Stroke Width",
+                "ADBE Vector Stroke Line Cap",
+                "ADBE Vector Stroke Line Join",
+                "ADBE Vector Stroke Miter Limit"
+            ]
+        },
+        "shape-style/stroke/color": {
+            "canilottie": "shape-stroke",
+            "docs": "https://lottiefiles.github.io/lottie-docs/shapes/#stroke",
+            "match_names": ["ADBE Vector StrokeColor"]
+        },
+        "shape-style/stroke/opacity": {
+            "canilottie": "shape-stroke",
+            "docs": "https://lottiefiles.github.io/lottie-docs/shapes/#stroke",
+            "match_names": ["ADBE Vector Stroke Opacity"]
+        },
+        "shape-style/stroke/gradient": {
+            "canilottie": "shape-stroke-gradient",
+            "docs": "https://lottiefiles.github.io/lottie-docs/shapes/#gradients",
+            "match_names": [
+                "ADBE Vector Graphic - G-Stroke"
+            ]
+        },
+        "shape-style/stroke/dashes": {
+            "canilottie": "shape-stroke",
+            "docs": "https://lottiefiles.github.io/lottie-docs/shapes/#stroke",
+            "match_names": [
+                "ADBE Vector Stroke Dashes",
+                "ADBE Vector Stroke Offset",
+                "ADBE Vector Stroke Gap #",
+                "ADBE Vector Stroke Dash #"
+            ]
+        },
+        "shape-style/stroke/taper": {
+            "canilottie": null,
+            "docs": null,
+            "match_names": [
+                "ADBE Vector Stroke Taper",
+                "ADBE Vector Taper Start Length",
+                "ADBE Vector Taper End Length",
+                "ADBE Vector Taper Start Width",
+                "ADBE Vector Taper End Width",
+                "ADBE Vector Taper Start Ease",
+                "ADBE Vector Taper End Ease"
+            ]
+        },
+        "shape-style/stroke/wave": {
+            "canilottie": null,
+            "docs": null,
+            "match_names": [
+                "ADBE Vector Stroke Wave",
+                "ADBE Vector Taper Wave Amount",
+                "ADBE Vector Taper Wave Units",
+                "ADBE Vector Taper Wavelength",
+                "ADBE Vector Taper Wave Phase"
+            ]
+        },
+        "shape-style/gradient": {
+            "canilottie": null,
+            "docs": "https://lottiefiles.github.io/lottie-docs/shapes/#gradients",
+            "match_names": [
+                "ADBE Vector Grad Start Pt",
+                "ADBE Vector Grad End Pt"
+            ]
+        },
+        "shape-style/gradient/alpha": {
+            "canilottie": "shape-fill-gradient",
+            "docs": "https://lottiefiles.github.io/lottie-docs/shapes/#gradients",
+            "match_names": [
+                "ADBE Vector Grad Colors"
+            ]
+        },
+        "shape-style/gradient/linear": {
+            "canilottie": "shape-fill-gradient",
+            "docs": "https://lottiefiles.github.io/lottie-docs/shapes/#gradients",
+            "match_names": [
+                "ADBE Vector Grad Type"
+            ]
+        },
+        "shape-style/gradient/midpoint": {
+            "canilottie": "shape-fill-gradient",
+            "docs": "https://lottiefiles.github.io/lottie-docs/shapes/#gradients",
+            "match_names": [
+                "ADBE Vector Grad Colors"
+            ]
+        },
+        "shape-style/gradient/radial": {
+            "canilottie": "shape-fill-gradient",
+            "docs": "https://lottiefiles.github.io/lottie-docs/shapes/#gradients",
+            "match_names": [
+                "ADBE Vector Grad Type"
+            ]
+        },
+        "shape-style/gradient/radial/highlight": {
+            "canilottie": "shape-fill-gradient",
+            "docs": "https://lottiefiles.github.io/lottie-docs/shapes/#gradients",
+            "match_names": [
+                "ADBE Vector Grad HiLite Length",
+                "ADBE Vector Grad HiLite Angle"
+            ]
+        },
+        "shapes": {
+            "canilottie": null,
+            "docs": "https://lottiefiles.github.io/lottie-docs/shapes/#shape",
+            "match_names": []
+        },
+        "shapes/direction": {
+            "canilottie": null,
+            "docs": "https://lottiefiles.github.io/lottie-docs/shapes/#shape",
+            "match_names": [
+                "ADBE Vector Shape Direction"
+            ]
+        },
+        "shapes/ellipse": {
+            "canilottie": "shape-ellipse",
+            "docs": "https://lottiefiles.github.io/lottie-docs/shapes/#ellipse",
+            "match_names": [
+                "ADBE Vector Shape - Ellipse",
+                "ADBE Vector Ellipse Position",
+                "ADBE Vector Ellipse Size"
+            ]
+        },
+        "shapes/group": {
+            "canilottie": "layer-shape",
+            "docs": "https://lottiefiles.github.io/lottie-docs/shapes/#group",
+            "match_names": [
+                "ADBE Vector Group",
+                "ADBE Vectors Group"
+            ]
+        },
+        "shapes/path": {
+            "canilottie": "shape-path",
+            "docs": "https://lottiefiles.github.io/lottie-docs/shapes/#path",
+            "match_names": [
+                "ADBE Vector Shape - Group",
+                "ADBE Vector Shape"
+            ]
+        },
+        "shapes/polygon": {
+            "canilottie": "shape-polystar",
+            "docs": "https://lottiefiles.github.io/lottie-docs/shapes/#polystar",
+            "match_names": [
+                "ADBE Vector Shape - Star",
+                "ADBE Vector Star Type",
+                "ADBE Vector Star Points",
+                "ADBE Vector Star Position",
+                "ADBE Vector Star Rotation",
+                "ADBE Vector Star Outer Radius"
+            ]
+        },
+        "shapes/polygon/rounded": {
+            "canilottie": "shape-polystar",
+            "docs": "https://lottiefiles.github.io/lottie-docs/shapes/#polystar",
+            "match_names": [
+                "ADBE Vector Star Outer Radius",
+                "ADBE Vector Star Outer Roundess"
+            ]
+        },
+        "shapes/rectangle": {
+            "canilottie": "shape-rectangle",
+            "docs": "https://lottiefiles.github.io/lottie-docs/shapes/#rectangle",
+            "match_names": [
+                "ADBE Vector Shape - Rect",
+                "ADBE Vector Rect Position",
+                "ADBE Vector Rect Size"
+            ]
+        },
+        "shapes/rectangle/rounded": {
+            "canilottie": "shape-rectangle",
+            "docs": "https://lottiefiles.github.io/lottie-docs/shapes/#rectangle",
+            "match_names": [
+                "ADBE Vector Rect Roundness"
+            ]
+        },
+        "shapes/star": {
+            "canilottie": "shape-polystar",
+            "docs": "https://lottiefiles.github.io/lottie-docs/shapes/#polystar",
+            "match_names": [
+                "ADBE Vector Shape - Star",
+                "ADBE Vector Star Type",
+                "ADBE Vector Star Points",
+                "ADBE Vector Star Position",
+                "ADBE Vector Star Rotation",
+                "ADBE Vector Star Outer Radius",
+                "ADBE Vector Star Inner Radius"
+            ]
+        },
+        "shapes/star/rounded": {
+            "canilottie": "shape-polystar",
+            "docs": "https://lottiefiles.github.io/lottie-docs/shapes/#polystar",
+            "match_names": [
+                "ADBE Vector Star Outer Radius",
+                "ADBE Vector Star Outer Roundess",
+                "ADBE Vector Star Inner Radius",
+                "ADBE Vector Star Inner Roundess"
+            ]
+        },
+        "transform": {
+            "canilottie": "transform",
+            "docs": "https://lottiefiles.github.io/lottie-docs/concepts/#transform",
+            "match_names": [
+                "ADBE Transform Group",
+                "ADBE Vector Transform Group"
+            ]
+        },
+        "transform/anchor": {
+            "canilottie": "transform-anchor-point",
+            "docs": "https://lottiefiles.github.io/lottie-docs/concepts/#transform",
+            "match_names": [
+                "ADBE Anchor Point",
+                "ADBE Vector Anchor Point",
+                "ADBE Vector Anchor"
+            ]
+        },
+        "transform/opacity": {
+            "canilottie": "transform-opacity",
+            "docs": "https://lottiefiles.github.io/lottie-docs/concepts/#transform",
+            "match_names": [
+                "ADBE Opacity",
+                "ADBE Vector Group Opacity"
+            ]
+        },
+        "transform/position": {
+            "canilottie": "transform-position",
+            "docs": "https://lottiefiles.github.io/lottie-docs/concepts/#transform",
+            "match_names": [
+                "ADBE Position",
+                "ADBE Vector Position"
+
+            ]
+        },
+        "transform/position/split": {
+            "canilottie": "transform-position",
+            "docs": "https://lottiefiles.github.io/lottie-docs/concepts/#transform",
+            "match_names": [
+                "ADBE Position_0",
+                "ADBE Position_1",
+                "ADBE Position_2"
+            ]
+        },
+        "transform/rotation": {
+            "canilottie": "transform-rotation",
+            "docs": "https://lottiefiles.github.io/lottie-docs/concepts/#transform",
+            "match_names": [
+                "ADBE Rotate Z",
+                "ADBE Vector Rotate Z",
+                "ADBE Vector Rotation"
+            ]
+        },
+        "transform/scale": {
+            "canilottie": "transform-scale",
+            "docs": "https://lottiefiles.github.io/lottie-docs/concepts/#transform",
+            "match_names": [
+                "ADBE Scale",
+                "ADBE Vector Scale"
+            ]
+        },
+        "transform/skew": {
+            "canilottie": "transform-skew",
+            "docs": "https://lottiefiles.github.io/lottie-docs/concepts/#transform",
+            "match_names": [
+                "ADBE Vector Skew",
+                "ADBE Vector Skew Axis"
+            ]
+        }
+    },
+    "match_names": [
+        "ADBE Anchor Point",
+        "ADBE Appears in Reflections",
+        "ADBE Audio Group",
+        "ADBE Bevel Direction",
+        "ADBE Camera Aperture",
+        "ADBE Camera Options Group",
+        "ADBE Camera Zoom",
+        "ADBE Data Group",
+        "ADBE Displacement Map",
+        "ADBE Drop Shadow",
+        "ADBE Effect Built In Params",
+        "ADBE Effect Mask Opacity",
+        "ADBE Effect Parade",
+        "ADBE Envir Appear in Reflect",
+        "ADBE Extrsn Options Group",
+        "ADBE Extrsn Options Group",
+        "ADBE Fill",
+        "ADBE FreePin3",
+        "ADBE Fresnel Coefficient",
+        "ADBE Gaussian Blur 2",
+        "ADBE Glossiness Coefficient",
+        "ADBE Index of Refraction",
+        "ADBE Layer Overrides",
+        "ADBE Layer Sets",
+        "ADBE Layer Source Alternate",
+        "ADBE Layer Styles",
+        "ADBE Layer Styles",
+        "ADBE MESH WARP",
+        "ADBE Marker",
+        "ADBE Mask Atom",
+        "ADBE Mask Feather",
+        "ADBE Mask Offset",
+        "ADBE Mask Opacity",
+        "ADBE Mask Parade",
+        "ADBE Mask Shape",
+        "ADBE Material Options Group",
+        "ADBE Opacity",
+        "ADBE Orientation",
+        "ADBE Paint Atom",
+        "ADBE Paint Clone Layer",
+        "ADBE Paint Duration",
+        "ADBE Paint Group",
+        "ADBE Paint Properties",
+        "ADBE Paint Shape",
+        "ADBE Paint Transform",
+        "ADBE Plane Options Group",
+        "ADBE Position",
+        "ADBE Position_0",
+        "ADBE Position_1",
+        "ADBE Position_2",
+        "ADBE Pro Levels2",
+        "ADBE Radial Wipe",
+        "ADBE Reflection Coefficient",
+        "ADBE Ripple",
+        "ADBE Rotate X",
+        "ADBE Rotate Y",
+        "ADBE Rotate Z",
+        "ADBE Scale",
+        "ADBE Set Matte3",
+        "ADBE Source Options Group",
+        "ADBE Source Options Group",
+        "ADBE Spherize",
+        "ADBE Stroke",
+        "ADBE Text Anchor Point 3D",
+        "ADBE Text Anchor Point Align",
+        "ADBE Text Anchor Point Option",
+        "ADBE Text Animator Properties",
+        "ADBE Text Animator Properties",
+        "ADBE Text Animator",
+        "ADBE Text Animators",
+        "ADBE Text Blur",
+        "ADBE Text Character Blend Mode",
+        "ADBE Text Character Offset",
+        "ADBE Text Character Replace",
+        "ADBE Text Document",
+        "ADBE Text Fill Brightness",
+        "ADBE Text Fill Color",
+        "ADBE Text Fill Hue",
+        "ADBE Text Fill Opacity",
+        "ADBE Text Fill Saturation",
+        "ADBE Text First Margin",
+        "ADBE Text Force Align Path",
+        "ADBE Text Index End ",
+        "ADBE Text Index Offset ",
+        "ADBE Text Index Start ",
+        "ADBE Text Last Margin",
+        "ADBE Text Levels Max Ease",
+        "ADBE Text Levels Min Ease",
+        "ADBE Text Line Anchor",
+        "ADBE Text Line Spacing",
+        "ADBE Text More Options",
+        "ADBE Text More Options",
+        "ADBE Text Opacity",
+        "ADBE Text Path Options",
+        "ADBE Text Path Options",
+        "ADBE Text Path",
+        "ADBE Text Percent End",
+        "ADBE Text Percent Offset",
+        "ADBE Text Percent Start",
+        "ADBE Text Perpendicular To Path",
+        "ADBE Text Position 3D",
+        "ADBE Text Properties",
+        "ADBE Text Random Seed",
+        "ADBE Text Range Advanced",
+        "ADBE Text Render Order",
+        "ADBE Text Reverse Path",
+        "ADBE Text Rotation X",
+        "ADBE Text Rotation Y",
+        "ADBE Text Rotation",
+        "ADBE Text Scale 3D",
+        "ADBE Text Selector Max Amount",
+        "ADBE Text Selector Mode",
+        "ADBE Text Selector Smoothness",
+        "ADBE Text Selector",
+        "ADBE Text Selectors",
+        "ADBE Text Skew Axis",
+        "ADBE Text Skew",
+        "ADBE Text Stroke Brightness",
+        "ADBE Text Stroke Color",
+        "ADBE Text Stroke Hue",
+        "ADBE Text Stroke Opacity",
+        "ADBE Text Stroke Saturation",
+        "ADBE Text Stroke Width",
+        "ADBE Text Track Type",
+        "ADBE Text Tracking Amount",
+        "ADBE Time Remapping",
+        "ADBE Tint",
+        "ADBE Transform Group",
+        "ADBE Transform Group",
+        "ADBE Transp Rolloff",
+        "ADBE Transparency Coefficient",
+        "ADBE Tritone",
+        "ADBE Twirl",
+        "ADBE Vector Anchor Point",
+        "ADBE Vector Anchor",
+        "ADBE Vector Blend Mode",
+        "ADBE Vector Composite Order",
+        "ADBE Vector Correlation",
+        "ADBE Vector Ellipse Position",
+        "ADBE Vector Ellipse Size",
+        "ADBE Vector Fill Color",
+        "ADBE Vector Fill Opacity",
+        "ADBE Vector Fill Rule",
+        "ADBE Vector Fill Rule",
+        "ADBE Vector Filter - Merge",
+        "ADBE Vector Filter - Offset",
+        "ADBE Vector Filter - PB",
+        "ADBE Vector Filter - RC",
+        "ADBE Vector Filter - Repeater",
+        "ADBE Vector Filter - Roughen",
+        "ADBE Vector Filter - Trim",
+        "ADBE Vector Filter - Twist",
+        "ADBE Vector Filter - Wiggler",
+        "ADBE Vector Filter - Zigzag",
+        "ADBE Vector Grad Colors",
+        "ADBE Vector Grad Colors",
+        "ADBE Vector Grad End Pt",
+        "ADBE Vector Grad HiLite Angle",
+        "ADBE Vector Grad HiLite Length",
+        "ADBE Vector Grad Start Pt",
+        "ADBE Vector Grad Type",
+        "ADBE Vector Graphic - Fill",
+        "ADBE Vector Graphic - G-Fill",
+        "ADBE Vector Graphic - G-Stroke",
+        "ADBE Vector Graphic - Stroke",
+        "ADBE Vector Group Opacity",
+        "ADBE Vector Group",
+        "ADBE Vector Materials Group",
+        "ADBE Vector Merge Type",
+        "ADBE Vector Offset Amount",
+        "ADBE Vector Offset Line Join",
+        "ADBE Vector Offset Miter Limit",
+        "ADBE Vector Position",
+        "ADBE Vector PuckerBloat Amount",
+        "ADBE Vector Random Seed",
+        "ADBE Vector Rect Position",
+        "ADBE Vector Rect Roundness",
+        "ADBE Vector Rect Size",
+        "ADBE Vector Repeater Anchor Point",
+        "ADBE Vector Repeater Copies",
+        "ADBE Vector Repeater End Opacity",
+        "ADBE Vector Repeater Offset",
+        "ADBE Vector Repeater Order",
+        "ADBE Vector Repeater Position",
+        "ADBE Vector Repeater Rotation",
+        "ADBE Vector Repeater Scale",
+        "ADBE Vector Repeater Start Opacity",
+        "ADBE Vector Repeater Transform",
+        "ADBE Vector Repeater Transform",
+        "ADBE Vector Rotate X",
+        "ADBE Vector Rotate Y",
+        "ADBE Vector Rotate Z",
+        "ADBE Vector Rotation",
+        "ADBE Vector Roughen Detail",
+        "ADBE Vector Roughen Points",
+        "ADBE Vector Roughen Size",
+        "ADBE Vector RoundCorner Radius",
+        "ADBE Vector Scale",
+        "ADBE Vector Shape - Ellipse",
+        "ADBE Vector Shape - Group",
+        "ADBE Vector Shape - Rect",
+        "ADBE Vector Shape - Star",
+        "ADBE Vector Shape Direction",
+        "ADBE Vector Shape",
+        "ADBE Vector Spatial Phase",
+        "ADBE Vector Spatial Phase",
+        "ADBE Vector Star Inner Radius",
+        "ADBE Vector Star Inner Roundess",
+        "ADBE Vector Star Outer Radius",
+        "ADBE Vector Star Outer Roundess",
+        "ADBE Vector Star Points",
+        "ADBE Vector Star Position",
+        "ADBE Vector Star Rotation",
+        "ADBE Vector Star Type",
+        "ADBE Vector Stroke Color",
+        "ADBE Vector Stroke Dashes",
+        "ADBE Vector Stroke Offset",
+        "ADBE Vector Stroke Gap #",
+        "ADBE Vector Stroke Dash #",
+        "ADBE Vector Stroke Line Cap",
+        "ADBE Vector Stroke Line Cap",
+        "ADBE Vector Stroke Line Join",
+        "ADBE Vector Stroke Line Join",
+        "ADBE Vector Stroke Miter Limit",
+        "ADBE Vector Stroke Miter Limit",
+        "ADBE Vector Stroke Opacity",
+        "ADBE Vector Stroke Taper",
+        "ADBE Vector Stroke Wave",
+        "ADBE Vector Stroke Width",
+        "ADBE Vector Taper End Ease",
+        "ADBE Vector Taper End Length",
+        "ADBE Vector Taper End Width",
+        "ADBE Vector Taper Start Ease",
+        "ADBE Vector Taper Start Length",
+        "ADBE Vector Taper Start Width",
+        "ADBE Vector Taper Wave Amount",
+        "ADBE Vector Taper Wave Phase",
+        "ADBE Vector Taper Wave Units",
+        "ADBE Vector Taper Wavelength",
+        "ADBE Vector Temporal Freq",
+        "ADBE Vector Temporal Phase",
+        "ADBE Vector Temporal Phase",
+        "ADBE Vector Transform Group",
+        "ADBE Vector Trim End",
+        "ADBE Vector Trim Offset",
+        "ADBE Vector Trim Start",
+        "ADBE Vector Twist Angle",
+        "ADBE Vector Twist Center",
+        "ADBE Vector Wiggler Transform",
+        "ADBE Vector Xform Temporal Freq",
+        "ADBE Vector Zigzag Detail",
+        "ADBE Vector Zigzag Points",
+        "ADBE Vector Zigzag Size",
+        "ADBE Vectors Group",
+        "ADBE Root Vectors Group",
+        "ADBE Vector Skew",
+        "ADBE Vector Skew Axis",
+        "ADBE Group End"
+    ],
+    "canilottie": [
+        "animators-anchor-point-grouping",
+        "animators-grouping-alignment",
+        "animators-range-selectors",
+        "blend-mode",
+        "effect-black-and-white",
+        "effect-brightness-and-contrast",
+        "effect-cc-sphere",
+        "effect-color-levels-individual-controls",
+        "effect-color-levels",
+        "effect-corner-pin",
+        "effect-displacement-map",
+        "effect-drop-shadow",
+        "effect-expression-controls",
+        "effect-fill",
+        "effect-fractal-noise",
+        "effect-gaussian-blur",
+        "effect-gradient-ramp",
+        "effect-hue-saturation",
+        "effect-invert",
+        "effect-linear-wipe",
+        "effect-radial-wipe",
+        "effect-shift-channels",
+        "effects",
+        "effect-stroke",
+        "effect-tile",
+        "effect-tint",
+        "effect-tritone",
+        "effect-venetian-blinds",
+        "layer-image",
+        "layer-precomp",
+        "layer-shape",
+        "layer-solid",
+        "layer-text",
+        "mask-expansion",
+        "mask-inverted",
+        "mask",
+        "mask-modes",
+        "mask-opacity",
+        "property-matte-mask",
+        "property-timeremap",
+        "property-time-stretch",
+        "range-selectors-units",
+        "shape-ellipse",
+        "shape-fill-gradient",
+        "shape-fill",
+        "shape-merge-path",
+        "shape-offset-path",
+        "shape-path",
+        "shape-polystar",
+        "shape-pucker-and-bloat",
+        "shape-rectangle",
+        "shape-repeater",
+        "shape-stroke-gradient",
+        "shape-stroke",
+        "shape-trim-path",
+        "style-bevel-and-emboss",
+        "style-color-overlay",
+        "style-drop-shadow",
+        "style-gradient-overlay",
+        "style-inner-glow",
+        "style-inner-shadow",
+        "style-outer-glow",
+        "style-satin",
+        "styles",
+        "style-stroke",
+        "text-animators-blur",
+        "text-animators",
+        "text-path",
+        "transform-anchor-point",
+        "transform",
+        "transform-opacity",
+        "transform-position",
+        "transform-rotation",
+        "transform-scale",
+        "transform-skew"
+    ]
+}

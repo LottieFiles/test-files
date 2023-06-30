@@ -1,9 +1,5 @@
 {
     "features": [
-        "shape-style/fill"
-    ],
-    "caniuse": [
-        "shape-fill"
-    ],
-    "docs": "https://lottiefiles.github.io/lottie-docs/shapes/#fill"
+        "shape-style/fill/color"
+    ]
 }

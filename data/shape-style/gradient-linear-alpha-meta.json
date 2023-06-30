@@ -3,9 +3,5 @@
         "shape-style/fill/gradient",
         "shape-style/gradient/linear",
         "shape-style/gradient/alpha"
-    ],
-    "caniuse": [
-        "shape-fill-gradient"
-    ],
-    "docs": "https://lottiefiles.github.io/lottie-docs/shapes/#gradients"
+    ]
 }

@@ -1,11 +1,5 @@
 {
     "features": [
         "transform/position"
-    ],
-    "caniuse": [
-        "transform-position"
-    ],
-    "docs": [
-        "https://lottiefiles.github.io/lottie-docs/concepts/#transform"
     ]
 }

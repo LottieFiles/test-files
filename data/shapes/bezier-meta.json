@@ -1,11 +1,5 @@
 {
     "features": [
         "shapes/path"
-    ],
-    "caniuse": [
-        "shape-path"
-    ],
-    "docs": [
-        "https://lottiefiles.github.io/lottie-docs/shapes/#path"
     ]
 }

@@ -39,16 +39,6 @@ parser.add_argument(
     default=None,
 )
 parser.add_argument(
-    "--caniuse", "-c",
-    nargs="*",
-    default=None,
-)
-parser.add_argument(
-    "--docs", "-d",
-    nargs="*",
-    default=None,
-)
-parser.add_argument(
     "--edit", "-e",
     help="Opents the metadata file for editing",
     action="store_true",
@@ -101,8 +91,6 @@ for type, file in files.items():
 
 metadata = {
     "features": args.features if args.features is not None else [args.category],
-    "caniuse": args.caniuse if args.caniuse is not None else [args.category],
-    "docs": args.docs if args.docs is not None else "https://lottiefiles.github.io/lottie-docs/%s/" % args.category,
 }
 metadata_file = path / ("%s-meta.json" % args.name)
 

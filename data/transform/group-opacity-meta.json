@@ -2,11 +2,5 @@
     "features": [
         "shapes/group",
         "transform/opacity"
-    ],
-    "caniuse": [
-        "transform-opacity"
-    ],
-    "docs": [
-        "https://lottiefiles.github.io/lottie-docs/concepts/#transform"
     ]
 }

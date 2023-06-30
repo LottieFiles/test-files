@@ -1,0 +1,86 @@
+#!/usr/bin/env python3
+
+import json
+import argparse
+from pathlib import Path
+
+from script_utils import Column, Table
+
+def collect_directory(path: Path, features: dict):
+    for file in path.iterdir():
+        if file.is_dir():
+            collect_directory(file, features)
+        elif file.name.endswith("-meta.json"):
+            with open(file) as f:
+                data = json.load(f)
+
+                test_features = set(data["features"])
+                for feat in data["features"]:
+                    split = feat.split("/")
+                    for i in range(len(split)):
+                        test_features.add("/".join(split[0:i+1]))
+
+                for feature in test_features:
+                    if feature not in features:
+                        features[feature] = {"count": 1, "data": None}
+                    else:
+                        features[feature]["count"] += 1
+#
+#
+# parser = argparse.ArgumentParser()
+# parser.add_argument(
+#     "--match-names", "-mn",
+#     action="store_true"
+# )
+
+data_path = Path(__file__).parent.parent / "data"
+
+with open(Path(__file__).parent / "features.json") as f:
+    feature_data = json.load(f)
+
+tested_features = {
+    feature: {
+        "count": 0,
+        "data": data
+    }
+    for feature, data in feature_data["features"].items()
+}
+collect_directory(data_path, tested_features)
+
+cils = {
+    cil: 0
+    for cil in feature_data["canilottie"]
+}
+
+mns = {
+    mn: 0
+    for mn in feature_data["match_names"]
+}
+
+feature_table = Table([Column("Feature", "ljust"), "Tests", "Notes"])
+
+for name, feat in sorted(tested_features.items()):
+    issue = ""
+    if feat["count"] == 0:
+        issue = "No test"
+    elif feat["data"] is None:
+        issue = "No meta"
+    else:
+        for mn in feat["data"]["match_names"]:
+            mns[mn] += 1
+        if feat["data"]["canilottie"]:
+            cils[feat["data"]["canilottie"]] += 1
+
+    feature_table.row([name, feat["count"], issue])
+
+feature_table.write()
+
+table = Table([Column("Feature", "ljust"), "Tests", "Notes"])
+for name, count in cils.items():
+    table.row([name, count, "" if count else "No test"])
+table.write()
+
+table = Table([Column("Feature", "ljust"), "Tests", "Notes"])
+for name, count in mns.items():
+    table.row([name, count, "" if count else "No test"])
+table.write()

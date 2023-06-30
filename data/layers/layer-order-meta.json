@@ -1,7 +1,5 @@
 {
     "features": [
         "layers"
-    ],
-    "caniuse": [],
-    "docs": "https://lottiefiles.github.io/lottie-docs/concepts/#lists-of-layers-and-shapes"
+    ]
 }

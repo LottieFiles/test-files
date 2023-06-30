@@ -1,9 +1,5 @@
 {
     "features": [
         "layers/solid"
-    ],
-    "caniuse": [
-        "layer-solid"
-    ],
-    "docs": "https://lottiefiles.github.io/lottie-docs/layers/#solid-color-layer"
+    ]
 }

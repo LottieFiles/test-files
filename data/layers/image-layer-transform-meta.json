@@ -2,12 +2,5 @@
     "features": [
         "layers/image",
         "transform"
-    ],
-    "caniuse": [
-        "layer-image",
-        "transform"
-    ],
-    "docs": [
-        "https://lottiefiles.github.io/lottie-docs/layers/#image-layer"
     ]
 }
