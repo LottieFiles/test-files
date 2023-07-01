@@ -141,6 +141,30 @@ def scan_canilottie(args):
     handle_missing_data("canilottie", cil)
 
 
+def add(args):
+    feature = feature_data["features"].get(args.feature)
+
+    if not feature:
+        feature = {
+            "canilottie": None,
+            "docs": None,
+            "match_names": []
+        }
+        feature_data["features"][args.feature] = feature
+
+    if args.canilottie is not None:
+        feature["canilottie"] = args.canilottie
+
+    if args.docs is not None:
+        feature["docs"] = args.docs
+
+    if args.match_name is not None:
+        feature["match_names"] += args.match_name
+
+    with open(features_paths, "w") as f:
+        json.dump(feature_data, f, indent=4)
+
+
 data_path = Path(__file__).parent.parent / "data"
 parser = argparse.ArgumentParser()
 sub = parser.add_subparsers(dest="action")
@@ -170,6 +194,16 @@ sub_cil.add_argument(
     "path",
     type=Path,
 )
+
+
+sub_add = sub.add_parser(
+    "add",
+    description="Add data to a feature"
+)
+sub_add.add_argument("feature")
+sub_add.add_argument("--docs", "-d", type=str)
+sub_add.add_argument("--canilottie", "-c", type=str)
+sub_add.add_argument("--match-name", "-mn", action="append")
 
 args = parser.parse_args()
 
