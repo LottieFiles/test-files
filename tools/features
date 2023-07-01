@@ -1,0 +1,156 @@
+#!/usr/bin/env python3
+
+import json
+import struct
+import argparse
+from pathlib import Path
+
+from script_utils import Column, Table, DirectoryScanner
+
+def gather_features(file: Path, relpath: Path, features: dict):
+    if file.name.endswith("-meta.json"):
+        with open(file) as f:
+            data = json.load(f)
+
+            test_features = set(data["features"])
+            for feat in data["features"]:
+                split = feat.split("/")
+                for i in range(len(split)):
+                    test_features.add("/".join(split[0:i+1]))
+
+            for feature in test_features:
+                if feature not in features:
+                    features[feature] = {"count": 1, "data": None}
+                else:
+                    features[feature]["count"] += 1
+
+
+def status(args):
+    tested_features = {
+        feature: {
+            "count": 0,
+            "data": data
+        }
+        for feature, data in feature_data["features"].items()
+    }
+
+    DirectoryScanner(gather_features).scan(data_path, tested_features)
+
+    cils = {
+        cil: 0
+        for cil in feature_data["canilottie"]
+    }
+
+    mns = {
+        mn: 0
+        for mn in feature_data["match_names"]
+    }
+
+    feature_table = Table([Column("Feature", "ljust"), "Tests", "Notes"])
+
+    for name, feat in sorted(tested_features.items()):
+        issue = ""
+        if feat["count"] == 0:
+            issue = "No test"
+        elif feat["data"] is None:
+            issue = "No meta"
+        else:
+            for mn in feat["data"]["match_names"]:
+                mns[mn] += 1
+            if feat["data"]["canilottie"]:
+                cils[feat["data"]["canilottie"]] += 1
+
+        feature_table.row([name, feat["count"], issue])
+
+    feature_table.write()
+
+    table = Table([Column("Feature", "ljust"), "Tests", "Notes"])
+    for name, count in cils.items():
+        table.row([name, count, "" if count else "No test"])
+    table.write()
+
+    table = Table([Column("Feature", "ljust"), "Tests", "Notes"])
+    for name, count in mns.items():
+        table.row([name, count, "" if count else "No test"])
+    table.write()
+
+
+def get_match_names(path: Path, rel: Path, mns: set):
+    if path.suffix != ".aep":
+        return
+
+    with open(path, "rb") as f:
+        data = f.read()
+
+    start = 0
+    while True:
+        start = data.find(b"tdmn", start)
+        if start == -1:
+            return
+        start += 4
+        length = struct.unpack(">i", data[start:start+4])[0]
+        if length != 40:
+            continue
+
+        start += 4
+        end = data.find(b'\0', start)
+        if end < start or end > start + length:
+            end = start + length
+
+        match_name = data[start:end]
+        start = end
+
+        if match_name.startswith(b"ADBE") and match_name != b"ADBE Group End":
+            mns.add(match_name.decode("ascii"))
+
+
+def scan_aep(args):
+    mns = set()
+    DirectoryScanner(get_match_names).scan(args.path, mns)
+
+    known_mns = set(feature_data["match_names"])
+
+    missing = mns - known_mns
+
+    if missing:
+        print("Adding missing match names:")
+        for mn in missing:
+            print(mn)
+
+        feature_data["match_names"] = sorted(known_mns | missing)
+
+        with open(features_paths, "w") as f:
+            json.dump(feature_data, f, indent=4)
+
+    else:
+        print("Nothing to do")
+
+
+data_path = Path(__file__).parent.parent / "data"
+parser = argparse.ArgumentParser()
+sub = parser.add_subparsers(dest="action")
+
+sub_status = sub.add_parser("status")
+# sub_status.add_argument(
+#     "--match-names", "-mn",
+#     action="store_true"
+# )
+
+sub_aep = sub.add_parser(
+    "scan-aep",
+    description="Scans AEP files and adds missing match names to the feature metadata"
+)
+sub_aep.add_argument(
+    "path",
+    type=Path,
+    default=data_path,
+    nargs="?",
+)
+
+args = parser.parse_args()
+
+features_paths = Path(__file__).parent / "features.json"
+with open(features_paths) as f:
+    feature_data = json.load(f)
+
+globals()[args.action.replace("-", "_")](args)

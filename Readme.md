@@ -103,7 +103,7 @@ Ideally also run a render and report to check the new test files work as intende
 Tools
 -----
 
-`./tools/tested-features` shows the features being tested (and missing ones if the data is there)
+`./tools/features` Inspects and modifies feature metadata
 `./tools/add-file` imports a test and generates its metadata
 `./tools/verify-examples` shows a table with all the examples, you should invoke after adding new examples
 `./tools/render` uses the given parameter to invoke scripts that render PNGs given a JSON

@@ -23,17 +23,23 @@
         "shape-style/fill": {
             "canilottie": "shape-fill",
             "docs": "https://lottiefiles.github.io/lottie-docs/shapes/#fill",
-            "match_names": ["ADBE Vector Graphic - Fill"]
+            "match_names": [
+                "ADBE Vector Graphic - Fill"
+            ]
         },
         "shape-style/fill/color": {
             "canilottie": "shape-fill",
             "docs": "https://lottiefiles.github.io/lottie-docs/shapes/#fill",
-            "match_names": ["ADBE Vector Fill Color"]
+            "match_names": [
+                "ADBE Vector Fill Color"
+            ]
         },
         "shape-style/fill/opacity": {
             "canilottie": "shape-fill",
             "docs": "https://lottiefiles.github.io/lottie-docs/shapes/#fill",
-            "match_names": ["ADBE Vector Fill Opacity"]
+            "match_names": [
+                "ADBE Vector Fill Opacity"
+            ]
         },
         "shape-style/fill/rule": {
             "canilottie": "shape-fill",
@@ -52,12 +58,16 @@
         "shape-style/blend": {
             "canilottie": "blend-mode",
             "docs": "https://lottiefiles.github.io/lottie-docs/constants/#blend-mode",
-            "match_names": ["ADBE Vector Blend Mode"]
+            "match_names": [
+                "ADBE Vector Blend Mode"
+            ]
         },
         "shape-style/order": {
             "caniuse": null,
             "docs": null,
-            "match_names": ["ADBE Vector Composite Order"]
+            "match_names": [
+                "ADBE Vector Composite Order"
+            ]
         },
         "shape-style/stroke": {
             "canilottie": "shape-stroke",
@@ -73,12 +83,16 @@
         "shape-style/stroke/color": {
             "canilottie": "shape-stroke",
             "docs": "https://lottiefiles.github.io/lottie-docs/shapes/#stroke",
-            "match_names": ["ADBE Vector StrokeColor"]
+            "match_names": [
+                "ADBE Vector StrokeColor"
+            ]
         },
         "shape-style/stroke/opacity": {
             "canilottie": "shape-stroke",
             "docs": "https://lottiefiles.github.io/lottie-docs/shapes/#stroke",
-            "match_names": ["ADBE Vector Stroke Opacity"]
+            "match_names": [
+                "ADBE Vector Stroke Opacity"
+            ]
         },
         "shape-style/stroke/gradient": {
             "canilottie": "shape-stroke-gradient",
@@ -292,7 +306,6 @@
             "match_names": [
                 "ADBE Position",
                 "ADBE Vector Position"
-
             ]
         },
         "transform/position/split": {
@@ -331,11 +344,14 @@
         }
     },
     "match_names": [
+        "ADBE Adv Blend Group",
         "ADBE Anchor Point",
         "ADBE Appears in Reflections",
         "ADBE Audio Group",
         "ADBE Bevel Direction",
+        "ADBE Blend Options Group",
         "ADBE Camera Aperture",
+        "ADBE Camera Focus Distance",
         "ADBE Camera Options Group",
         "ADBE Camera Zoom",
         "ADBE Data Group",
@@ -346,17 +362,16 @@
         "ADBE Effect Parade",
         "ADBE Envir Appear in Reflect",
         "ADBE Extrsn Options Group",
-        "ADBE Extrsn Options Group",
         "ADBE Fill",
         "ADBE FreePin3",
         "ADBE Fresnel Coefficient",
         "ADBE Gaussian Blur 2",
         "ADBE Glossiness Coefficient",
+        "ADBE Group End",
         "ADBE Index of Refraction",
         "ADBE Layer Overrides",
         "ADBE Layer Sets",
         "ADBE Layer Source Alternate",
-        "ADBE Layer Styles",
         "ADBE Layer Styles",
         "ADBE MESH WARP",
         "ADBE Marker",
@@ -385,21 +400,20 @@
         "ADBE Radial Wipe",
         "ADBE Reflection Coefficient",
         "ADBE Ripple",
+        "ADBE Root Vectors Group",
         "ADBE Rotate X",
         "ADBE Rotate Y",
         "ADBE Rotate Z",
         "ADBE Scale",
         "ADBE Set Matte3",
         "ADBE Source Options Group",
-        "ADBE Source Options Group",
         "ADBE Spherize",
         "ADBE Stroke",
         "ADBE Text Anchor Point 3D",
         "ADBE Text Anchor Point Align",
         "ADBE Text Anchor Point Option",
-        "ADBE Text Animator Properties",
-        "ADBE Text Animator Properties",
         "ADBE Text Animator",
+        "ADBE Text Animator Properties",
         "ADBE Text Animators",
         "ADBE Text Blur",
         "ADBE Text Character Blend Mode",
@@ -422,11 +436,9 @@
         "ADBE Text Line Anchor",
         "ADBE Text Line Spacing",
         "ADBE Text More Options",
-        "ADBE Text More Options",
         "ADBE Text Opacity",
-        "ADBE Text Path Options",
-        "ADBE Text Path Options",
         "ADBE Text Path",
+        "ADBE Text Path Options",
         "ADBE Text Percent End",
         "ADBE Text Percent Offset",
         "ADBE Text Percent Start",
@@ -437,17 +449,17 @@
         "ADBE Text Range Advanced",
         "ADBE Text Render Order",
         "ADBE Text Reverse Path",
+        "ADBE Text Rotation",
         "ADBE Text Rotation X",
         "ADBE Text Rotation Y",
-        "ADBE Text Rotation",
         "ADBE Text Scale 3D",
+        "ADBE Text Selector",
         "ADBE Text Selector Max Amount",
         "ADBE Text Selector Mode",
         "ADBE Text Selector Smoothness",
-        "ADBE Text Selector",
         "ADBE Text Selectors",
-        "ADBE Text Skew Axis",
         "ADBE Text Skew",
+        "ADBE Text Skew Axis",
         "ADBE Text Stroke Brightness",
         "ADBE Text Stroke Color",
         "ADBE Text Stroke Hue",
@@ -459,13 +471,12 @@
         "ADBE Time Remapping",
         "ADBE Tint",
         "ADBE Transform Group",
-        "ADBE Transform Group",
         "ADBE Transp Rolloff",
         "ADBE Transparency Coefficient",
         "ADBE Tritone",
         "ADBE Twirl",
-        "ADBE Vector Anchor Point",
         "ADBE Vector Anchor",
+        "ADBE Vector Anchor Point",
         "ADBE Vector Blend Mode",
         "ADBE Vector Composite Order",
         "ADBE Vector Correlation",
@@ -473,7 +484,6 @@
         "ADBE Vector Ellipse Size",
         "ADBE Vector Fill Color",
         "ADBE Vector Fill Opacity",
-        "ADBE Vector Fill Rule",
         "ADBE Vector Fill Rule",
         "ADBE Vector Filter - Merge",
         "ADBE Vector Filter - Offset",
@@ -486,7 +496,6 @@
         "ADBE Vector Filter - Wiggler",
         "ADBE Vector Filter - Zigzag",
         "ADBE Vector Grad Colors",
-        "ADBE Vector Grad Colors",
         "ADBE Vector Grad End Pt",
         "ADBE Vector Grad HiLite Angle",
         "ADBE Vector Grad HiLite Length",
@@ -496,8 +505,8 @@
         "ADBE Vector Graphic - G-Fill",
         "ADBE Vector Graphic - G-Stroke",
         "ADBE Vector Graphic - Stroke",
-        "ADBE Vector Group Opacity",
         "ADBE Vector Group",
+        "ADBE Vector Group Opacity",
         "ADBE Vector Materials Group",
         "ADBE Vector Merge Type",
         "ADBE Vector Offset Amount",
@@ -519,7 +528,6 @@
         "ADBE Vector Repeater Scale",
         "ADBE Vector Repeater Start Opacity",
         "ADBE Vector Repeater Transform",
-        "ADBE Vector Repeater Transform",
         "ADBE Vector Rotate X",
         "ADBE Vector Rotate Y",
         "ADBE Vector Rotate Z",
@@ -529,13 +537,14 @@
         "ADBE Vector Roughen Size",
         "ADBE Vector RoundCorner Radius",
         "ADBE Vector Scale",
+        "ADBE Vector Shape",
         "ADBE Vector Shape - Ellipse",
         "ADBE Vector Shape - Group",
         "ADBE Vector Shape - Rect",
         "ADBE Vector Shape - Star",
         "ADBE Vector Shape Direction",
-        "ADBE Vector Shape",
-        "ADBE Vector Spatial Phase",
+        "ADBE Vector Skew",
+        "ADBE Vector Skew Axis",
         "ADBE Vector Spatial Phase",
         "ADBE Vector Star Inner Radius",
         "ADBE Vector Star Inner Roundess",
@@ -546,16 +555,13 @@
         "ADBE Vector Star Rotation",
         "ADBE Vector Star Type",
         "ADBE Vector Stroke Color",
-        "ADBE Vector Stroke Dashes",
-        "ADBE Vector Stroke Offset",
-        "ADBE Vector Stroke Gap #",
         "ADBE Vector Stroke Dash #",
-        "ADBE Vector Stroke Line Cap",
+        "ADBE Vector Stroke Dashes",
+        "ADBE Vector Stroke Gap #",
         "ADBE Vector Stroke Line Cap",
         "ADBE Vector Stroke Line Join",
-        "ADBE Vector Stroke Line Join",
         "ADBE Vector Stroke Miter Limit",
-        "ADBE Vector Stroke Miter Limit",
+        "ADBE Vector Stroke Offset",
         "ADBE Vector Stroke Opacity",
         "ADBE Vector Stroke Taper",
         "ADBE Vector Stroke Wave",
@@ -572,7 +578,6 @@
         "ADBE Vector Taper Wavelength",
         "ADBE Vector Temporal Freq",
         "ADBE Vector Temporal Phase",
-        "ADBE Vector Temporal Phase",
         "ADBE Vector Transform Group",
         "ADBE Vector Trim End",
         "ADBE Vector Trim Offset",
@@ -584,11 +589,7 @@
         "ADBE Vector Zigzag Detail",
         "ADBE Vector Zigzag Points",
         "ADBE Vector Zigzag Size",
-        "ADBE Vectors Group",
-        "ADBE Root Vectors Group",
-        "ADBE Vector Skew",
-        "ADBE Vector Skew Axis",
-        "ADBE Group End"
+        "ADBE Vectors Group"
     ],
     "canilottie": [
         "animators-anchor-point-grouping",
