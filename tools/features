@@ -104,26 +104,41 @@ def get_match_names(path: Path, rel: Path, mns: set):
             mns.add(match_name.decode("ascii"))
 
 
-def scan_aep(args):
-    mns = set()
-    DirectoryScanner(get_match_names).scan(args.path, mns)
+def handle_missing_data(name, found):
+    known = set(feature_data[name])
 
-    known_mns = set(feature_data["match_names"])
-
-    missing = mns - known_mns
+    missing = found - known
 
     if missing:
-        print("Adding missing match names:")
+        print("Adding missing %s:" % name.replace("_", " "))
         for mn in missing:
             print(mn)
 
-        feature_data["match_names"] = sorted(known_mns | missing)
+        feature_data[name] = sorted(known | missing)
 
         with open(features_paths, "w") as f:
             json.dump(feature_data, f, indent=4)
 
     else:
         print("Nothing to do")
+
+
+def scan_aep(args):
+    mns = set()
+    DirectoryScanner(get_match_names).scan(args.path, mns)
+    handle_missing_data("match_names", mns)
+
+
+def scan_canilottie(args):
+    path = args.path
+    if (path / "data").is_dir():
+        path /= "data"
+
+    cil = set()
+    for file in path.iterdir():
+        cil.add(file.stem)
+
+    handle_missing_data("canilottie", cil)
 
 
 data_path = Path(__file__).parent.parent / "data"
@@ -145,6 +160,15 @@ sub_aep.add_argument(
     type=Path,
     default=data_path,
     nargs="?",
+)
+
+sub_cil = sub.add_parser(
+    "scan-canilottie",
+    description="Scans the canilottie repository"
+)
+sub_cil.add_argument(
+    "path",
+    type=Path,
 )
 
 args = parser.parse_args()
