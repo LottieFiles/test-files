@@ -63,7 +63,7 @@
             ]
         },
         "shape-style/order": {
-            "caniuse": null,
+            "canilottie": null,
             "docs": null,
             "match_names": [
                 "ADBE Vector Composite Order"

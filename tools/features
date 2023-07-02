@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 
+import sys
 import json
 import struct
 import argparse
@@ -25,7 +26,7 @@ def gather_features(file: Path, relpath: Path, features: dict):
                     features[feature]["count"] += 1
 
 
-def status(args):
+def get_tested_features():
     tested_features = {
         feature: {
             "count": 0,
@@ -35,6 +36,12 @@ def status(args):
     }
 
     DirectoryScanner(gather_features).scan(data_path, tested_features)
+
+    return tested_features
+
+
+def status(args):
+    tested_features = get_tested_features()
 
     cils = {
         cil: 0
@@ -64,15 +71,17 @@ def status(args):
 
     feature_table.write()
 
-    table = Table([Column("Feature", "ljust"), "Tests", "Notes"])
-    for name, count in cils.items():
-        table.row([name, count, "" if count else "No test"])
-    table.write()
+    if args.canilottie:
+        table = Table([Column("Feature", "ljust"), "Tests", "Notes"])
+        for name, count in cils.items():
+            table.row([name, count, "" if count else "No test"])
+        table.write()
 
-    table = Table([Column("Feature", "ljust"), "Tests", "Notes"])
-    for name, count in mns.items():
-        table.row([name, count, "" if count else "No test"])
-    table.write()
+    if args.match_names:
+        table = Table([Column("Feature", "ljust"), "Tests", "Notes"])
+        for name, count in mns.items():
+            table.row([name, count, "" if count else "No test"])
+        table.write()
 
 
 def get_match_names(path: Path, rel: Path, mns: set):
@@ -165,17 +174,56 @@ def add(args):
         json.dump(feature_data, f, indent=4)
 
 
+def missing_item(known, to_check, what):
+    missing = set(to_check) - known
+    if not missing:
+        print("All %s handled" % what)
+    else:
+        print("Missing %s:" % what)
+
+    for feat in sorted(missing):
+        print("    " + feat)
+
+    print("")
+
+
+def missing(args):
+    known = (set(), set(), set())
+
+    for name, feat in feature_data["features"].items():
+        known[0].add(name)
+        known[1].add(feat["canilottie"])
+        known[2].update(set(feat["match_names"]))
+
+    if args.tests or (not args.tests and not args.match_names and not args.canilottie):
+        tested_features = get_tested_features()
+        missing_item(known[0], tested_features.keys(), "tests")
+
+    if args.canilottie:
+        missing_item(known[1], feature_data["canilottie"], "canilottie")
+
+    if args.match_names:
+        missing_item(known[2], feature_data["match_names"], "match names")
+
+
+
+
+
 data_path = Path(__file__).parent.parent / "data"
 parser = argparse.ArgumentParser()
 sub = parser.add_subparsers(dest="action")
 
-sub_status = sub.add_parser("status")
-# sub_status.add_argument(
-#     "--match-names", "-mn",
-#     action="store_true"
-# )
+sub_status: argparse.ArgumentParser = sub.add_parser("status")
+sub_status.add_argument(
+    "--match-names", "-m", "-mn",
+    action="store_true"
+)
+sub_status.add_argument(
+    "--canilottie", "-c",
+    action="store_true"
+)
 
-sub_aep = sub.add_parser(
+sub_aep: argparse.ArgumentParser = sub.add_parser(
     "scan-aep",
     description="Scans AEP files and adds missing match names to the feature metadata"
 )
@@ -196,16 +244,38 @@ sub_cil.add_argument(
 )
 
 
-sub_add = sub.add_parser(
+sub_add: argparse.ArgumentParser = sub.add_parser(
     "add",
-    description="Add data to a feature"
+    description="Adds data to a feature"
 )
 sub_add.add_argument("feature")
 sub_add.add_argument("--docs", "-d", type=str)
 sub_add.add_argument("--canilottie", "-c", type=str)
-sub_add.add_argument("--match-name", "-mn", action="append")
+sub_add.add_argument("--match-name", "-m", "-mn", action="append")
+
+
+sub_missing: argparse.ArgumentParser = sub.add_parser(
+    "missing",
+    description="Helps discovering missing features"
+)
+sub_missing.add_argument(
+    "--tests", "-t",
+    action="store_true"
+)
+sub_missing.add_argument(
+    "--match-names", "-m", "-mn",
+    action="store_true"
+)
+sub_missing.add_argument(
+    "--canilottie", "-c",
+    action="store_true"
+)
 
 args = parser.parse_args()
+
+if not args.action:
+    parser.print_help()
+    sys.exit(0)
 
 features_paths = Path(__file__).parent / "features.json"
 with open(features_paths) as f:
