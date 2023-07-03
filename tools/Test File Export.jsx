@@ -28,6 +28,8 @@ function stringify(val, indent)
     if ( indent === undefined )
         indent = "";
 
+    var sub_indent = indent + "    ";
+
     if ( val instanceof Array )
     {
         if ( val.length == 0 )
@@ -35,15 +37,22 @@ function stringify(val, indent)
 
         out = "[\n";
         for ( var i = 0; i < val.length; i++ )
-            out += indent + stringify(val[i], indent + "    ") + ",\n";
-        out += indent + "]\n";
+        {
+            out += sub_indent + stringify(val[i], sub_indent);
+            if ( i < val.length - 1 )
+                out += ",";
+            out += "\n";
+        }
+        out += indent + "]";
         return out;
     }
 
     out = "{\n";
     for ( var k in val )
-        out += indent + stringify(k) + ": " + stringify(val[k], indent + "    ") + ",\n";
-    out += indent + "}\n";
+        out += sub_indent + stringify(k) + ": " + stringify(val[k], sub_indent) + ",\n";
+    if ( out[out.length-2] == "," )
+        out = out.substr(0, out.length-2) + "\n";
+    out += indent + "}";
     return out;
 }
 
@@ -187,8 +196,15 @@ var cb_json = opts.add("checkbox", undefined, "json");
 var cb_svg = opts.add("checkbox", undefined, "svg");
 var cb_pag = opts.add("checkbox", undefined, "pag");
 var cb_png = opts.add("checkbox", undefined, "png");
-cb_aep.value = cb_json.value = cb_svg.value = cb_png.value = true;
+var cb_meta = opts.add("checkbox", undefined, "meta");
+cb_aep.value = cb_json.value = cb_svg.value = cb_png.value = cb_meta.value = true;
 cb_pag.value = false;
+var input_frames = opts.add("edittext", undefined, "0");
+input_frames.alignment = ["fill", "fill"];
+
+
+var input_feature = panel.add("edittext", undefined, "feature");
+input_feature.alignment = ["fill", "top"];
 
 var text_output = panel.add("statictext", undefined, "", {multiline: true, scrolling: true});
 text_output.alignment = ["fill", "fill"];
@@ -268,16 +284,38 @@ btn_export.onClick = function()
             bodymovin_export(app.project.activeItem, lottie_name, cb_svg.value);
         }
 
+        if ( cb_meta.value )
+        {
+            var meta_data = {
+                "features": input_feature.text.split(/[,;\s]+/)
+            };
+
+            var file = new File([app.project.file.fullName.replace(".aep", "-meta.json")]);
+            file.open("w");
+            file.write(stringify(meta_data));
+            file.close();
+        }
+
         if ( cb_png.value )
         {
-            text_output.text = "Rendering Frame";
-            item = app.project.renderQueue.items.add(app.project.activeItem);
-            item.timeSpanDuration = app.project.activeItem.frameDuration;
-            item.timeSpanStart = 0;
-            item.outputModule(1).applyTemplate("Lossless");
-            item.outputModule(1).file = new File([app.project.file.fullName.replace(".aep", "-[##].png")]);
-            item.render = true;
-            app.project.renderQueue.render();
+            var frame_length = app.project.activeItem.frameDuration;
+            var frames = input_frames.text.split(/[,;\s]+/);
+            if ( frames.length == 0 )
+                frames = [0];
+
+            for ( var i = 0; i < frames.length; i++ )
+            {
+                var frame = Number(frames[i]);
+                text_output.text = "Queueing Frame " + frame;
+                item = app.project.renderQueue.items.add(app.project.activeItem);
+                item.timeSpanDuration = frame_length;
+                item.timeSpanStart = frame * frame_length;
+                item.outputModule(1).applyTemplate("Lossless");
+                item.outputModule(1).file = new File([app.project.file.fullName.replace(".aep", "-[##].png")]);
+                item.render = true;
+                // Rendering every one by itself because AE is a pain with file names for PNG sequences...
+                app.project.renderQueue.render();
+            }
         }
 
         // Bit slow so disabled by default
@@ -289,7 +327,7 @@ btn_export.onClick = function()
 
         text_output.text = "All done!\n";
     } catch ( e ) {
-        text_output.text = e.toString();
+        text_output.text += "\n" + e.toString();
     }
 
 };
