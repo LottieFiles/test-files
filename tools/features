@@ -206,9 +206,6 @@ def missing(args):
         missing_item(known[2], feature_data["match_names"], "match names")
 
 
-
-
-
 data_path = Path(__file__).parent.parent / "data"
 parser = argparse.ArgumentParser()
 sub = parser.add_subparsers(dest="action")

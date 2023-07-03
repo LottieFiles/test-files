@@ -341,6 +341,36 @@
                 "ADBE Vector Skew",
                 "ADBE Vector Skew Axis"
             ]
+        },
+        "layers/text": {
+            "canilottie": "layer-text",
+            "docs": "https://lottiefiles.github.io/lottie-docs/layers/#text-layer",
+            "match_names": [
+                "ADBE Text Properties",
+                "ADBE Text Document"
+            ]
+        },
+        "layers/precomp": {
+            "canilottie": "layer-precomp",
+            "docs": "https://lottiefiles.github.io/lottie-docs/layers/#precomposition-layer",
+            "match_names": []
+        },
+        "layers/precomp/time-stretch": {
+            "canilottie": "property-time-stretch",
+            "docs": "https://lottiefiles.github.io/lottie-docs/breakdown/precomps/#speeding-up-and-slowing-down",
+            "match_names": []
+        },
+        "layers/precomp/time-start": {
+            "canilottie": null,
+            "docs": "https://lottiefiles.github.io/lottie-docs/breakdown/precomps/#speeding-up-and-slowing-down",
+            "match_names": []
+        },
+        "layers/precomp/time-remap": {
+            "canilottie": "property-timeremap",
+            "docs": "https://lottiefiles.github.io/lottie-docs/layers/#time-remapping",
+            "match_names": [
+                "ADBE Time Remapping"
+            ]
         }
     },
     "match_names": [

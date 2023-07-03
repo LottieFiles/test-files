@@ -204,7 +204,7 @@ def html_percent(value, parent, title):
     ElementTree.SubElement(bar, "span").attrib["style"] = "width: %s%%" % (value * 100)
 
 
-def render_html(report, path):
+def render_html(report, path: Path):
     html = ElementTree.Element("html")
     head = ElementTree.SubElement(html, "head")
     ElementTree.SubElement(head, "style").text = """
@@ -412,6 +412,8 @@ def render_html(report, path):
 
     with open(path, "wb") as f:
         f.write(ElementTree.tostring(html, "utf8", "html"))
+
+    print("HTML report created at file://%s" % path.absolute())
 
 
 class RenderSet:
