@@ -94,7 +94,8 @@ function bodymovin_export(comp, file_name, smil)
         shouldTrimData: false,
         skip_default_properties: false,
         not_supported_properties: false,
-        pretty_print: false,
+        // Changed from the default
+        pretty_print: true,
         useCompNamesAsIds: false,
         export_mode: "standard",
         export_modes: {
