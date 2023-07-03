@@ -74,7 +74,10 @@ Clicking on _Export_ will save a bunch of files based on the ticked checkboxes.
 If the project has not been saved, you'll be prompted to select the file, otherwise it will use the current project
 file name.
 
-You will need to create the metadata file by other means.
+By default it exports frame 0, to changed it update the relevant text box, you can also export multiple frames at once
+by separating them with spaces or commas.
+
+Similarly, you can list the features to add to the metadata file on the textbox that says "feature".
 
 This script can also be used to generate missing files for an example.
 
