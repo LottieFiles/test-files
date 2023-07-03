@@ -371,6 +371,11 @@
             "match_names": [
                 "ADBE Time Remapping"
             ]
+        },
+        "layers/time-range": {
+            "canilottie": null,
+            "docs": "https://lottiefiles.github.io/lottie-docs/layers/#layer",
+            "match_names": []
         }
     },
     "match_names": [
