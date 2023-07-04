@@ -164,7 +164,6 @@ function cleanup_smil()
     var src_smil = new File(app.project.file.parent.fullName + "/smil/" + basename + ".svg");
     var dest_smil = new File(app.project.file.parent.fullName + "/" + basename + ".svg");
     src_smil.copy(dest_smil);
-    text_output.text += "\n" + src_smil.fullName + "\n" + dest_smil.fullName;
 
     src_smil.remove();
     src_smil.parent.remove();
