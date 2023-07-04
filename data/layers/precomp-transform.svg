@@ -1,0 +1,26 @@
+<svg xmlns:cc="http://creativecommons.org/ns#" width="80" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns="http://www.w3.org/2000/svg" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:osb="http://www.openswatchbook.org/uri/2009/osb" viewBox="0 0 80 80" style="fill:none;stroke:none;" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" height="80" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" inkscape:export-ydpi="96" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" inkscape:export-xdpi="96" xmlns:svg="http://www.w3.org/2000/svg">
+    <title>Comp 1</title>
+    <defs>
+        <clipPath id="clip_PreCompLayer_8264f336f69041feba14cb2071dd0a59" clipPathUnits="userSpaceOnUse">
+            <rect width="80" y="0" x="0" height="80"/>
+        </clipPath>
+        <g id="Layer_a690d2a7dd0141c1adcab843de01d031" inkscape:label="Shape Layer 1" transform="matrix(1, 0, 0, 1, 0, 0)" opacity="1" inkscape:groupmode="layer">
+            <g id="Fill_b92500e1ee3f40e9a47f2c5ca373c02b" inkscape:label="Group" fill="#3150af" fill-opacity="1" transform="matrix(1, 0, 0, 1, 0, 0)" opacity="1">
+                <rect width="40" ry="0" y="20" style="" x="20" height="40"/>
+            </g>
+        </g>
+    </defs>
+    <sodipodi:namedview inkscape:document-units="px" bordercolor="#666666" pagecolor="#ffffff" inkscape:pagecheckerboard="true" borderlayer="true"/>
+    <metadata>
+        <rdf:RDF>
+            <cc:Work>
+                <dc:format>image/svg+xml</dc:format>
+                <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+                <dc:title>Comp 1</dc:title>
+            </cc:Work>
+        </rdf:RDF>
+    </metadata>
+    <g id="Composition_07e7d1a213e9416991135cbdb67542c0" inkscape:label="Comp 1" inkscape:groupmode="layer">
+        <use id="PreCompLayer_235ec0a85c5f4664af05e4c3eb688ad2" xlink:href="#Layer_a690d2a7dd0141c1adcab843de01d031" opacity="0.5" transform="matrix(0.939693, 0.34202, -0.34202, 0.939693, 4.82459, -27.3616)" inkscape:label="Shape Layer 1 Comp 1" />
+    </g>
+</svg>
