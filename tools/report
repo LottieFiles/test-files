@@ -193,8 +193,6 @@ def compare_data(render_sets, reference_data, path_prefix):
                 "results": [{} for i in range(len(render_sets))],
             }
 
-
-    # breakpoint()
     for job in jobs:
         result = results[job.results_key]
         result["score"] += job.score

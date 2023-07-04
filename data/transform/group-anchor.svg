@@ -1,1 +1,26 @@
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid meet" width="80" height="80" viewBox="0 0 80 80" style="width:100%;height:100%"><defs><animate attributeType="XML" attributeName="opacity" dur="2s" from="0" to="1" xlink:href="#time_group"/></defs><g id="_R_G"><g id="_R_G_L_0_G" transform=" translate(40, 40) translate(0, 0)"><path id="_R_G_L_0_G_D_0_P_0" fill="#fb0f1a" fill-opacity="1" fill-rule="nonzero" d=" M20 -20 C20,-20 20,20 20,20 C20,20 -20,20 -20,20 C-20,20 -20,-20 -20,-20 C-20,-20 20,-20 20,-20z "/><g id="_R_G_L_0_G_D_1_P_0_G_0_T_0"><g id="_R_G_L_0_G_D_1_P_0_G_1_T_0" transform=" rotate(20)"><path id="_R_G_L_0_G_D_1_P_0" fill="#3250b0" fill-opacity="1" fill-rule="nonzero" opacity="0.5" d=" M20 -20 C20,-20 20,20 20,20 C20,20 -20,20 -20,20 C-20,20 -20,-20 -20,-20 C-20,-20 20,-20 20,-20z "/></g></g></g></g><g id="time_group"/></svg>
+<svg xmlns:osb="http://www.openswatchbook.org/uri/2009/osb" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" height="80" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:dc="http://purl.org/dc/elements/1.1/" version="1.1" width="80" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svg="http://www.w3.org/2000/svg" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg" style="fill:none;stroke:none;" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" inkscape:export-ydpi="96" xmlns:cc="http://creativecommons.org/ns#" inkscape:export-xdpi="96">
+    <title>Comp 1</title>
+    <defs/>
+    <sodipodi:namedview bordercolor="#666666" borderlayer="true" inkscape:document-units="px" inkscape:pagecheckerboard="true" pagecolor="#ffffff"/>
+    <metadata>
+        <rdf:RDF>
+            <cc:Work>
+                <dc:format>image/svg+xml</dc:format>
+                <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+                <dc:title>Comp 1</dc:title>
+            </cc:Work>
+        </rdf:RDF>
+    </metadata>
+    <g inkscape:label="Comp 1" inkscape:groupmode="layer" id="Composition_fad47f416f1642868c45364e699e8704">
+        <g inkscape:label="Shape Layer 1" inkscape:groupmode="layer" transform="matrix(1, 0, 0, 1, 40, 40)" opacity="1" id="Layer_d1e31c4026a942189a8c0858e08fa1a0">
+            <g inkscape:label="Group" transform="matrix(1, 0, 0, 1, 0, 0)" opacity="1" id="Group_ce9bdd3d892445e98e9f66a8782dbdf7">
+                <g inkscape:label="Group" fill="#fb0e19" fill-opacity="1" transform="matrix(1, 0, 0, 1, 0, 0)" opacity="1" id="Fill_27b21f6931324f2d9d063a81734b3063">
+                    <rect height="40" ry="0" y="-20" width="40" x="-20" style=""/>
+                </g>
+                <g inkscape:label="Group" fill="#3150af" fill-opacity="1" transform="matrix(0.939693, 0.34202, -0.34202, 0.939693, -5.63426, -8.04655)" opacity="0.5" id="Fill_c12b2b5b9bcf4df886d3c678c3a4e360">
+                    <rect height="40" ry="0" y="-20" width="40" x="-20" style=""/>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
