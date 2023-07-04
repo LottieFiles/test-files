@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 
+import sys
 import shlex
 import argparse
 import subprocess
@@ -8,7 +9,7 @@ from pathlib import Path
 
 def call(cmd):
     print(" ".join(map(shlex.quote, cmd)))
-    subprocess.call(cmd)
+    subprocess.call([sys.executable] + cmd)
 
 
 parser = argparse.ArgumentParser(

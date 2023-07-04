@@ -4,12 +4,16 @@ import re
 import sys
 import json
 import argparse
+import multiprocessing
 from pathlib import Path
 from xml.etree import ElementTree
 from PIL import Image, ImageChops
 import cv2
 import numpy
 import sewar.full_ref
+
+from script_utils import DirectoryScanner
+
 
 class Example:
     def __init__(self, name):
@@ -40,45 +44,33 @@ class ExampleFile:
         self.data = data
 
 
-def collect_files(root: Path, path: Path, out: dict, suffix:str):
-    for file in (root / path).iterdir():
-        if file.is_dir():
-            collect_files(root, path / file.name, out, suffix)
-        elif file.name == "meta.json":
-            continue
-        elif "asset" in file.name:
-            continue
-        elif file.suffix == suffix:
-            basename = re.sub("-[0-9]+$", "", file.stem)
-            example_name = str(path / basename)
-            if example_name not in out:
-                out[example_name] = Example(example_name)
+def collect_renders(file: Path, relpath: Path, out: dict):
+    if file.name == "meta.json" or "asset" in file.name:
+        return
+    elif file.suffix == ".png":
+        basename = re.sub("-[0-9]+$", "", file.stem)
+        example_name = str(relpath.parent / basename)
+        if example_name not in out:
+            out[example_name] = Example(example_name)
 
-            if suffix == ".png":
-                data = Image.open(file).convert("RGBA")
-            else:
-                data = None
-
-            out[example_name].append(ExampleFile(file, data))
-        elif file.name.endswith("-meta.json"):
-            example_name = str(path / file.stem[:-5])
-            if example_name not in out:
-                out[example_name] = Example(example_name)
-
-            with open(file) as f:
-                features = set()
-                for feat in json.load(f).get("features", []):
-                    split = feat.split("/")
-                    for i in range(len(split)):
-                        features.add("/".join(split[0:i+1]))
-
-            out[example_name].features = features
+        data = Image.open(file).convert("RGBA")
+        out[example_name].append(ExampleFile(file, data))
 
 
-def collect_directory(path: Path, suffix:str = "png"):
-    out = {}
-    collect_files(path, Path(), out, "." + suffix)
-    return out
+def collect_meta(file: Path, relpath: Path, out: dict):
+    if file.name.endswith("-meta.json"):
+        example_name = str(relpath / file.stem[:-5])
+        if example_name not in out:
+            out[example_name] = Example(example_name)
+
+        with open(file) as f:
+            features = set()
+            for feat in json.load(f).get("features", []):
+                split = feat.split("/")
+                for i in range(len(split)):
+                    features.add("/".join(split[0:i+1]))
+
+        out[example_name].features = features
 
 
 def pil_to_cv(image: Image.Image):
@@ -137,6 +129,29 @@ def compare_datum(test_item, reference_item, result, path_prefix):
     return score
 
 
+class Job:
+    def __init__(self, index: int, path_prefix: Path, results_key: str, test_file, reference_file, reference_item):
+        self.index = index
+        self.result = {
+            "source": None,
+            "status": "unknown",
+            "ok": False,
+            "score": 0,
+            "uqi": 0,
+        }
+        self.score = 0
+        self.path_prefix = path_prefix
+        self.reference_file = reference_file
+        self.test_file = test_file
+        self.results_key = results_key
+        self.reference_item = reference_item
+
+
+def process_job(job: Job):
+    job.score = compare_datum(job.test_file, job.reference_file, job.result, job.path_prefix)
+    return job
+
+
 def compare_data(render_sets, reference_data, path_prefix):
     keys = set(reference_data.keys())
 
@@ -145,10 +160,7 @@ def compare_data(render_sets, reference_data, path_prefix):
         keys |= set(render_set.data.keys())
         keys -= skipped
 
-    features = {}
-    results = {}
-
-
+    jobs = []
     for index, render_set in enumerate(render_sets):
         for key in sorted(keys):
             test_item = render_set.data.get(key)
@@ -159,33 +171,36 @@ def compare_data(render_sets, reference_data, path_prefix):
 
             for name, file in reference_item.files.items():
                 results_key = str(file.path)
+                jobs.append(Job(index, path_prefix, results_key, test_item.files.get(name) if test_item else None, file, reference_item))
 
-                if index == 0:
-                    results[results_key] = {
-                        "test": key,
-                        "file": file.path.name,
-                        "reference": path_prefix + str(file.path),
-                        "score": 0,
-                        "max": 0,
-                        "results": [
-                            {
-                                "source": None,
-                                "status": "unknown",
-                                "ok": False,
-                                "score": 0,
-                                "uqi": 0,
-                            }
-                            for i in range(len(render_sets))],
-                    }
+    with multiprocessing.Pool(multiprocessing.cpu_count()) as pool:
+        jobs = pool.map(process_job, jobs)
 
-                result = results[results_key]["results"][index]
+    features = {}
+    results = {}
+    for key in sorted(keys):
+        reference_item = reference_data.get(key)
+        if reference_item is None:
+            continue
+        for name, file in reference_item.files.items():
+            results_key = str(file.path)
+            results[results_key] = {
+                "test": key,
+                "file": file.path.name,
+                "reference": path_prefix + str(file.path),
+                "score": 0,
+                "max": 0,
+                "results": [{} for i in range(len(render_sets))],
+            }
 
-                score = compare_datum(test_item.files.get(name) if test_item else None, file, result, path_prefix)
 
-                results[results_key]["score"] += score
-                results[results_key]["max"] += 1
-
-                reference_item.mark_features(score, features, index, len(render_sets))
+    # breakpoint()
+    for job in jobs:
+        result = results[job.results_key]
+        result["score"] += job.score
+        result["max"] += 1
+        result["results"][job.index] = job.result
+        job.reference_item.mark_features(job.score, features, job.index, len(render_sets))
 
     return {
         "meta": [render_set.meta for render_set in render_sets],
@@ -418,7 +433,8 @@ def render_html(report, path: Path):
 
 class RenderSet:
     def __init__(self, path):
-        self.data = collect_directory(path)
+        self.data = {}
+        DirectoryScanner(collect_renders).scan(path, self.data)
         meta_path = path / "meta.json"
         self.meta = {
             "title": "Lottie",
@@ -436,6 +452,12 @@ class RenderSet:
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(
         description="Generate a report based on rendered files"
+    )
+    parser.add_argument(
+        "--metadata",
+        help="Root path for the metadata",
+        type=Path,
+        default=None
     )
     parser.add_argument(
         "--reference",
@@ -469,7 +491,11 @@ if __name__ == "__main__":
     )
 
     args = parser.parse_args()
-    reference = collect_directory(args.reference)
+
+    meta_path = args.metadata or args.reference
+    reference = {}
+    DirectoryScanner(collect_meta).scan(meta_path, reference)
+    DirectoryScanner(collect_renders).scan(args.reference, reference)
     render_sets = [RenderSet(path) for path in args.path]
 
     data = compare_data(render_sets, reference, args.prefix)
