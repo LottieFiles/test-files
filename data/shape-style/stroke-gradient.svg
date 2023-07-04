@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" style="fill:none;stroke:none;" width="80" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" inkscape:export-ydpi="96" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:osb="http://www.openswatchbook.org/uri/2009/osb" height="80" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" version="1.1" viewBox="0 0 80 80" xmlns:cc="http://creativecommons.org/ns#" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:svg="http://www.w3.org/2000/svg" inkscape:export-xdpi="96" xmlns:dc="http://purl.org/dc/elements/1.1/">
+    <title>Comp 1</title>
+    <defs>
+        <linearGradient id="GradientColors_20ce5f3e5a84466d837e95c70b68a722">
+            <stop stop-color="#f80e0e" stop-opacity="1" offset="0"/>
+            <stop stop-color="#0000fe" stop-opacity="1" offset="1"/>
+        </linearGradient>
+        <linearGradient y2="-19.5" x2="22.5" y1="13.25" id="Gradient_f4d4455145984962a2bc2c95bc50e433" x1="-22.5" gradientUnits="userSpaceOnUse" xlink:href="#GradientColors_20ce5f3e5a84466d837e95c70b68a722"/>
+    </defs>
+    <sodipodi:namedview bordercolor="#666666" pagecolor="#ffffff" borderlayer="true" inkscape:pagecheckerboard="true" inkscape:document-units="px"/>
+    <metadata>
+        <rdf:RDF>
+            <cc:Work>
+                <dc:format>image/svg+xml</dc:format>
+                <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+                <dc:title>Comp 1</dc:title>
+            </cc:Work>
+        </rdf:RDF>
+    </metadata>
+    <g inkscape:groupmode="layer" inkscape:label="Comp 1" id="Composition_04346a3f6e95444d93cb3763b6b719f9">
+        <g transform="matrix(1, 0, 0, 1, 40, 40)" opacity="1" inkscape:groupmode="layer" inkscape:label="Shape Layer 1" id="Layer_5f49a426cd7840c5b5f7349657b3a251">
+            <g transform="matrix(1, 0, 0, 1, 0, 0)" stroke-width="6" opacity="1" inkscape:label="Group" stroke="url(#Gradient_f4d4455145984962a2bc2c95bc50e433)" id="Stroke_49c7d6d5c6f148fea834aa194e2b4918">
+                <path style="fill:none;stroke-dasharray:none;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;" d="M 24.5,-12.25 C 24.25,-27.25 -15.25,-36.5 -20,-20.5 -24.75,-4.50001 -28,22.75 -7,20.75" sodipodi:nodetypes="ccc"/>
+            </g>
+        </g>
+    </g>
+</svg>
