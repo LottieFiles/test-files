@@ -1,0 +1,30 @@
+<svg xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:osb="http://www.openswatchbook.org/uri/2009/osb" xmlns:svg="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 80 80" xmlns:dc="http://purl.org/dc/elements/1.1/" width="80" height="80" style="fill:none;stroke:none;" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns="http://www.w3.org/2000/svg" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:xlink="http://www.w3.org/1999/xlink" inkscape:export-ydpi="96" inkscape:export-xdpi="96">
+    <title>Comp 1</title>
+    <defs/>
+    <sodipodi:namedview inkscape:pagecheckerboard="true" borderlayer="true" bordercolor="#666666" pagecolor="#ffffff" inkscape:document-units="px"/>
+    <metadata>
+        <rdf:RDF>
+            <cc:Work>
+                <dc:format>image/svg+xml</dc:format>
+                <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+                <dc:title>Comp 1</dc:title>
+            </cc:Work>
+        </rdf:RDF>
+    </metadata>
+    <g inkscape:groupmode="layer" id="Composition_9ea2ea9dab8f4a4abac4f9f1452c9543" inkscape:label="Comp 1">
+        <g inkscape:groupmode="layer" transform="matrix(1, 0, 0, 1, 40, 40)" id="Layer_5ce55419bf29494f8722e739f87425b0" inkscape:label="Shape Layer 1" opacity="1">
+            <g stroke-width="10" stroke="#1d2848" transform="matrix(1, 0, 0, 1, 0, 0)" id="Stroke_b04f149cb3ef445b8397eb89b674be23" inkscape:label="Shape 1" opacity="1" stroke-opacity="1">
+                <path sodipodi:nodetypes="ccc" style="fill:none;stroke-dasharray:none;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;" d="M -31.5,-29 C -31.5,-29 -22.75,-5 -22.75,-5 -22.75,-5 -18.25,-31.25 -18.25,-31.25"/>
+            </g>
+            <g stroke-width="10" stroke="#1d2848" transform="matrix(1, 0, 0, 1, 20.5, 37.5)" id="Stroke_7ca520ab209240479d3c06e0afde7ede" inkscape:label="Shape 4" opacity="1" stroke-opacity="1">
+                <path sodipodi:nodetypes="ccc" style="fill:none;stroke-dasharray:none;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:1;" d="M -31.5,-29 C -31.5,-29 -22.75,-5 -22.75,-5 -22.75,-5 -18.25,-31.25 -18.25,-31.25"/>
+            </g>
+            <g stroke-width="10" stroke="#1d2848" transform="matrix(1, 0, 0, 1, 28.5, -0.75)" id="Stroke_878cccafef854e1eb0d8fc98b6b4a893" inkscape:label="Shape 2" opacity="1" stroke-opacity="1">
+                <path sodipodi:nodetypes="ccc" style="fill:none;stroke-dasharray:none;stroke-linecap:round;stroke-linejoin:round;" d="M -31.5,-29 C -31.5,-29 -22.75,-5 -22.75,-5 -22.75,-5 -18.25,-31.25 -18.25,-31.25"/>
+            </g>
+            <g stroke-width="10" stroke="#1d2848" transform="matrix(1, 0, 0, 1, 51.75, 22.5)" id="Stroke_9b3621fad4b740bc8cac55ef0a2d2224" inkscape:label="Shape 3" opacity="1" stroke-opacity="1">
+                <path sodipodi:nodetypes="ccc" style="fill:none;stroke-dasharray:none;stroke-linecap:butt;stroke-linejoin:bevel;" d="M -31.5,-29 C -31.5,-29 -22.75,-5 -22.75,-5 -22.75,-5 -18.25,-31.25 -18.25,-31.25"/>
+            </g>
+        </g>
+    </g>
+</svg>
