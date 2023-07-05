@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   preserveAspectRatio="xMidYMid meet"
+   width="80"
+   height="80"
+   viewBox="0 0 80 80"
+   style="width:100%;height:100%"
+   version="1.1"
+   id="svg13"
+   sodipodi:docname="mask-expansion.svg"
+   inkscape:version="1.1.2 (0a00cf5339, 2022-02-04)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview15"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     showgrid="false"
+     inkscape:zoom="9.6375"
+     inkscape:cx="40"
+     inkscape:cy="40"
+     inkscape:current-layer="svg13" />
+  <defs
+     id="defs4">
+    <inkscape:path-effect
+       effect="offset"
+       id="path-effect983"
+       is_visible="true"
+       lpeversion="1"
+       linejoin_type="miter"
+       unit="px"
+       offset="5"
+       miter_limit="4"
+       attempt_force_join="false"
+       update_on_knot_move="true" />
+    <animate
+       attributeType="XML"
+       attributeName="opacity"
+       dur="2s"
+       from="0"
+       to="1"
+       xlink:href="#time_group" />
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath1065">
+      <path
+         id="path1067"
+         fill-rule="nonzero"
+         d="M 41.25,-11.222656 11.150391,2.2792969 C 0.85008959,-11.4955 -7.7714843,-11.089844 -7.7714844,-11.089844 c -3.6376096,0.06876 -6.5283106,1.7445095 -8.8027346,4.9414065 -2.283896,3.2117288 -3.259821,7.13433467 -3.541015,10.9023437 0,0 -1.019301,14.1902158 7.291015,33.0156248 L -11.507812,40.75 H 41.25 Z"
+         inkscape:path-effect="#path-effect983"
+         inkscape:original-d="m 9.5,8.5 c 0,0 -14.48,-22.32 -22,-11.75 -8,11.25 4.25,39 4.25,39 0,0 44.5,0 44.5,0 0,0 0,-39.25 0,-39.25 0,0 -26.75,12 -26.75,12 z" />
+    </clipPath>
+  </defs>
+  <g
+     clip-path="url(#clipPath1065)"
+     id="g8"
+     transform="translate(40,40)">
+    <path
+       id="_R_G_L_0_G_G_0_D_0_P_0"
+       fill="#3250b0"
+       fill-opacity="1"
+       fill-rule="nonzero"
+       d="m -4.5,-15.5 c 12.28,0 22.25,8.79 22.25,19.63 0,10.83 -9.97,19.62 -22.25,19.62 -12.28,0 -22.25,-8.79 -22.25,-19.62 0,-10.84 9.97,-19.63 22.25,-19.63 z"
+       clip-path="none" />
+    <path
+       id="_R_G_L_0_G_G_0_D_1_P_0"
+       stroke="#1d2848"
+       stroke-linecap="round"
+       stroke-linejoin="round"
+       fill="none"
+       stroke-width="6"
+       stroke-opacity="1"
+       d="m -4.5,-15.5 c 12.28,0 22.25,8.79 22.25,19.63 0,10.83 -9.97,19.62 -22.25,19.62 -12.28,0 -22.25,-8.79 -22.25,-19.62 0,-10.84 9.97,-19.63 22.25,-19.63 z" />
+  </g>
+  <g
+     id="time_group" />
+</svg>
