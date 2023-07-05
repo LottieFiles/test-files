@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:osb="http://www.openswatchbook.org/uri/2009/osb" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" height="80" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svg="http://www.w3.org/2000/svg" style="fill:none;stroke:none;" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" version="1.1" width="80" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" inkscape:export-ydpi="96" viewBox="0 0 80 80" inkscape:export-xdpi="96">
+    <title>Comp 1</title>
+    <defs/>
+    <sodipodi:namedview pagecolor="#ffffff" bordercolor="#666666" inkscape:document-units="px" inkscape:pagecheckerboard="true" borderlayer="true"/>
+    <metadata>
+        <rdf:RDF>
+            <cc:Work>
+                <dc:format>image/svg+xml</dc:format>
+                <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+                <dc:title>Comp 1</dc:title>
+            </cc:Work>
+        </rdf:RDF>
+    </metadata>
+    <g id="Composition_825cda57c0714f53816ffff78f2fc78c" inkscape:label="Comp 1" inkscape:groupmode="layer">
+        <g id="Layer_f5e553a8f05149da9b19c9399cf6f390" inkscape:label="Shape Layer 1" transform="matrix(1, 0, 0, 1, 40, 40)" opacity="1" inkscape:groupmode="layer">
+            <g fill="#3150af" id="Stroke_f82d9e0c9f1a410497081f138818c329" stroke-width="2" inkscape:label="Group" transform="matrix(1, 0, 0, 1, 0, 0)" opacity="1" fill-opacity="1" stroke="#1c2848" stroke-opacity="1">
+                <path style="" d="M 1.51051e-15,-33.9518 C 1.45941e-15,-14.5508 13.8386,-4.49644 32.2901,-10.4917 13.8386,-4.49644 8.55273,11.7718 19.9564,27.4676 8.55273,11.7718 -8.55273,11.7718 -19.9564,27.4676 -8.55273,11.7718 -13.8386,-4.49644 -32.2901,-10.4917 -13.8386,-4.49644 1.45941e-15,-14.5508 1.51051e-15,-33.9518 Z" sodipodi:nodetypes="ccccc"/>
+                <path style="fill:none;stroke-dasharray:none;stroke-linecap:butt;stroke-linejoin:round;" d="M 1.51051e-15,-33.9518 C 1.45941e-15,-14.5508 13.8386,-4.49644 32.2901,-10.4917 13.8386,-4.49644 8.55273,11.7718 19.9564,27.4676 8.55273,11.7718 -8.55273,11.7718 -19.9564,27.4676 -8.55273,11.7718 -13.8386,-4.49644 -32.2901,-10.4917 -13.8386,-4.49644 1.45941e-15,-14.5508 1.51051e-15,-33.9518 Z" sodipodi:nodetypes="ccccc"/>
+            </g>
+        </g>
+    </g>
+</svg>
