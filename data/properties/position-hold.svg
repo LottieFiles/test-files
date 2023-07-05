@@ -1,0 +1,22 @@
+<svg inkscape:export-xdpi="96" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" viewBox="0 0 80 80" height="80" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns="http://www.w3.org/2000/svg" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:osb="http://www.openswatchbook.org/uri/2009/osb" width="80" inkscape:export-ydpi="96" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="fill:none;stroke:none;" version="1.1">
+    <title>Comp 1</title>
+    <defs/>
+    <sodipodi:namedview bordercolor="#666666" borderlayer="true" inkscape:pagecheckerboard="true" inkscape:document-units="px" pagecolor="#ffffff"/>
+    <metadata>
+        <rdf:RDF>
+            <cc:Work>
+                <dc:format>image/svg+xml</dc:format>
+                <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+                <dc:title>Comp 1</dc:title>
+            </cc:Work>
+        </rdf:RDF>
+    </metadata>
+    <g inkscape:groupmode="layer" id="Composition_a8482433ca7e480bac66d04013b68a34" inkscape:label="Comp 1">
+        <g inkscape:groupmode="layer" fill="#000000" id="Fill_720d5e85b6e04759be0ef7711275eafc" inkscape:label="Shape Layer 1" opacity="1" transform="matrix(1, 0, 0, 1, 0, 40)" fill-opacity="1">
+            <ellipse ry="10" cx="10" cy="0" style="stroke:none;" rx="10">
+                <animate dur="1.016667" keyTimes="0.000000; 0.967213; 0.983607; 1" begin="0.000000" repeatCount="indefinite" attributeName="cx" calcMode="discrete" values="10; 10; 70; 70" />
+                <animate dur="1.016667" keyTimes="0.000000; 0.967213; 0.983607; 1" begin="0.000000" repeatCount="indefinite" attributeName="cy" calcMode="discrete" values="0; 0; 0; 0" />
+            </ellipse>
+        </g>
+    </g>
+</svg>

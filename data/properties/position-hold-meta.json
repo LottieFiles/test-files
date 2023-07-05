@@ -1,0 +1,6 @@
+{
+    "features": [
+        "properties/position",
+        "animation/hold"
+    ]
+}
