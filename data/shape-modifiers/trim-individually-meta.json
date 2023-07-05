@@ -1,0 +1,6 @@
+{
+    "features": [
+        "shape-modifiers/trim/individually",
+        "shapes/direction"
+    ]
+}

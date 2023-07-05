@@ -1,0 +1,21 @@
+<svg height="80" version="1.1" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" inkscape:export-ydpi="96" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="fill:none;stroke:none;" inkscape:export-xdpi="96" width="80" xmlns:osb="http://www.openswatchbook.org/uri/2009/osb" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" viewBox="0 0 80 80" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd">
+    <title>Comp 1</title>
+    <defs/>
+    <sodipodi:namedview bordercolor="#666666" inkscape:pagecheckerboard="true" pagecolor="#ffffff" borderlayer="true" inkscape:document-units="px"/>
+    <metadata>
+        <rdf:RDF>
+            <cc:Work>
+                <dc:format>image/svg+xml</dc:format>
+                <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+                <dc:title>Comp 1</dc:title>
+            </cc:Work>
+        </rdf:RDF>
+    </metadata>
+    <g id="Composition_b14fa80d00f94891aeadf960022e4b21" inkscape:groupmode="layer" inkscape:label="Comp 1">
+        <g opacity="1" id="Layer_9241aa0b4a74465aa854202a6a8fca4f" inkscape:groupmode="layer" inkscape:label="Shape Layer 1" transform="matrix(1, 0, 0, 1, 40, 40)">
+            <g opacity="1" id="Stroke_800dc5811002464e920ab7f8447f739f" stroke-opacity="1" inkscape:label="Group" transform="matrix(1, 0, 0, 1, -16.375, -20.25)" stroke="#1c2848" stroke-width="6">
+                <path style="fill:none;stroke-dasharray:none;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;" sodipodi:nodetypes="szzzzzzzs" d="M 9.26256,8.2922 C 6.88133,10.424 3.60008,11.75 8.03674e-16,11.75 -7.20016,11.75 -13.125,6.44586 -13.125,1.43896e-15 -13.125,-6.44586 -7.20016,-11.75 8.03674e-16,-11.75M 8.03674e-16,26.25 C -7.20016,26.25 -13.125,31.5541 -13.125,38 -13.125,44.4459 -7.20016,49.75 8.03674e-16,49.75 7.20016,49.75 13.125,44.4459 13.125,38 13.125,34.7771 11.6438,31.8396 9.26256,29.7078"/>
+            </g>
+        </g>
+    </g>
+</svg>

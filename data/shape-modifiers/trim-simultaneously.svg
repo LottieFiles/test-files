@@ -1,0 +1,21 @@
+<svg height="80" version="1.1" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" inkscape:export-ydpi="96" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="fill:none;stroke:none;" inkscape:export-xdpi="96" width="80" xmlns:osb="http://www.openswatchbook.org/uri/2009/osb" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" viewBox="0 0 80 80" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd">
+    <title>Comp 1</title>
+    <defs/>
+    <sodipodi:namedview bordercolor="#666666" inkscape:pagecheckerboard="true" pagecolor="#ffffff" borderlayer="true" inkscape:document-units="px"/>
+    <metadata>
+        <rdf:RDF>
+            <cc:Work>
+                <dc:format>image/svg+xml</dc:format>
+                <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+                <dc:title>Comp 1</dc:title>
+            </cc:Work>
+        </rdf:RDF>
+    </metadata>
+    <g id="Composition_9591721a821f482aa904d7073f3f1afa" inkscape:groupmode="layer" inkscape:label="Comp 1">
+        <g opacity="1" id="Layer_b4c1b0a31bbd4d35ad5d5a2384664205" inkscape:groupmode="layer" inkscape:label="Shape Layer 1" transform="matrix(1, 0, 0, 1, 40, 40)">
+            <g opacity="1" id="Stroke_4982aefa9cb849d2a21b18c3db4020a9" stroke-opacity="1" inkscape:label="Group" transform="matrix(1, 0, 0, 1, -16.375, -20.25)" stroke="#1c2848" stroke-width="6">
+                <path style="fill:none;stroke-dasharray:none;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;" sodipodi:nodetypes="szzsszzsszzs" d="M 9.26256,-8.2922 C 11.6438,-6.16043 13.125,-3.22293 13.125,0 13.125,6.44586 7.20016,11.75 8.03674e-16,11.75 -3.60008,11.75 -6.88133,10.424 -9.26256,8.2922M 46.2626,29.7078 C 48.6438,31.8396 50.125,34.7771 50.125,38 50.125,44.4459 44.2002,49.75 37,49.75 33.3999,49.75 30.1187,48.424 27.7374,46.2922M -9.26256,29.7078 C -11.6438,31.8396 -13.125,34.7771 -13.125,38 -13.125,44.4459 -7.20016,49.75 8.03674e-16,49.75 3.60008,49.75 6.88133,48.424 9.26256,46.2922"/>
+            </g>
+        </g>
+    </g>
+</svg>

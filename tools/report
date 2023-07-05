@@ -123,7 +123,7 @@ def compare_datum(test_item, reference_item, result, path_prefix):
     uqi = opencv_similarity(test_img, ref_img)
     result["uqi"] = uqi
     score = uqi ** 3
-    if score > 0.90:
+    if uqi > 0.95:
         score = 1
     result["score"] = score
     return score
@@ -155,10 +155,16 @@ def process_job(job: Job):
 def compare_data(render_sets, reference_data, path_prefix):
     keys = set(reference_data.keys())
 
+    skipped_sets = []
     for render_set in render_sets:
-        skipped = set(render_set.meta.get("skipped", []))
+        skipped_sets.append(set(render_set.meta.get("skipped", [])))
         keys |= set(render_set.data.keys())
-        keys -= skipped
+
+    skipped = skipped_sets[0]
+    for skipped_set in skipped_sets[1:]:
+        skipped &= skipped_set
+
+    keys -= skipped
 
     jobs = []
     for index, render_set in enumerate(render_sets):

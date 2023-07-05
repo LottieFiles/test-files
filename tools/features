@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 
+import re
 import sys
 import json
 import struct
@@ -110,7 +111,7 @@ def get_match_names(path: Path, rel: Path, mns: set):
         start = end
 
         if match_name.startswith(b"ADBE") and match_name != b"ADBE Group End":
-            mns.add(match_name.decode("ascii"))
+            mns.add(re.sub(b" [0-9]+$", b" #", match_name).decode("ascii"))
 
 
 def handle_missing_data(name, found):
