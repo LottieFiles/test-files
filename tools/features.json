@@ -1,5 +1,25 @@
 {
     "features": {
+        "animation": {
+            "canilottie": null,
+            "docs": "https://lottiefiles.github.io/lottie-docs/concepts/#animated-property",
+            "match_names": []
+        },
+        "animation/ease": {
+            "canilottie": null,
+            "docs": "https://lottiefiles.github.io/lottie-docs/concepts/#keyframe",
+            "match_names": []
+        },
+        "animation/hold": {
+            "canilottie": null,
+            "docs": "https://lottiefiles.github.io/lottie-docs/concepts/#keyframe",
+            "match_names": []
+        },
+        "animation/linear": {
+            "canilottie": null,
+            "docs": "https://lottiefiles.github.io/lottie-docs/concepts/#keyframe",
+            "match_names": []
+        },
         "layers": {
             "canilottie": null,
             "docs": "https://lottiefiles.github.io/lottie-docs/concepts/#lists-of-layers-and-shapes",
@@ -10,15 +30,265 @@
             "docs": "https://lottiefiles.github.io/lottie-docs/layers/#image-layer",
             "match_names": []
         },
+        "layers/mask": {
+            "canilottie": "mask",
+            "docs": "https://lottiefiles.github.io/lottie-docs/layers/#masks",
+            "match_names": [
+                "ADBE Mask Parade",
+                "ADBE Mask Atom",
+                "ADBE Mask Shape"
+            ]
+        },
+        "layers/mask/expansion": {
+            "canilottie": "mask-expansion",
+            "docs": "https://lottiefiles.github.io/lottie-docs/layers/#masks",
+            "match_names": [
+                "ADBE Mask Offset"
+            ]
+        },
+        "layers/mask/feather": {
+            "canilottie": null,
+            "docs": "https://lottiefiles.github.io/lottie-docs/layers/#masks",
+            "match_names": [
+                "ADBE Mask Feather"
+            ]
+        },
+        "layers/mask/inverted": {
+            "canilottie": "mask-inverted",
+            "docs": "https://lottiefiles.github.io/lottie-docs/layers/#masks",
+            "match_names": []
+        },
+        "layers/mask/mode": {
+            "canilottie": "mask-modes",
+            "docs": "https://lottiefiles.github.io/lottie-docs/layers/#masks",
+            "match_names": []
+        },
+        "layers/mask/opacity": {
+            "canilottie": "mask-opacity",
+            "docs": "https://lottiefiles.github.io/lottie-docs/layers/#masks",
+            "match_names": [
+                "ADBE Mask Opacity"
+            ]
+        },
+        "layers/precomp": {
+            "canilottie": "layer-precomp",
+            "docs": "https://lottiefiles.github.io/lottie-docs/layers/#precomposition-layer",
+            "match_names": []
+        },
+        "layers/precomp/time-remap": {
+            "canilottie": "property-timeremap",
+            "docs": "https://lottiefiles.github.io/lottie-docs/layers/#time-remapping",
+            "match_names": [
+                "ADBE Time Remapping"
+            ]
+        },
+        "layers/precomp/time-start": {
+            "canilottie": null,
+            "docs": "https://lottiefiles.github.io/lottie-docs/breakdown/precomps/#speeding-up-and-slowing-down",
+            "match_names": []
+        },
+        "layers/precomp/time-stretch": {
+            "canilottie": "property-time-stretch",
+            "docs": "https://lottiefiles.github.io/lottie-docs/breakdown/precomps/#speeding-up-and-slowing-down",
+            "match_names": []
+        },
         "layers/solid": {
             "canilottie": "layer-solid",
             "docs": "https://lottiefiles.github.io/lottie-docs/layers/#solid-color-layer",
             "match_names": []
         },
+        "layers/text": {
+            "canilottie": "layer-text",
+            "docs": "https://lottiefiles.github.io/lottie-docs/layers/#text-layer",
+            "match_names": [
+                "ADBE Text Properties",
+                "ADBE Text Document"
+            ]
+        },
+        "layers/time-range": {
+            "canilottie": null,
+            "docs": "https://lottiefiles.github.io/lottie-docs/layers/#layer",
+            "match_names": []
+        },
+        "properties": {
+            "canilottie": null,
+            "docs": "https://lottiefiles.github.io/lottie-docs/concepts/",
+            "match_names": []
+        },
+        "properties/bezier": {
+            "canilottie": null,
+            "docs": "https://lottiefiles.github.io/lottie-docs/concepts/#bezier",
+            "match_names": []
+        },
+        "properties/color": {
+            "canilottie": null,
+            "docs": "https://lottiefiles.github.io/lottie-docs/concepts/#color",
+            "match_names": []
+        },
+        "properties/gradient": {
+            "canilottie": null,
+            "docs": "https://lottiefiles.github.io/lottie-docs/concepts/#gradients",
+            "match_names": []
+        },
+        "properties/multi-dimensional": {
+            "canilottie": null,
+            "docs": "https://lottiefiles.github.io/lottie-docs/concepts/",
+            "match_names": []
+        },
+        "properties/position": {
+            "canilottie": null,
+            "docs": "https://lottiefiles.github.io/lottie-docs/concepts/#animated-position",
+            "match_names": []
+        },
+        "properties/position/path": {
+            "canilottie": null,
+            "docs": "https://lottiefiles.github.io/lottie-docs/concepts/#animated-position",
+            "match_names": []
+        },
+        "shape-modifiers": {
+            "canilottie": null,
+            "docs": "https://lottiefiles.github.io/lottie-docs/shapes/#modifiers",
+            "match_names": []
+        },
+        "shape-modifiers/merge": {
+            "canilottie": "shape-merge-path",
+            "docs": "https://lottiefiles.github.io/lottie-docs/shapes/#merge",
+            "match_names": [
+                "ADBE Vector Filter - Merge",
+                "ADBE Vector Merge Type"
+            ]
+        },
+        "shape-modifiers/offset": {
+            "canilottie": "shape-offset-path",
+            "docs": "https://lottiefiles.github.io/lottie-docs/shapes/#offset-path",
+            "match_names": [
+                "ADBE Vector Filter - Offset",
+                "ADBE Vector Offset Amount",
+                "ADBE Vector Offset Line Join",
+                "ADBE Vector Offset Miter Limit"
+            ]
+        },
+        "shape-modifiers/pucker-bloat": {
+            "canilottie": "shape-pucker-and-bloat",
+            "docs": "https://lottiefiles.github.io/lottie-docs/shapes/#pucker-bloat",
+            "match_names": [
+                "ADBE Vector Filter - PB",
+                "ADBE Vector PuckerBloat Amount"
+            ]
+        },
+        "shape-modifiers/repeater": {
+            "canilottie": "shape-repeater",
+            "docs": "https://lottiefiles.github.io/lottie-docs/shapes/#repeater",
+            "match_names": [
+                "ADBE Vector Filter - Repeater",
+                "ADBE Vector Repeater Anchor Point",
+                "ADBE Vector Repeater Copies",
+                "ADBE Vector Repeater Offset",
+                "ADBE Vector Repeater Order",
+                "ADBE Vector Repeater Position",
+                "ADBE Vector Repeater Rotation",
+                "ADBE Vector Repeater Scale",
+                "ADBE Vector Repeater Transform"
+            ]
+        },
+        "shape-modifiers/repeater/opacity": {
+            "canilottie": "shape-repeater",
+            "docs": "https://lottiefiles.github.io/lottie-docs/shapes/#repeater",
+            "match_names": [
+                "ADBE Vector Repeater Start Opacity",
+                "ADBE Vector Repeater End Opacity"
+            ]
+        },
+        "shape-modifiers/roughen": {
+            "canilottie": null,
+            "docs": null,
+            "match_names": [
+                "ADBE Vector Filter - Roughen",
+                "ADBE Vector Roughen Size",
+                "ADBE Vector Roughen Detail",
+                "ADBE Vector Roughen Points",
+                "ADBE Vector Temporal Freq",
+                "ADBE Vector Correlation",
+                "ADBE Vector Temporal Phase",
+                "ADBE Vector Spatial Phase",
+                "ADBE Vector Random Seed"
+            ]
+        },
+        "shape-modifiers/round-corners": {
+            "canilottie": null,
+            "docs": "https://lottiefiles.github.io/lottie-docs/shapes/#rounded-corners",
+            "match_names": [
+                "ADBE Vector Filter - RC",
+                "ADBE Vector RoundCorner Radius"
+            ]
+        },
+        "shape-modifiers/trim": {
+            "canilottie": "shape-trim-path",
+            "docs": "https://lottiefiles.github.io/lottie-docs/shapes/#trim-path",
+            "match_names": [
+                "ADBE Vector Filter - Trim",
+                "ADBE Vector Trim End",
+                "ADBE Vector Trim Offset",
+                "ADBE Vector Trim Start"
+            ]
+        },
+        "shape-modifiers/trim/individually": {
+            "canilottie": "shape-trim-path",
+            "docs": "https://lottiefiles.github.io/lottie-docs/shapes/#trim-path",
+            "match_names": [
+                "ADBE Vector Trim Type"
+            ]
+        },
+        "shape-modifiers/trim/simultaneously": {
+            "canilottie": "shape-trim-path",
+            "docs": "https://lottiefiles.github.io/lottie-docs/shapes/#trim-path",
+            "match_names": [
+                "ADBE Vector Trim Type"
+            ]
+        },
+        "shape-modifiers/twist": {
+            "canilottie": null,
+            "docs": "https://lottiefiles.github.io/lottie-docs/shapes/#twist",
+            "match_names": [
+                "ADBE Vector Filter - Twist",
+                "ADBE Vector Twist Angle",
+                "ADBE Vector Twist Center"
+            ]
+        },
+        "shape-modifiers/wiggler": {
+            "canilottie": null,
+            "docs": null,
+            "match_names": [
+                "ADBE Vector Filter - Wiggler",
+                "ADBE Vector Wiggler Transform",
+                "ADBE Vector Xform Temporal Freq",
+                "ADBE Vector Correlation",
+                "ADBE Vector Temporal Phase",
+                "ADBE Vector Spatial Phase",
+                "ADBE Vector Random Seed"
+            ]
+        },
+        "shape-modifiers/zig-zag": {
+            "canilottie": null,
+            "docs": "https://lottiefiles.github.io/lottie-docs/shapes/#zig-zag",
+            "match_names": [
+                "ADBE Vector Filter - Zigzag",
+                "ADBE Vector Zigzag Detail",
+                "ADBE Vector Zigzag Points",
+                "ADBE Vector Zigzag Size"
+            ]
+        },
         "shape-style": {
             "canilottie": null,
             "docs": "https://lottiefiles.github.io/lottie-docs/shapes/#style",
             "match_names": []
+        },
+        "shape-style/blend": {
+            "canilottie": "blend-mode",
+            "docs": "https://lottiefiles.github.io/lottie-docs/constants/#blend-mode",
+            "match_names": [
+                "ADBE Vector Blend Mode"
+            ]
         },
         "shape-style/fill": {
             "canilottie": "shape-fill",
@@ -34,6 +304,13 @@
                 "ADBE Vector Fill Color"
             ]
         },
+        "shape-style/fill/gradient": {
+            "canilottie": "shape-fill-gradient",
+            "docs": "https://lottiefiles.github.io/lottie-docs/shapes/#gradients",
+            "match_names": [
+                "ADBE Vector Graphic - G-Fill"
+            ]
+        },
         "shape-style/fill/opacity": {
             "canilottie": "shape-fill",
             "docs": "https://lottiefiles.github.io/lottie-docs/shapes/#fill",
@@ -46,93 +323,6 @@
             "docs": "https://lottiefiles.github.io/lottie-docs/constants/#fill-rule",
             "match_names": [
                 "ADBE Vector Fill Rule"
-            ]
-        },
-        "shape-style/fill/gradient": {
-            "canilottie": "shape-fill-gradient",
-            "docs": "https://lottiefiles.github.io/lottie-docs/shapes/#gradients",
-            "match_names": [
-                "ADBE Vector Graphic - G-Fill"
-            ]
-        },
-        "shape-style/blend": {
-            "canilottie": "blend-mode",
-            "docs": "https://lottiefiles.github.io/lottie-docs/constants/#blend-mode",
-            "match_names": [
-                "ADBE Vector Blend Mode"
-            ]
-        },
-        "shape-style/order": {
-            "canilottie": null,
-            "docs": null,
-            "match_names": [
-                "ADBE Vector Composite Order"
-            ]
-        },
-        "shape-style/stroke": {
-            "canilottie": "shape-stroke",
-            "docs": "https://lottiefiles.github.io/lottie-docs/shapes/#stroke",
-            "match_names": [
-                "ADBE Vector Graphic - Stroke",
-                "ADBE Vector Stroke Width",
-                "ADBE Vector Stroke Line Cap",
-                "ADBE Vector Stroke Line Join",
-                "ADBE Vector Stroke Miter Limit"
-            ]
-        },
-        "shape-style/stroke/color": {
-            "canilottie": "shape-stroke",
-            "docs": "https://lottiefiles.github.io/lottie-docs/shapes/#stroke",
-            "match_names": [
-                "ADBE Vector StrokeColor"
-            ]
-        },
-        "shape-style/stroke/opacity": {
-            "canilottie": "shape-stroke",
-            "docs": "https://lottiefiles.github.io/lottie-docs/shapes/#stroke",
-            "match_names": [
-                "ADBE Vector Stroke Opacity"
-            ]
-        },
-        "shape-style/stroke/gradient": {
-            "canilottie": "shape-stroke-gradient",
-            "docs": "https://lottiefiles.github.io/lottie-docs/shapes/#gradients",
-            "match_names": [
-                "ADBE Vector Graphic - G-Stroke"
-            ]
-        },
-        "shape-style/stroke/dashes": {
-            "canilottie": "shape-stroke",
-            "docs": "https://lottiefiles.github.io/lottie-docs/shapes/#stroke",
-            "match_names": [
-                "ADBE Vector Stroke Dashes",
-                "ADBE Vector Stroke Offset",
-                "ADBE Vector Stroke Gap #",
-                "ADBE Vector Stroke Dash #"
-            ]
-        },
-        "shape-style/stroke/taper": {
-            "canilottie": null,
-            "docs": null,
-            "match_names": [
-                "ADBE Vector Stroke Taper",
-                "ADBE Vector Taper Start Length",
-                "ADBE Vector Taper End Length",
-                "ADBE Vector Taper Start Width",
-                "ADBE Vector Taper End Width",
-                "ADBE Vector Taper Start Ease",
-                "ADBE Vector Taper End Ease"
-            ]
-        },
-        "shape-style/stroke/wave": {
-            "canilottie": null,
-            "docs": null,
-            "match_names": [
-                "ADBE Vector Stroke Wave",
-                "ADBE Vector Taper Wave Amount",
-                "ADBE Vector Taper Wave Units",
-                "ADBE Vector Taper Wavelength",
-                "ADBE Vector Taper Wave Phase"
             ]
         },
         "shape-style/gradient": {
@@ -177,6 +367,79 @@
             "match_names": [
                 "ADBE Vector Grad HiLite Length",
                 "ADBE Vector Grad HiLite Angle"
+            ]
+        },
+        "shape-style/order": {
+            "canilottie": null,
+            "docs": null,
+            "match_names": [
+                "ADBE Vector Composite Order"
+            ]
+        },
+        "shape-style/stroke": {
+            "canilottie": "shape-stroke",
+            "docs": "https://lottiefiles.github.io/lottie-docs/shapes/#stroke",
+            "match_names": [
+                "ADBE Vector Graphic - Stroke",
+                "ADBE Vector Stroke Width",
+                "ADBE Vector Stroke Line Cap",
+                "ADBE Vector Stroke Line Join",
+                "ADBE Vector Stroke Miter Limit"
+            ]
+        },
+        "shape-style/stroke/color": {
+            "canilottie": "shape-stroke",
+            "docs": "https://lottiefiles.github.io/lottie-docs/shapes/#stroke",
+            "match_names": [
+                "ADBE Vector StrokeColor"
+            ]
+        },
+        "shape-style/stroke/dashes": {
+            "canilottie": "shape-stroke",
+            "docs": "https://lottiefiles.github.io/lottie-docs/shapes/#stroke",
+            "match_names": [
+                "ADBE Vector Stroke Dashes",
+                "ADBE Vector Stroke Offset",
+                "ADBE Vector Stroke Gap #",
+                "ADBE Vector Stroke Dash #"
+            ]
+        },
+        "shape-style/stroke/gradient": {
+            "canilottie": "shape-stroke-gradient",
+            "docs": "https://lottiefiles.github.io/lottie-docs/shapes/#gradients",
+            "match_names": [
+                "ADBE Vector Graphic - G-Stroke"
+            ]
+        },
+        "shape-style/stroke/opacity": {
+            "canilottie": "shape-stroke",
+            "docs": "https://lottiefiles.github.io/lottie-docs/shapes/#stroke",
+            "match_names": [
+                "ADBE Vector Stroke Opacity"
+            ]
+        },
+        "shape-style/stroke/taper": {
+            "canilottie": null,
+            "docs": null,
+            "match_names": [
+                "ADBE Vector Stroke Taper",
+                "ADBE Vector Taper Start Length",
+                "ADBE Vector Taper End Length",
+                "ADBE Vector Taper Start Width",
+                "ADBE Vector Taper End Width",
+                "ADBE Vector Taper Start Ease",
+                "ADBE Vector Taper End Ease"
+            ]
+        },
+        "shape-style/stroke/wave": {
+            "canilottie": null,
+            "docs": null,
+            "match_names": [
+                "ADBE Vector Stroke Wave",
+                "ADBE Vector Taper Wave Amount",
+                "ADBE Vector Taper Wave Units",
+                "ADBE Vector Taper Wavelength",
+                "ADBE Vector Taper Wave Phase"
             ]
         },
         "shapes": {
@@ -341,269 +604,6 @@
                 "ADBE Vector Skew",
                 "ADBE Vector Skew Axis"
             ]
-        },
-        "layers/text": {
-            "canilottie": "layer-text",
-            "docs": "https://lottiefiles.github.io/lottie-docs/layers/#text-layer",
-            "match_names": [
-                "ADBE Text Properties",
-                "ADBE Text Document"
-            ]
-        },
-        "layers/precomp": {
-            "canilottie": "layer-precomp",
-            "docs": "https://lottiefiles.github.io/lottie-docs/layers/#precomposition-layer",
-            "match_names": []
-        },
-        "layers/precomp/time-stretch": {
-            "canilottie": "property-time-stretch",
-            "docs": "https://lottiefiles.github.io/lottie-docs/breakdown/precomps/#speeding-up-and-slowing-down",
-            "match_names": []
-        },
-        "layers/precomp/time-start": {
-            "canilottie": null,
-            "docs": "https://lottiefiles.github.io/lottie-docs/breakdown/precomps/#speeding-up-and-slowing-down",
-            "match_names": []
-        },
-        "layers/precomp/time-remap": {
-            "canilottie": "property-timeremap",
-            "docs": "https://lottiefiles.github.io/lottie-docs/layers/#time-remapping",
-            "match_names": [
-                "ADBE Time Remapping"
-            ]
-        },
-        "layers/time-range": {
-            "canilottie": null,
-            "docs": "https://lottiefiles.github.io/lottie-docs/layers/#layer",
-            "match_names": []
-        },
-        "animation": {
-            "canilottie": null,
-            "docs": "https://lottiefiles.github.io/lottie-docs/concepts/#animated-property",
-            "match_names": []
-        },
-        "animation/ease": {
-            "canilottie": null,
-            "docs": "https://lottiefiles.github.io/lottie-docs/concepts/#keyframe",
-            "match_names": []
-        },
-        "animation/linear": {
-            "canilottie": null,
-            "docs": "https://lottiefiles.github.io/lottie-docs/concepts/#keyframe",
-            "match_names": []
-        },
-        "animation/hold": {
-            "canilottie": null,
-            "docs": "https://lottiefiles.github.io/lottie-docs/concepts/#keyframe",
-            "match_names": []
-        },
-        "layers/mask": {
-            "canilottie": "mask",
-            "docs": "https://lottiefiles.github.io/lottie-docs/layers/#masks",
-            "match_names": [
-                "ADBE Mask Parade",
-                "ADBE Mask Atom",
-                "ADBE Mask Shape"
-            ]
-        },
-        "layers/mask/expansion": {
-            "canilottie": "mask-expansion",
-            "docs": "https://lottiefiles.github.io/lottie-docs/layers/#masks",
-            "match_names": [
-                "ADBE Mask Offset"
-            ]
-        },
-        "layers/mask/opacity": {
-            "canilottie": "mask-opacity",
-            "docs": "https://lottiefiles.github.io/lottie-docs/layers/#masks",
-            "match_names": [
-                "ADBE Mask Opacity"
-            ]
-        },
-        "layers/mask/mode": {
-            "canilottie": "mask-modes",
-            "docs": "https://lottiefiles.github.io/lottie-docs/layers/#masks",
-            "match_names": []
-        },
-        "layers/mask/inverted": {
-            "canilottie": "mask-inverted",
-            "docs": "https://lottiefiles.github.io/lottie-docs/layers/#masks",
-            "match_names": []
-        },
-        "layers/mask/feather": {
-            "canilottie": null,
-            "docs": "https://lottiefiles.github.io/lottie-docs/layers/#masks",
-            "match_names": [
-                "ADBE Mask Feather"
-            ]
-        },
-        "properties/position": {
-            "canilottie": null,
-            "docs": "https://lottiefiles.github.io/lottie-docs/concepts/#animated-position",
-            "match_names": []
-        },
-        "properties/position/path": {
-            "canilottie": null,
-            "docs": "https://lottiefiles.github.io/lottie-docs/concepts/#animated-position",
-            "match_names": []
-        },
-        "shape-modifiers": {
-            "canilottie": null,
-            "docs": "https://lottiefiles.github.io/lottie-docs/shapes/#modifiers",
-            "match_names": []
-        },
-        "properties": {
-            "canilottie": null,
-            "docs": "https://lottiefiles.github.io/lottie-docs/concepts/",
-            "match_names": []
-        },
-        "shape-modifiers/repeater": {
-            "canilottie": "shape-repeater",
-            "docs": "https://lottiefiles.github.io/lottie-docs/shapes/#repeater",
-            "match_names": [
-                "ADBE Vector Filter - Repeater",
-                "ADBE Vector Repeater Anchor Point",
-                "ADBE Vector Repeater Copies",
-                "ADBE Vector Repeater Offset",
-                "ADBE Vector Repeater Order",
-                "ADBE Vector Repeater Position",
-                "ADBE Vector Repeater Rotation",
-                "ADBE Vector Repeater Scale",
-                "ADBE Vector Repeater Transform"
-            ]
-        },
-        "shape-modifiers/repeater/opacity": {
-            "canilottie": "shape-repeater",
-            "docs": "https://lottiefiles.github.io/lottie-docs/shapes/#repeater",
-            "match_names": [
-                "ADBE Vector Repeater Start Opacity",
-                "ADBE Vector Repeater End Opacity"
-            ]
-        },
-        "shape-modifiers/trim": {
-            "canilottie": "shape-trim-path",
-            "docs": "https://lottiefiles.github.io/lottie-docs/shapes/#trim-path",
-            "match_names": [
-                "ADBE Vector Filter - Trim",
-                "ADBE Vector Trim End",
-                "ADBE Vector Trim Offset",
-                "ADBE Vector Trim Start"
-            ]
-        },
-        "shape-modifiers/trim/individually": {
-            "canilottie": "shape-trim-path",
-            "docs": "https://lottiefiles.github.io/lottie-docs/shapes/#trim-path",
-            "match_names": [
-                "ADBE Vector Trim Type"
-            ]
-        },
-        "shape-modifiers/trim/simultaneously": {
-            "canilottie": "shape-trim-path",
-            "docs": "https://lottiefiles.github.io/lottie-docs/shapes/#trim-path",
-            "match_names": [
-                "ADBE Vector Trim Type"
-            ]
-        },
-        "shape-modifiers/pucker-bloat": {
-            "canilottie": "shape-pucker-and-bloat",
-            "docs": "https://lottiefiles.github.io/lottie-docs/shapes/#pucker-bloat",
-            "match_names": [
-                "ADBE Vector Filter - PB",
-                "ADBE Vector PuckerBloat Amount"
-            ]
-        },
-        "shape-modifiers/twist": {
-            "canilottie": null,
-            "docs": "https://lottiefiles.github.io/lottie-docs/shapes/#twist",
-            "match_names": [
-                "ADBE Vector Filter - Twist",
-                "ADBE Vector Twist Angle",
-                "ADBE Vector Twist Center"
-            ]
-        },
-        "shape-modifiers/wiggler": {
-            "canilottie": null,
-            "docs": null,
-            "match_names": [
-                "ADBE Vector Filter - Wiggler",
-                "ADBE Vector Wiggler Transform",
-                "ADBE Vector Xform Temporal Freq",
-                "ADBE Vector Correlation",
-                "ADBE Vector Temporal Phase",
-                "ADBE Vector Spatial Phase",
-                "ADBE Vector Random Seed"
-            ]
-        },
-        "shape-modifiers/merge": {
-            "canilottie": "shape-merge-path",
-            "docs": "https://lottiefiles.github.io/lottie-docs/shapes/#merge",
-            "match_names": [
-                "ADBE Vector Filter - Merge",
-                "ADBE Vector Merge Type"
-            ]
-        },
-        "shape-modifiers/offset": {
-            "canilottie": "shape-offset-path",
-            "docs": "https://lottiefiles.github.io/lottie-docs/shapes/#offset-path",
-            "match_names": [
-                "ADBE Vector Filter - Offset",
-                "ADBE Vector Offset Amount",
-                "ADBE Vector Offset Line Join",
-                "ADBE Vector Offset Miter Limit"
-            ]
-        },
-        "shape-modifiers/zig-zag": {
-            "canilottie": null,
-            "docs": "https://lottiefiles.github.io/lottie-docs/shapes/#zig-zag",
-            "match_names": [
-                "ADBE Vector Filter - Zigzag",
-                "ADBE Vector Zigzag Detail",
-                "ADBE Vector Zigzag Points",
-                "ADBE Vector Zigzag Size"
-            ]
-        },
-        "shape-modifiers/round-corners": {
-            "canilottie": null,
-            "docs": "https://lottiefiles.github.io/lottie-docs/shapes/#rounded-corners",
-            "match_names": [
-                "ADBE Vector Filter - RC",
-                "ADBE Vector RoundCorner Radius"
-            ]
-        },
-        "shape-modifiers/roughen": {
-            "canilottie": null,
-            "docs": null,
-            "match_names": [
-                "ADBE Vector Filter - Roughen",
-                "ADBE Vector Roughen Size",
-                "ADBE Vector Roughen Detail",
-                "ADBE Vector Roughen Points",
-                "ADBE Vector Temporal Freq",
-                "ADBE Vector Correlation",
-                "ADBE Vector Temporal Phase",
-                "ADBE Vector Spatial Phase",
-                "ADBE Vector Random Seed"
-            ]
-        },
-        "properties/multi-dimensional": {
-            "canilottie": null,
-            "docs": "https://lottiefiles.github.io/lottie-docs/concepts/",
-            "match_names": []
-        },
-        "properties/gradient": {
-            "canilottie": null,
-            "docs": "https://lottiefiles.github.io/lottie-docs/concepts/#gradients",
-            "match_names": []
-        },
-        "properties/color": {
-            "canilottie": null,
-            "docs": "https://lottiefiles.github.io/lottie-docs/concepts/#color",
-            "match_names": []
-        },
-        "properties/bezier": {
-            "canilottie": null,
-            "docs": "https://lottiefiles.github.io/lottie-docs/concepts/#bezier",
-            "match_names": []
         }
     },
     "match_names": [

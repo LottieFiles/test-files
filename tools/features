@@ -172,6 +172,11 @@ def add(args):
     if args.match_name is not None:
         feature["match_names"] += args.match_name
 
+    sorted_features = {}
+    for name, val in sorted(feature_data["features"].items()):
+        sorted_features[name] = val
+    feature_data["features"] = sorted_features
+
     with open(features_paths, "w") as f:
         json.dump(feature_data, f, indent=4)
 
