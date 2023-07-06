@@ -114,7 +114,7 @@ def get_match_names(path: Path, rel: Path, mns: set):
             mns.add(re.sub(b" [0-9]+$", b" #", match_name).decode("ascii"))
 
 
-def handle_missing_data(name, found):
+def handle_missing_data(name, found, apply):
     known = set(feature_data[name])
 
     missing = found - known
@@ -124,10 +124,11 @@ def handle_missing_data(name, found):
         for mn in missing:
             print(mn)
 
-        feature_data[name] = sorted(known | missing)
+        if apply:
+            feature_data[name] = sorted(known | missing)
 
-        with open(features_paths, "w") as f:
-            json.dump(feature_data, f, indent=4)
+            with open(features_paths, "w") as f:
+                json.dump(feature_data, f, indent=4)
 
     else:
         print("Nothing to do")
@@ -136,7 +137,7 @@ def handle_missing_data(name, found):
 def scan_aep(args):
     mns = set()
     DirectoryScanner(get_match_names).scan(args.path, mns)
-    handle_missing_data("match_names", mns)
+    handle_missing_data("match_names", mns, args.apply)
 
 
 def scan_canilottie(args):
@@ -148,7 +149,7 @@ def scan_canilottie(args):
     for file in path.iterdir():
         cil.add(file.stem)
 
-    handle_missing_data("canilottie", cil)
+    handle_missing_data("canilottie", cil, args.apply)
 
 
 def add(args):
@@ -231,6 +232,10 @@ sub_aep.add_argument(
     default=data_path,
     nargs="?",
 )
+sub_aep.add_argument(
+    "--apply", "-a",
+    help="Apply the missing items to features.json"
+)
 
 sub_cil = sub.add_parser(
     "scan-canilottie",
@@ -239,6 +244,10 @@ sub_cil = sub.add_parser(
 sub_cil.add_argument(
     "path",
     type=Path,
+)
+sub_cil.add_argument(
+    "--apply", "-a",
+    help="Apply the missing items to features.json"
 )
 
 

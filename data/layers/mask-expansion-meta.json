@@ -1,5 +1,5 @@
 {
     "features": [
-        "layers/mask"
+        "layers/mask/expansion"
     ]
 }

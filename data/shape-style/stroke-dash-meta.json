@@ -1,5 +1,5 @@
 {
     "features": [
-        "shape-style/stroke/dash"
+        "shape-style/stroke/dashes"
     ]
 }
