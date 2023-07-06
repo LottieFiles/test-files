@@ -2,19 +2,16 @@
 import re
 import sys
 from pathlib import Path
-from script_utils import Column, Table
+from script_utils import Column, Table, DirectoryScanner
 
 
-def collect_directory(root: Path, path: Path, found: dict):
-    for file in (root / path).iterdir():
-        if file.is_dir():
-            collect_directory(root, path / file.name, found)
-        elif "asset" not in file.name:
-            basename = re.sub("-[0-9]+$", "", file.stem)
-            if file.name.endswith("-meta.json"):
-                basename = basename[:-5]
-            example_name = str(path / basename)
-            found.setdefault(example_name, []).append(file.name)
+def collect_directory(file: Path, relpath: Path, found: dict):
+    if "asset" not in file.name:
+        basename = re.sub("-[0-9]+$", "", file.stem)
+        if file.name.endswith("-meta.json"):
+            basename = basename[:-5]
+        example_name = str(relpath.parent / basename)
+        found.setdefault(example_name, []).append(file.name)
 
 
 data_root = Path(__file__).parent.parent / "data"
@@ -33,7 +30,7 @@ has_meta = 4
 has_frames = 5
 found = {}
 file_count = 0
-collect_directory(data_root, Path(), found)
+DirectoryScanner(collect_directory).scan(data_root, found)
 for example, files in sorted(found.items()):
     row = [example, "NO", "NO", "NO", "NO", 0]
     for file in files:

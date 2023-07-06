@@ -58,6 +58,8 @@ class DirectoryScanner:
     def scan_path(self, root, relative, args, kwargs):
         path = root / relative
         if path.is_dir():
+            if path.name == "Adobe After Effects Auto-Save" or path.name.endswith(".aep Logs"):
+                return
             for file in path.iterdir():
                 self.scan_path(root, relative / file.name, args, kwargs)
         else:
