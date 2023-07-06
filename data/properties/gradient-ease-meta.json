@@ -1,0 +1,6 @@
+{
+    "features": [
+        "properties/gradient",
+        "animation/ease"
+    ]
+}

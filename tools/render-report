@@ -28,6 +28,11 @@ parser.add_argument(
     action="append"
 )
 parser.add_argument(
+    "--reference",
+    type=Path,
+    default=None,
+)
+parser.add_argument(
     "command",
     nargs=argparse.REMAINDER,
     help="Renderer command"
@@ -37,11 +42,17 @@ args = parser.parse_args()
 cmd_root = Path(__file__).parent
 paths = []
 formats = args.input_format or ["json"]
+render_base = [str(cmd_root / "render")]
+common = []
+
+if args.reference:
+    common.append("--reference")
+    common.append(str(cmd_root.parent / "data" / args.reference))
 
 for format in formats:
     out_path = args.output / format
     render_out = out_path / "images"
-    call([str(cmd_root / "render"), "-f", format, "-o", str(render_out), "-l", format] + args.command)
+    call(render_base + common + ["-f", format, "-o", str(render_out), "-l", format] + args.command)
     paths.append(str(render_out))
     print("")
 
@@ -50,4 +61,4 @@ if len(formats) > 1:
     out_path = args.output
 
 
-call([str(cmd_root / "report"), "-o", str(out_path / "report.json"), "--html", str(out_path / "report.html")] + paths)
+call([str(cmd_root / "report")] + common + ["-o", str(out_path / "report.json"), "--html", str(out_path / "report.html")] + paths)

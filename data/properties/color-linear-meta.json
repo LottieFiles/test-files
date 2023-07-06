@@ -1,0 +1,6 @@
+{
+    "features": [
+        "properties/color",
+        "animation/linear"
+    ]
+}

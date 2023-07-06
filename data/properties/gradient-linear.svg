@@ -1,0 +1,37 @@
+<svg inkscape:export-xdpi="96" height="80" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" width="80" viewBox="0 0 80 80" inkscape:export-ydpi="96" xmlns="http://www.w3.org/2000/svg" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" style="fill:none;stroke:none;" version="1.1" xmlns:cc="http://creativecommons.org/ns#" xmlns:osb="http://www.openswatchbook.org/uri/2009/osb">
+    <title>Comp 1</title>
+    <defs>
+        <linearGradient id="GradientColors_46f83410e49c49cc8920ba850032b35a">
+            <stop stop-opacity="1" stop-color="#ff0000" offset="0">
+                <animate calcMode="spline" keyTimes="0.000000; 0.983607; 1" dur="1.016667" begin="0.000000" keySplines="0.333333 0.333333 0.666667 0.666667; 0.333333 0.333333 0.666667 0.666667" repeatCount="indefinite" values="0; 0; 0" attributeName="offset"/>
+                <animate calcMode="spline" keyTimes="0.000000; 0.983607; 1" dur="1.016667" begin="0.000000" keySplines="0.333333 0.333333 0.666667 0.666667; 0.333333 0.333333 0.666667 0.666667" repeatCount="indefinite" values="#ff0000; #f6ff00; #f6ff00" attributeName="stop-color"/>
+            </stop>
+            <stop stop-opacity="1" stop-color="#660099" offset="0.60068">
+                <animate calcMode="spline" keyTimes="0.000000; 0.983607; 1" dur="1.016667" begin="0.000000" keySplines="0.333333 0.333333 0.666667 0.666667; 0.333333 0.333333 0.666667 0.666667" repeatCount="indefinite" values="0.60068; 0.60068; 0.60068" attributeName="offset"/>
+                <animate calcMode="spline" keyTimes="0.000000; 0.983607; 1" dur="1.016667" begin="0.000000" keySplines="0.333333 0.333333 0.666667 0.666667; 0.333333 0.333333 0.666667 0.666667" repeatCount="indefinite" values="#660099; #62ff32; #62ff32" attributeName="stop-color"/>
+            </stop>
+            <stop stop-opacity="1" stop-color="#0000ff" offset="1">
+                <animate calcMode="spline" keyTimes="0.000000; 0.983607; 1" dur="1.016667" begin="0.000000" keySplines="0.333333 0.333333 0.666667 0.666667; 0.333333 0.333333 0.666667 0.666667" repeatCount="indefinite" values="1; 1; 1" attributeName="offset"/>
+                <animate calcMode="spline" keyTimes="0.000000; 0.983607; 1" dur="1.016667" begin="0.000000" keySplines="0.333333 0.333333 0.666667 0.666667; 0.333333 0.333333 0.666667 0.666667" repeatCount="indefinite" values="#0000ff; #00ff54; #00ff54" attributeName="stop-color"/>
+            </stop>
+        </linearGradient>
+        <linearGradient y1="5.25" id="Gradient_2a2606e3ebbd476db344b977bc114e34" y2="5" gradientUnits="userSpaceOnUse" xlink:href="#GradientColors_46f83410e49c49cc8920ba850032b35a" x1="5.5" x2="76"/>
+    </defs>
+    <sodipodi:namedview inkscape:pagecheckerboard="true" borderlayer="true" inkscape:document-units="px" bordercolor="#666666" pagecolor="#ffffff"/>
+    <metadata>
+        <rdf:RDF>
+            <cc:Work>
+                <dc:format>image/svg+xml</dc:format>
+                <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+                <dc:title>Comp 1</dc:title>
+            </cc:Work>
+        </rdf:RDF>
+    </metadata>
+    <g id="Composition_eee44e0bf28a43e1b15da89deac7ecd7" inkscape:groupmode="layer" inkscape:label="Comp 1">
+        <g transform="matrix(1, 0, 0, 1, 0, 0)" id="Layer_fb3d4c9310c34d4a8b206a7ff69a580c" inkscape:groupmode="layer" inkscape:label="Shape Layer 1" opacity="1">
+            <g transform="matrix(1, 0, 0, 1, 0, 0)" id="Fill_e21c07b062af49cba392aa151f942667" fill="url(#Gradient_2a2606e3ebbd476db344b977bc114e34)" inkscape:label="Group" opacity="1">
+                <rect x="5" height="70" width="70" y="5" style="stroke:none;" ry="0"/>
+            </g>
+        </g>
+    </g>
+</svg>

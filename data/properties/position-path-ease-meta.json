@@ -1,0 +1,6 @@
+{
+    "features": [
+        "properties/position/path",
+        "animation/ease"
+    ]
+}
