@@ -25,6 +25,11 @@
             "docs": "https://lottiefiles.github.io/lottie-docs/concepts/#lists-of-layers-and-shapes",
             "match_names": []
         },
+        "layers/auto-orient": {
+            "canilottie": null,
+            "docs": "https://lottiefiles.github.io/lottie-docs/layers/#auto-orient",
+            "match_names": []
+        },
         "layers/image": {
             "canilottie": "layer-image",
             "docs": "https://lottiefiles.github.io/lottie-docs/layers/#image-layer",
@@ -143,6 +148,11 @@
         "properties/position/path": {
             "canilottie": null,
             "docs": "https://lottiefiles.github.io/lottie-docs/concepts/#animated-position",
+            "match_names": []
+        },
+        "properties/scalar": {
+            "canilottie": null,
+            "docs": "https://lottiefiles.github.io/lottie-docs/concepts/",
             "match_names": []
         },
         "shape-modifiers": {
