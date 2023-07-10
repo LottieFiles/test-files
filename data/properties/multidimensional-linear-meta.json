@@ -1,0 +1,6 @@
+{
+    "features": [
+        "properties/multidimensional",
+        "animation/linear"
+    ]
+}

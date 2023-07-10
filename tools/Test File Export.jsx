@@ -263,6 +263,12 @@ btn_export.onClick = function()
 
         if ( cb_json.value || cb_svg.value )
         {
+            if ( $.__bodymovin === undefined )
+            {
+                text_output.text = "Bodymovin not loaded";
+                return;
+            }
+
             text_output.text = "Exporting Lottie";
             var lottie_name = app.project.file.fullName.replace(".aep", ".json");
 
