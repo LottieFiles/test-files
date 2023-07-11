@@ -1,0 +1,60 @@
+<svg xmlns:cc="http://creativecommons.org/ns#" inkscape:export-ydpi="96" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:osb="http://www.openswatchbook.org/uri/2009/osb" height="80" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" version="1.1" inkscape:export-xdpi="96" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:xlink="http://www.w3.org/1999/xlink" width="80" style="fill:none;stroke:none;">
+    <title>Comp 1</title>
+    <defs>
+        <clipPath id="clip_PreCompLayer_e617714f9a904df9981ee09dff0e0ccb" clipPathUnits="userSpaceOnUse">
+            <rect height="80" y="0" x="0" width="80"/>
+        </clipPath>
+        <clipPath id="clip_PreCompLayer_c35c7810a7ee430c81b647499ab673dc" clipPathUnits="userSpaceOnUse">
+            <rect height="80" y="0" x="0" width="80"/>
+        </clipPath>
+    </defs>
+    <sodipodi:namedview inkscape:document-units="px" bordercolor="#666666" inkscape:pagecheckerboard="true" pagecolor="#ffffff" borderlayer="true"/>
+    <metadata>
+        <rdf:RDF>
+            <cc:Work>
+                <dc:format>image/svg+xml</dc:format>
+                <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+                <dc:title>Comp 1</dc:title>
+            </cc:Work>
+        </rdf:RDF>
+    </metadata>
+    <g id="Composition_70b9f07c03754a2aa2406b76cada972b" inkscape:groupmode="layer" inkscape:label="Comp 1">
+        <g id="Layer_bef5e715636c4472b956b73720cfde8c" transform="matrix(1, 0, 0, 1, 0, 0)" inkscape:groupmode="layer" inkscape:label="Shape Layer 1 Comp 1" opacity="1">
+            <g id="PreCompLayer_e617714f9a904df9981ee09dff0e0ccb" transform="matrix(1, 0, 0, 1, 0, 0)" inkscape:groupmode="layer" inkscape:label="Shape Layer 1 Comp 1" opacity="1">
+                <g id="Layer_6418d9005df5416ebb43762179c93285" transform="matrix(1, 0, 0, 1, 40, 40)" inkscape:groupmode="layer" inkscape:label="Shape Layer 1" opacity="1">
+                    <g transform="translate(-8.7 0.925)">
+                        <g transform="rotate(0)">
+                            <g transform="scale(1 1)">
+                                <g transform="translate(0 0)">
+                                    <g fill="#3250b0" fill-opacity="1" id="Fill_6b5c904fa7cd4a8c8f082619c6a8586f" inkscape:label="Group" opacity="1">
+                                        <ellipse rx="8.25" cy="0" ry="8.25" style="stroke:none;" cx="0"/>
+                                    </g>
+                                </g>
+                            </g>
+                        </g>
+                        <animateMotion path="M -29,0.75 C -29,0.75 29,1.25 29,1.25" begin="0.000000" dur="1.016667" calcMode="spline" keySplines="0.333333 0.333333 0.666667 0.666667" repeatCount="indefinite" attributeName="transform" keyTimes="0.000000; 0.983607"/>
+                    </g>
+                </g>
+            </g>
+        </g>
+        <g id="Layer_5b353acf87cc44f5b969896747a47972" transform="matrix(1, 0, 0, 1, 0, 16.5)" inkscape:groupmode="layer" inkscape:label="Shape Layer 1 Comp 1" opacity="1">
+            <animate begin="0.000000" dur="1.016667" calcMode="discrete" repeatCount="indefinite" attributeName="display" keyTimes="0;0.245902;" values="none;inline;"/>
+            <g id="PreCompLayer_c35c7810a7ee430c81b647499ab673dc" transform="matrix(1, 0, 0, 1, 0, 0)" inkscape:groupmode="layer" inkscape:label="Shape Layer 1 Comp 1" opacity="1">
+                <g id="Layer_6418d9005df5416ebb43762179c93285" transform="matrix(1, 0, 0, 1, 40, 40)" inkscape:groupmode="layer" inkscape:label="Shape Layer 1" opacity="1">
+                    <g transform="translate(-8.7 0.925)">
+                        <g transform="rotate(0)">
+                            <g transform="scale(1 1)">
+                                <g transform="translate(0 0)">
+                                    <g fill="#3250b0" fill-opacity="1" id="Fill_6b5c904fa7cd4a8c8f082619c6a8586f" inkscape:label="Group" opacity="1">
+                                        <ellipse rx="8.25" cy="0" ry="8.25" style="stroke:none;" cx="0"/>
+                                    </g>
+                                </g>
+                            </g>
+                        </g>
+                        <animateMotion path="M -29,0.75 C -29,0.75 29,1.25 29,1.25" begin="0.500000" dur="1.516667" calcMode="spline" keySplines="0 0 1 1" repeatCount="indefinite" attributeName="transform" keyTimes="0; 0.491803"/>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
