@@ -1,1 +1,40 @@
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid meet" width="80" height="80" viewBox="0 0 80 80" style="width:100%;height:100%"><defs><animateMotion repeatCount="indefinite" dur="1.0166667s" begin="0s" xlink:href="#_R_G_L_0_G" fill="freeze" keyTimes="0;1" path="M12.25 45.5 C42,72.5 56.25,21.75 72.5,6 " keyPoints="0;1" keySplines="0.167 0.167 0.833 0.833" calcMode="spline"/><animate attributeType="XML" attributeName="opacity" dur="1s" from="0" to="1" xlink:href="#time_group"/></defs><g id="_R_G"><g id="_R_G_L_1_G"><path id="_R_G_L_1_G_D_0_P_0" stroke="#e62033" stroke-linecap="round" stroke-linejoin="round" fill="none" stroke-width="2" stroke-opacity="1" d=" M12.25 45.5 C42,72.5 56.25,21.75 72.5,6 "/></g><g id="_R_G_L_0_G"><path id="_R_G_L_0_G_D_0_P_0" fill="#2f0ef3" fill-opacity="1" fill-rule="nonzero" d=" M-5 -5 C-5,-5 -5,5 -5,5 C-5,5 -25,5 -25,5 C-25,5 -25,-5 -25,-5 C-25,-5 -5,-5 -5,-5z "/></g></g><g id="time_group"/></svg>
+<svg xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns="http://www.w3.org/2000/svg" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:osb="http://www.openswatchbook.org/uri/2009/osb" width="80" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" inkscape:export-xdpi="96" xmlns:svg="http://www.w3.org/2000/svg" style="fill:none;stroke:none;" height="80" viewBox="0 0 80 80" version="1.1" inkscape:export-ydpi="96">
+    <title>Comp 1</title>
+    <defs>
+        <linearGradient osb:paint="solid" id="Null_1">
+            <stop offset="0" stop-color="#ffffff"/>
+        </linearGradient>
+    </defs>
+    <sodipodi:namedview borderlayer="true" bordercolor="#666666" inkscape:pagecheckerboard="true" pagecolor="#ffffff" inkscape:document-units="px"/>
+    <metadata>
+        <rdf:RDF>
+            <cc:Work>
+                <dc:format>image/svg+xml</dc:format>
+                <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+                <dc:title>Comp 1</dc:title>
+            </cc:Work>
+        </rdf:RDF>
+    </metadata>
+    <g id="Composition_41b14746e014483eb75e2afee7250a18" inkscape:groupmode="layer" inkscape:label="Comp 1">
+        <g id="Layer_340140c950704c7aac466dac4a8adda3" opacity="1" inkscape:groupmode="layer" inkscape:label="Shape Layer 2" transform="matrix(1, 0, 0, 1, 0, 0)">
+            <g id="Stroke_4cd938b5a0b241cbb769e85279ba3838" opacity="1" stroke-opacity="1" inkscape:label="Group" stroke-width="2" transform="matrix(1, 0, 0, 1, 0, 0)" stroke="#e62033">
+                <path sodipodi:nodetypes="cc" d="M 12.25,45.5 C 42,72.5 56.25,21.75 72.5,6" style="fill:none;stroke-dasharray:none;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;"/>
+            </g>
+        </g>
+        <g transform="translate(36.2939 51.3963)">
+            <g transform="rotate(0)">
+                <g transform="scale(1 1)">
+                    <g transform="translate(0 0)">
+                        <g id="Layer_9eb7023f63674092bd549ebdd3bc41e3" opacity="1" inkscape:groupmode="layer" inkscape:label="Shape Layer 1">
+                            <g fill-opacity="1" id="Fill_6120612108f447e1b1e6f909c8fb486c" inkscape:label="Fill" style="stroke:none;" fill="#2e0ef3">
+                                <path sodipodi:type="star" inkscape:randomized="0" inkscape:flatsided="true" sodipodi:arg2="1.0472" sodipodi:nodetypes="ccc" sodipodi:cy="0" inkscape:rounded="0" sodipodi:sides="3" sodipodi:arg1="0" d="M 10,4.37114e-07 C 10,4.37114e-07 -5,8.66025 -5,8.66025 -5,8.66025 -5,-8.66025 -5,-8.66025 -5,-8.66025 10,4.37114e-07 10,4.37114e-07 Z" sodipodi:r1="10" style="stroke:none;" sodipodi:cx="0" sodipodi:r2="50"/>
+                                <rect width="20" style="stroke:none;" y="-5" height="10" x="-25" ry="0"/>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+            <animateMotion keyTimes="0.000000; 1.000000" begin="0.000000" dur="1.016667" attributeName="transform" repeatCount="indefinite" rotate="auto" calcMode="spline" path="M 12.25,45.5 C 42,72.5 56.25,21.75 72.5,6" keySplines="0.333333 0.333333 0.666667 0.666667"/>
+        </g>
+    </g>
+</svg>
