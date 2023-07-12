@@ -103,12 +103,23 @@ def opencv_similarity(rendered: Image.Image, source: Image.Image):
     return sewar.full_ref.uqi(cv_source, cv_rendered)
 
 
-def compare_datum(test_item, reference_item, result, path_prefix):
+class PathSettings:
+    def __init__(self, prefix: str, relative: Path):
+        self.prefix = prefix
+        self.relative = relative
+
+    def path(self, path: Path):
+        if self.relative:
+            path = path.relative_to(self.relative)
+        return self.prefix + str(path)
+
+
+def compare_datum(test_item, reference_item, result, path_settings: PathSettings):
     if test_item is None:
         result["status"] = "missing-data"
         return 0
 
-    result["source"] = path_prefix + str(test_item.path)
+    result["source"] = path_settings.path(test_item.path)
     test_img = test_item.data
     ref_img = reference_item.data
 
@@ -130,7 +141,7 @@ def compare_datum(test_item, reference_item, result, path_prefix):
 
 
 class Job:
-    def __init__(self, index: int, path_prefix: Path, results_key: str, test_file, reference_file, reference_item):
+    def __init__(self, index: int, path_settings: PathSettings, results_key: str, test_file, reference_file, reference_item):
         self.index = index
         self.result = {
             "source": None,
@@ -140,7 +151,7 @@ class Job:
             "uqi": 0,
         }
         self.score = 0
-        self.path_prefix = path_prefix
+        self.path_settings = path_settings
         self.reference_file = reference_file
         self.test_file = test_file
         self.results_key = results_key
@@ -148,11 +159,11 @@ class Job:
 
 
 def process_job(job: Job):
-    job.score = compare_datum(job.test_file, job.reference_file, job.result, job.path_prefix)
+    job.score = compare_datum(job.test_file, job.reference_file, job.result, job.path_settings)
     return job
 
 
-def compare_data(render_sets, reference_data, path_prefix):
+def compare_data(render_sets, reference_data, path_settings: PathSettings):
     keys = set(reference_data.keys())
 
     skipped_sets = []
@@ -177,7 +188,7 @@ def compare_data(render_sets, reference_data, path_prefix):
 
             for name, file in reference_item.files.items():
                 results_key = str(file.path)
-                jobs.append(Job(index, path_prefix, results_key, test_item.files.get(name) if test_item else None, file, reference_item))
+                jobs.append(Job(index, path_settings, results_key, test_item.files.get(name) if test_item else None, file, reference_item))
 
     with multiprocessing.Pool(multiprocessing.cpu_count()) as pool:
         jobs = pool.map(process_job, jobs)
@@ -193,7 +204,7 @@ def compare_data(render_sets, reference_data, path_prefix):
             results[results_key] = {
                 "test": key,
                 "file": file.path.name,
-                "reference": path_prefix + str(file.path),
+                "reference": path_settings.path(file.path),
                 "score": 0,
                 "max": 0,
                 "results": [{} for i in range(len(render_sets))],
@@ -223,7 +234,7 @@ def html_percent(value, parent, title):
     ElementTree.SubElement(bar, "span").attrib["style"] = "width: %s%%" % (value * 100)
 
 
-def render_html(report, path: Path):
+def render_html(report, path: Path, absolute: bool):
     html = ElementTree.Element("html")
     head = ElementTree.SubElement(html, "head")
     ElementTree.SubElement(head, "style").text = """
@@ -332,7 +343,7 @@ def render_html(report, path: Path):
 
     if meta["command"]:
         ElementTree.SubElement(body, "p").text = "Render command:"
-        ElementTree.SubElement(ElementTree.SubElement(body, "pre"), "code").text = meta["command"]
+        ElementTree.SubElement(ElementTree.SubElement(body, "p"), "code").text = meta["command"]
 
     ElementTree.SubElement(body, "h2").text = "Features"
     table = ElementTree.SubElement(body, "table")
@@ -387,6 +398,10 @@ def render_html(report, path: Path):
         else:
             element.attrib["class"] = "good"
 
+    def src(path):
+        if absolute:
+            return "file://" + str(Path(path).absolute())
+        return path
 
     for item in report["tests"]:
         tr = ElementTree.SubElement(table, "tr")
@@ -399,7 +414,7 @@ def render_html(report, path: Path):
         col = ElementTree.SubElement(ElementTree.SubElement(tr, "td"), "div")
         col.attrib["class"] = "result-pic"
         if item["reference"]:
-            ElementTree.SubElement(col, "img").attrib["src"] = "file://" + str(Path(item["reference"]).absolute())
+            ElementTree.SubElement(col, "img").attrib["src"] = src(item["reference"])
 
         ElementTree.SubElement(col, "div").attrib["class"] = "score-set"
 
@@ -413,7 +428,7 @@ def render_html(report, path: Path):
             col.attrib["class"] = "result-pic"
 
             if result["source"]:
-                ElementTree.SubElement(col, "img").attrib["src"] = "file://" + str(Path(result["source"]).absolute())
+                ElementTree.SubElement(col, "img").attrib["src"] = src(result["source"])
             else:
                 ElementTree.SubElement(col, "div")
 
@@ -429,6 +444,7 @@ def render_html(report, path: Path):
     link.attrib["href"] = "https://github.com/LottieFiles/test-files"
     link.tail = "."
 
+    ElementTree.indent(html)
     with open(path, "wb") as f:
         f.write(ElementTree.tostring(html, "utf8", "html"))
 
@@ -483,13 +499,19 @@ if __name__ == "__main__":
     )
     parser.add_argument(
         "--prefix",
-        help="Prefix for file names in the output",
+        help="Prefix for reference file names in the output",
         type=str,
         default=""
     )
     parser.add_argument(
         "--html",
         help="File path for the HTML report",
+        type=Path,
+        default=None
+    )
+    parser.add_argument(
+        "--relative",
+        help="Make test paths relative to this",
         type=Path,
         default=None
     )
@@ -502,10 +524,10 @@ if __name__ == "__main__":
     DirectoryScanner(collect_renders).scan(args.reference, reference)
     render_sets = [RenderSet(path) for path in args.path]
 
-    data = compare_data(render_sets, reference, args.prefix)
+    data = compare_data(render_sets, reference, PathSettings(args.prefix, args.relative))
     out = sys.stdout if args.output is None else open(args.output, "w")
     json.dump(data, out, indent=4)
     out.write("\n")
 
     if args.html:
-        render_html(data, args.html)
+        render_html(data, args.html, args.relative is None)

@@ -2,10 +2,12 @@
 
 import sys
 import shlex
+import shutil
 import argparse
 import subprocess
 from pathlib import Path
 
+from script_utils import DirectoryScanner
 
 def call(cmd):
     print(" ".join(map(shlex.quote, cmd)))
@@ -38,16 +40,51 @@ parser.add_argument(
     help="Renderer command"
 )
 
+parser.add_argument(
+    "--copy-reference",
+    action="store_true",
+    help="Copy reference images to the output directory",
+)
+
 args = parser.parse_args()
 cmd_root = Path(__file__).parent
 paths = []
 formats = args.input_format or ["json"]
 render_base = [str(cmd_root / "render")]
+report_base = [str(cmd_root / "report")]
 common = []
+reference_path = cmd_root.parent / "data"
+reference_out_path = args.output / "reference"
 
 if args.reference:
+    reference_path /= args.reference
     common.append("--reference")
-    common.append(str(cmd_root.parent / "data" / args.reference))
+    common.append(str(reference_path))
+
+
+if args.copy_reference:
+    if args.reference:
+        render_base += common
+        common = []
+
+    report_base.append("--reference")
+    report_base.append(str(reference_out_path))
+    report_base.append("--metadata")
+    report_base.append(str(reference_path))
+    report_base.append("--relative")
+    report_base.append(str(args.output))
+
+    print("Copying Files")
+    ref_out_path = args.output / "reference"
+    def copy_file(file: Path, relpath: Path):
+        if "asset" not in file.name and file.suffix == ".png":
+            out_file = ref_out_path / relpath
+            out_file.parent.mkdir(parents=True, exist_ok=True)
+            shutil.copyfile(file, out_file)
+
+    DirectoryScanner(copy_file).scan(reference_path)
+    print("")
+
 
 for format in formats:
     out_path = args.output / format
@@ -61,4 +98,4 @@ if len(formats) > 1:
     out_path = args.output
 
 
-call([str(cmd_root / "report")] + common + ["-o", str(out_path / "report.json"), "--html", str(out_path / "report.html")] + paths)
+call(report_base + common + ["-o", str(out_path / "report.json"), "--html", str(out_path / "report.html")] + paths)
