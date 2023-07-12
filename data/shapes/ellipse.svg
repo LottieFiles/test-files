@@ -1,1 +1,15 @@
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid meet" width="100" height="50" viewBox="0 0 100 50" style="width:100%;height:100%"><defs><animate attributeType="XML" attributeName="opacity" dur="2s" from="0" to="1" xlink:href="#time_group"/></defs><g id="_R_G"><g id="_R_G_L_0_G"><path id="_R_G_L_0_G_D_0_P_0" fill="#3250b0" fill-opacity="1" fill-rule="nonzero" d=" M50 0 C77.6,0 100,11.2 100,25 C100,38.8 77.6,50 50,50 C22.41,50 0,38.8 0,25 C0,11.2 22.41,0 50,0z "/></g></g><g id="time_group"/></svg>
+<svg version="1.1" inkscape:export-ydpi="96" xmlns:osb="http://www.openswatchbook.org/uri/2009/osb" width="100" xmlns="http://www.w3.org/2000/svg" inkscape:export-xdpi="96" xmlns:xlink="http://www.w3.org/1999/xlink" height="50" viewBox="0 0 100 50" xmlns:cc="http://creativecommons.org/ns#" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" style="fill:none;stroke:none;" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg">
+    <title>Comp 1</title>
+    <defs/>
+    <sodipodi:namedview borderlayer="true" inkscape:document-units="px" pagecolor="#ffffff" inkscape:pagecheckerboard="true" bordercolor="#666666"/>
+    <metadata>
+        <rdf:RDF>
+            <cc:Work>
+                <dc:format>image/svg+xml</dc:format>
+                <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+                <dc:title>Comp 1</dc:title>
+            </cc:Work>
+        </rdf:RDF>
+    </metadata>
+    <ellipse cx="50" cy="25" rx="50" ry="25" style="stroke:none;" fill="#3150af"/>
+</svg>
