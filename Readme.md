@@ -128,7 +128,10 @@ The metadata file has the following structure:
     "comment": "Optional comment",
     "command": "Command used to render the images",
     "skipped": ["list of skipped tests"],
-    "format": "Input format"
+    "format": "Input format",
+    "times": {
+        "reference-image-id": "time of the render in nanoseconds"
+    }
 }
 ```
 

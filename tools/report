@@ -119,7 +119,7 @@ def compare_datum(test_item, reference_item, result, path_settings: PathSettings
         result["status"] = "missing-data"
         return 0
 
-    result["source"] = path_settings.path(test_item.path)
+    result["file"] = path_settings.path(test_item.path)
     test_img = test_item.data
     ref_img = reference_item.data
 
@@ -144,7 +144,7 @@ class Job:
     def __init__(self, index: int, path_settings: PathSettings, results_key: str, test_file, reference_file, reference_item):
         self.index = index
         self.result = {
-            "source": None,
+            "file": None,
             "status": "unknown",
             "ok": False,
             "score": 0,
@@ -188,7 +188,9 @@ def compare_data(render_sets, reference_data, path_settings: PathSettings):
 
             for name, file in reference_item.files.items():
                 results_key = str(file.path)
-                jobs.append(Job(index, path_settings, results_key, test_item.files.get(name) if test_item else None, file, reference_item))
+                jobs.append(Job(
+                    index, path_settings, results_key, test_item.files.get(name) if test_item else None, file, reference_item
+                ))
 
     with multiprocessing.Pool(multiprocessing.cpu_count()) as pool:
         jobs = pool.map(process_job, jobs)
@@ -200,21 +202,23 @@ def compare_data(render_sets, reference_data, path_settings: PathSettings):
         if reference_item is None:
             continue
         for name, file in reference_item.files.items():
+            id = str(Path(key).parent / file.path.name)
             results_key = str(file.path)
             results[results_key] = {
+                "id": id,
                 "test": key,
                 "file": file.path.name,
                 "reference": path_settings.path(file.path),
                 "score": 0,
                 "max": 0,
-                "results": [{} for i in range(len(render_sets))],
+                "results": [{"time": rs.times.get(id, 0)} for i, rs in enumerate(render_sets)],
             }
 
     for job in jobs:
         result = results[job.results_key]
         result["score"] += job.score
         result["max"] += 1
-        result["results"][job.index] = job.result
+        result["results"][job.index].update(job.result)
         job.reference_item.mark_features(job.score, features, job.index, len(render_sets))
 
     return {
@@ -427,8 +431,8 @@ def render_html(report, path: Path, absolute: bool):
             col = ElementTree.SubElement(td, "div")
             col.attrib["class"] = "result-pic"
 
-            if result["source"]:
-                ElementTree.SubElement(col, "img").attrib["src"] = src(result["source"])
+            if result["file"]:
+                ElementTree.SubElement(col, "img").attrib["src"] = src(result["file"])
             else:
                 ElementTree.SubElement(col, "div")
 
@@ -463,10 +467,13 @@ class RenderSet:
             "command": "",
             "skipped": [],
             "format": "json",
+            "times": {}
         }
         if meta_path.exists:
             with open(meta_path) as f:
                 self.meta.update(json.load(f))
+
+        self.times = self.meta.pop("times")
 
 
 if __name__ == "__main__":

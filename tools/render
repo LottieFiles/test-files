@@ -2,8 +2,9 @@
 
 import re
 import sys
-import shlex
+import time
 import json
+import shlex
 import argparse
 import subprocess
 import multiprocessing
@@ -12,23 +13,37 @@ from pathlib import Path
 from script_utils import DirectoryScanner
 
 
-def invoke(infile, outfile, frame):
+class Job:
+    def __init__(self, infile, outfile, out_rel, frame):
+        self.infile = str(infile)
+        self.outfile = str(outfile)
+        self.frame = frame
+        self.time = 0
+        self.name = str(out_rel)
+
+
+def invoke(job: Job):
     cmd = list(args.command)
-    cmd[infile_index] = infile
+    cmd[infile_index] = job.infile
     if outfile_index != -1:
-        cmd[outfile_index] = outfile
+        cmd[outfile_index] = job.outfile
     if frame_index != -1:
-        cmd[frame_index] = str(int(frame))
+        cmd[frame_index] = str(int(job.frame))
 
     cmd_string = " ".join(map(shlex.quote, cmd))
     try:
+        ts = time.perf_counter_ns()
         rc = subprocess.call(cmd)
+        te = time.perf_counter_ns()
+        job.time = te - ts
         if rc == 0:
             print("PASS", cmd_string)
         else:
             print("FAIL", cmd_string)
     except Exception as e:
         print("FAIL", cmd_string, e)
+
+    return (job.name, job.time)
 
 
 def collect_files(file: Path, relpath: Path, jobs: list):
@@ -38,9 +53,10 @@ def collect_files(file: Path, relpath: Path, jobs: list):
         in_file = file.parent / (basename + input_suffix)
         if in_file.exists():
             frame_number = m.group(2)
-            out_file = args.output / relpath.parent / ("%s-%s.png" % (basename, frame_number))
+            out_rel = relpath.parent / ("%s-%s.png" % (basename, frame_number))
+            out_file = args.output / out_rel
             out_file.parent.mkdir(parents=True, exist_ok=True)
-            jobs.append((str(in_file), str(out_file), frame_number))
+            jobs.append(Job(in_file, out_file, out_rel, frame_number))
         else:
             skipped.add(str(relpath.parent / basename))
 
@@ -108,7 +124,7 @@ jobs = []
 DirectoryScanner(collect_files).scan(args.reference, jobs)
 
 with multiprocessing.Pool(multiprocessing.cpu_count()) as pool:
-    pool.starmap(invoke, jobs)
+    times = pool.map(invoke, jobs)
 
 with open(args.output / "meta.json", "w") as f:
     command_base = Path(args.command[0]).name
@@ -120,4 +136,5 @@ with open(args.output / "meta.json", "w") as f:
         "command": " ".join(map(shlex.quote, [command_base] + args.command[1:])),
         "skipped": list(skipped),
         "format": args.input_format,
+        "times": dict(times),
     }, f, indent=4)
