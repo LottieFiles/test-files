@@ -16,19 +16,31 @@ from script_utils import DirectoryScanner
 class Job:
     def __init__(self, infile, outfile, out_rel, frame):
         self.infile = str(infile)
-        self.outfile = str(outfile)
+        self.outfile = outfile
         self.frame = frame
         self.time = 0
         self.name = str(out_rel)
 
 
+class CmdParam:
+    def __init__(self, command, guard, replace):
+        self.guard = guard
+        try:
+            self.index = command.index(guard)
+        except ValueError:
+            self.index = -1
+        self.replace = replace
+
+    def __call__(self, cmd, job):
+        if self.index != -1:
+            cmd[self.index] = str(self.replace(job))
+
+
+
 def invoke(job: Job):
     cmd = list(args.command)
-    cmd[infile_index] = job.infile
-    if outfile_index != -1:
-        cmd[outfile_index] = job.outfile
-    if frame_index != -1:
-        cmd[frame_index] = str(int(job.frame))
+    for param in params:
+        param(cmd, job)
 
     cmd_string = " ".join(map(shlex.quote, cmd))
     try:
@@ -108,16 +120,14 @@ if "{}" not in args.command:
     sys.stderr.write("Missing {} in the command\n")
     sys.exit(1)
 
-
-infile_index = args.command.index("{}")
-outfile_index = args.command.index("{out}")
-frame_index = args.command.index("{frame}")
+params = [
+    CmdParam(args.command, "{}", lambda j: j.infile),
+    CmdParam(args.command, "{out}", lambda j: j.outfile),
+    CmdParam(args.command, "{frame}", lambda j: int(j.frame)),
+    CmdParam(args.command, "{out_path}", lambda j: j.outfile.parent),
+]
 input_suffix = "." + args.input_format
 skipped = set()
-
-if frame_index == -1:
-    sys.stderr.write("TODO\n")
-    sys.exit(1)
 
 args.output.mkdir(parents=True, exist_ok=True)
 jobs = []

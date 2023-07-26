@@ -94,8 +94,9 @@ for format in formats:
     print("")
 
 
-if len(formats) > 1:
-    out_path = args.output
+basename = "report"
+if len(formats) == 1:
+    basename += "-" + formats[0]
 
-
-call(report_base + common + ["-o", str(out_path / "report.json"), "--html", str(out_path / "report.html")] + paths)
+out_path = args.output
+call(report_base + common + ["-o", str(out_path / (basename + ".json")), "--html", str(out_path / (basename + ".html"))] + paths)
