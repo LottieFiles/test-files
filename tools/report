@@ -283,12 +283,6 @@ if __name__ == "__main__":
         default=""
     )
     parser.add_argument(
-        "--html",
-        help="File path for the HTML report",
-        type=Path,
-        default=None
-    )
-    parser.add_argument(
         "--relative",
         help="Make test paths relative to this",
         type=Path,
@@ -307,6 +301,3 @@ if __name__ == "__main__":
     out = sys.stdout if args.output is None else open(args.output, "w")
     json.dump(data, out, indent=4)
     out.write("\n")
-
-    if args.html:
-        render_html(data, args.html, args.relative is None)
