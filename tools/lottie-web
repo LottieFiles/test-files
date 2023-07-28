@@ -41,6 +41,7 @@ with sync_playwright() as p:
             var player = document.getElementById("player");
             player.style.width = lottie_json.w + "px";
             player.style.height = lottie_json.h + "px";
+            player.style.position = "relative";
 
             var data = {{
                 container: document.getElementById('player'),
