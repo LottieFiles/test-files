@@ -46,15 +46,29 @@ parser.add_argument(
     help="Copy reference images to the output directory",
 )
 
+parser.add_argument(
+    "--arg-placeholder", "-a",
+    help="Argumant placeholder name for distinguishing render sets"
+)
+
+parser.add_argument(
+    "--arg-value", "-v",
+    default=[],
+    action="append",
+    help="Argumant value for distinguishing render sets"
+)
+
 args = parser.parse_args()
 cmd_root = Path(__file__).parent
 paths = []
 formats = args.input_format or ["json"]
 render_base = [str(cmd_root / "render")]
 report_base = [str(cmd_root / "report")]
+html_base = [str(cmd_root / "html-report")]
 common = []
 reference_path = cmd_root.parent / "data"
 reference_out_path = args.output / "reference"
+relative = None
 
 if args.reference:
     reference_path /= args.reference
@@ -72,7 +86,8 @@ if args.copy_reference:
     report_base.append("--metadata")
     report_base.append(str(reference_path))
     report_base.append("--relative")
-    report_base.append(str(args.output))
+    relative = str(args.output)
+    report_base.append(relative)
 
     print("Copying Files")
     ref_out_path = args.output / "reference"
@@ -86,17 +101,41 @@ if args.copy_reference:
     print("")
 
 
-for format in formats:
-    out_path = args.output / format
-    render_out = out_path / "images"
-    call(render_base + common + ["-f", format, "-o", str(render_out), "-l", format] + args.command)
-    paths.append(str(render_out))
-    print("")
+if len(args.arg_value) > 0 and len(formats) > 1:
+    sys.stderr.write("Only specify multiple formats or argument placeholders")
+    sys.exit(1)
+
+
+if len(args.arg_value) > 0:
+    format = formats[0]
+    index_placeholder = args.command.index(args.arg_placeholder)
+
+    for value in args.arg_value:
+        out_path = args.output / value
+        render_out = out_path / "images"
+        args.command[index_placeholder] = value
+        call(render_base + common + ["-f", format, "-o", str(render_out), "-l", value] + args.command)
+        paths.append(str(render_out))
+        print("")
+else:
+    for format in formats:
+        out_path = args.output / format
+        render_out = out_path / "images"
+        call(render_base + common + ["-f", format, "-o", str(render_out), "-l", format] + args.command)
+        paths.append(str(render_out))
+        print("")
 
 
 basename = "report"
-if len(formats) == 1:
+out_path = args.output
+
+if len(formats) == 1 and len(args.arg_value) == 0:
     basename += "-" + formats[0]
 
-out_path = args.output
-call(report_base + common + ["-o", str(out_path / (basename + ".json")), "--html", str(out_path / (basename + ".html"))] + paths)
+report_filename = str(out_path / (basename + ".json"))
+call(report_base + common + ["-o", report_filename] + paths)
+
+html_cmd = html_base + [report_filename, "-o", str(out_path / (basename + ".html"))]
+if relative:
+    html_cmd += ["--relative", relative]
+call(html_cmd)

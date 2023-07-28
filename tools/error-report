@@ -8,6 +8,8 @@ from pathlib import Path
 def error(label, test, file, message, fatal):
     sys.stderr.write("Error" if fatal else "Warning")
     sys.stderr.write(": ")
+    sys.stderr.write(label)
+    sys.stderr.write(": ")
     sys.stderr.write(test)
     sys.stderr.write(": ")
     sys.stderr.write(file)
