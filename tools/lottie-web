@@ -1,5 +1,4 @@
 #!/usr/bin/env python3
-import os
 import tempfile
 import argparse
 from pathlib import Path
@@ -20,10 +19,8 @@ with sync_playwright() as p:
     parser.add_argument("--output", "-o", type=Path, required=True)
     args = parser.parse_args()
 
-
     with open(args.lottie) as f:
         lottie_json = f.read()
-
 
     lottie_web_url = args.lottie_web_url
     if not lottie_web_url:
@@ -50,7 +47,7 @@ with sync_playwright() as p:
                 autoplay: false,
                 animationData: lottie_json
             }};
-            var anim = bodymovin.loadAnimation(data);
+            var anim = lottie.loadAnimation(data);
             anim.goToAndStop({frame}, true);
         </script>
      </body>

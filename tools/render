@@ -102,7 +102,7 @@ parser.add_argument(
 parser.add_argument(
     "--title", "-t",
     help="Render set title",
-    default=None
+    default=""
 )
 parser.add_argument(
     "--label", "-l",
@@ -141,7 +141,7 @@ with open(args.output / "meta.json", "w") as f:
     title = args.title or (command_base[0].upper() + command_base[1:])
     json.dump({
         "title": title,
-        "label": args.label or ("%s %s" % args.title, args.input_format),
+        "label": args.label or ("%s %s" % (args.title, args.input_format)),
         "comment": args.comment,
         "command": " ".join(map(shlex.quote, [command_base] + args.command[1:])),
         "skipped": list(skipped),

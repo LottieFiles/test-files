@@ -5,6 +5,7 @@ import json
 import argparse
 from pathlib import Path
 
+
 def error(label, test, file, message, fatal):
     sys.stderr.write("Error" if fatal else "Warning")
     sys.stderr.write(": ")
@@ -18,6 +19,7 @@ def error(label, test, file, message, fatal):
     sys.stderr.write("\n")
     if fatal:
         error.has_error = True
+
 
 error.has_error = False
 

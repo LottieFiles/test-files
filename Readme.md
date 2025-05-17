@@ -113,6 +113,14 @@ Tools
 `./tools/report` generates a JSON file reporting on the status of a directory containing renders to examine
 `./tools/render-report` shorthand script to call `render` and `report` with some sensible defaults
 
+### Installation
+
+You should set up a python virtual environment and install dependencies from the requirements file:
+
+```bash
+pip install ./tools/requirements.txt
+```
+
 
 ### Render Sets
 
@@ -139,14 +147,18 @@ You can genrate a report on a single render set or from multiple ones.
 If you generate a report formn multiple render sets, you should ensure they have different labels.
 
 
-### Example
+### Generating a Report
 
 Follows a practical example on how to generate a report with a given renderer
 (here `glaxnimate` is used as a renderer for demonstation).
 
 ```bash
+# Render images
 tools/render -o /tmp/lottie-test/img glaxnimate {} -r {out} --frame {frame}
-tools/report /tmp/lottie-test/img -o /tmp/lottie-test/report.json --html /tmp/lottie-test/report.html
+# Generate report data based on image accuracy
+tools/report /tmp/lottie-test/img -o /tmp/lottie-test/report.json
+# Generate HTML page for the report
+tools/html-report /tmp/lottie-test/report.json -o /tmp/lottie-test/report.html
 ```
 
 If you are OK with the default settings, you can also use the shorthand command `render-report`:
@@ -154,6 +166,36 @@ If you are OK with the default settings, you can also use the shorthand command 
 ```bash
 tools/render-report -o /tmp/lottie-test -f json glaxnimate {} -r {out} --frame {frame}
 ```
+
+### Rendering with lottie-web
+
+There's also an utility script that can render using lottie-web, it uses playwright
+to render browser output.
+
+First you need to install the dependencies:
+
+```bash
+pip install playwright
+playwright install chromium
+```
+
+You can use it to generate a render set like so:
+
+```bash
+tools/render -o /tmp/lottie-test/img ./tools/lottie-web {} -o {out} --frame {frame} --browser chromium
+```
+
+### CI integration
+
+You can force an error on an automated CI pipeline like this:
+
+```bash
+tools/error-report /tmp/lottie-test/report.json
+```
+
+It will print failed tests and exit with an error code if any tests aren't up to par.
+
+You can ignore individual failures with `-i`.
 
 
 License

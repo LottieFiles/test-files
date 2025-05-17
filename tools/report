@@ -6,7 +6,7 @@ import json
 import argparse
 import multiprocessing
 from pathlib import Path
-from PIL import Image, ImageChops
+from PIL import Image
 import cv2
 import numpy
 import sewar.full_ref
