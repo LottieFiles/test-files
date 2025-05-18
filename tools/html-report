@@ -159,7 +159,6 @@ def render_html(report, path: Path, absolute: bool):
         tr.style.display = this.value != "" && tr.textContent.indexOf(this.value) == -1 ? "none" : "table-row";
     });'''
 
-
     table = ElementTree.SubElement(body, "table")
     table.attrib["id"] = "table-tests"
     tr = ElementTree.SubElement(table, "tr")

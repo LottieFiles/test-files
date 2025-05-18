@@ -54,14 +54,23 @@ parser.add_argument(
 
 parser.add_argument(
     "--arg-placeholder", "-a",
-    help="Argumant placeholder name for distinguishing render sets"
+    help="Argument for distinguishing render sets as a triple with placeholder, value, label"
 )
 
 parser.add_argument(
     "--arg-value", "-v",
     default=[],
     action="append",
-    help="Argumant value for distinguishing render sets"
+    help="Argument value for distinguishing render sets"
+)
+
+
+parser.add_argument(
+    "--arg-labeled", "-vl",
+    default=[],
+    nargs=2,
+    action="append",
+    help="Labeled argument value for distinguishing render sets"
 )
 
 args = parser.parse_args()
@@ -108,20 +117,20 @@ if args.copy_reference:
     print("")
 
 
-if len(args.arg_value) > 0 and len(formats) > 1:
-    sys.stderr.write("Only specify multiple formats or argument placeholders")
-    sys.exit(1)
+labeled_args = args.arg_labeled or list(zip(args.arg_value, args.arg_value))
+if len(labeled_args) > 0:
+    if len(formats) > 1:
+        sys.stderr.write("Only specify multiple formats or argument placeholders")
+        sys.exit(1)
 
-
-if len(args.arg_value) > 0:
     format = formats[0]
     index_placeholder = args.command.index(args.arg_placeholder)
 
-    for value in args.arg_value:
-        out_path = args.output / value
+    for label, value in labeled_args:
+        out_path = args.output / label
         render_out = out_path / "images"
         args.command[index_placeholder] = value
-        call(render_base + common + ["-f", format, "-o", str(render_out), "-l", value] + args.command)
+        call(render_base + common + ["-f", format, "-o", str(render_out), "-l", label] + args.command)
         paths.append(str(render_out))
         print("")
 else:
@@ -136,7 +145,7 @@ else:
 basename = "report"
 out_path = args.output
 
-if len(formats) == 1 and len(args.arg_value) == 0:
+if len(formats) == 1 and len(labeled_args) == 0:
     basename += "-" + formats[0]
 
 report_filename = str(out_path / (basename + ".json"))
