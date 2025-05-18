@@ -33,6 +33,11 @@ parser.add_argument(
     help="Ignore test"
 )
 parser.add_argument(
+    "--ignore-file", "-if",
+    type=Path,
+    help="File listing ignored tests"
+)
+parser.add_argument(
     "--score-error",
     type=float,
     default=0.8,
@@ -52,6 +57,13 @@ parser.add_argument(
 
 args = parser.parse_args()
 ignored = set(args.ignore)
+
+if args.ignore_file:
+    with open(args.ignore_file) as f:
+        for line in f:
+            item = line.strip()
+            if item and not item.startswith("#"):
+                ignored.add(item)
 
 with open(args.report) as f:
     report = json.load(f)

@@ -36,7 +36,6 @@ class CmdParam:
             cmd[self.index] = str(self.replace(job))
 
 
-
 def invoke(job: Job):
     cmd = list(args.command)
     for param in params:

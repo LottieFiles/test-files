@@ -9,6 +9,7 @@ from pathlib import Path
 
 from script_utils import DirectoryScanner
 
+
 def call(cmd):
     print(" ".join(map(shlex.quote, cmd)))
     subprocess.call([sys.executable] + cmd)
@@ -44,6 +45,11 @@ parser.add_argument(
     "--copy-reference",
     action="store_true",
     help="Copy reference images to the output directory",
+)
+
+parser.add_argument(
+    "--label", "-l",
+    help="Report label",
 )
 
 parser.add_argument(
@@ -91,6 +97,7 @@ if args.copy_reference:
 
     print("Copying Files")
     ref_out_path = args.output / "reference"
+
     def copy_file(file: Path, relpath: Path):
         if "asset" not in file.name and file.suffix == ".png":
             out_file = ref_out_path / relpath
@@ -121,7 +128,7 @@ else:
     for format in formats:
         out_path = args.output / format
         render_out = out_path / "images"
-        call(render_base + common + ["-f", format, "-o", str(render_out), "-l", format] + args.command)
+        call(render_base + common + ["-f", format, "-o", str(render_out), "-l", args.label or format] + args.command)
         paths.append(str(render_out))
         print("")
 
