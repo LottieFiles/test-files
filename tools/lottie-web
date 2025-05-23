@@ -17,6 +17,7 @@ with sync_playwright() as p:
     parser.add_argument("--device", choices=list(p.devices.keys()), default=None)
     parser.add_argument("lottie", type=Path)
     parser.add_argument("--output", "-o", type=Path, required=True)
+    parser.add_argument("--keep", action="store_true", help="Keep the html file")
     args = parser.parse_args()
 
     with open(args.lottie) as f:
@@ -59,7 +60,7 @@ with sync_playwright() as p:
         frame=args.frame
     )
 
-    with tempfile.NamedTemporaryFile("w", suffix=".html") as tmp:
+    with tempfile.NamedTemporaryFile("w", suffix=".html", delete=not args.keep) as tmp:
         tmp.write(html_content)
         tmp.flush()
 
@@ -70,7 +71,9 @@ with sync_playwright() as p:
             context = browser
 
         page = context.new_page()
+        # page.on('console', lambda m: print(m.text))
         page.goto("file://" + tmp.name)
+        # page.wait_for_function("anim.isLoaded")
         player = page.locator("#player")
         player.screenshot(path=str(args.output), omit_background=True)
         browser.close()
