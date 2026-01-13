@@ -11,7 +11,7 @@
                   stroke-width="2" stroke-opacity="1" d=" M12.25 45.5 C42,72.5 56.25,21.75 72.5,6 "/>
         </g>
         <g id="_R_G_L_0_G">
-            <path id="_R_G_L_0_G_D_0_P_0" fill="#000000" fill-opacity="1" fill-rule="nonzero"
+            <path id="_R_G_L_0_G_D_0_P_0" fill="#0000ff" fill-opacity="1" fill-rule="nonzero"
                 d=" M0 -10 C5.52,-10 10,-5.52 10,0 C10,5.52 5.52,10 0,10 C-5.52,10 -10,5.52 -10,0 C-10,-5.52 -5.52,-10 0,-10z "/>
         </g>
     </g>

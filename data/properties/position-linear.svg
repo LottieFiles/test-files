@@ -12,7 +12,7 @@
         </rdf:RDF>
     </metadata>
     <g id="Composition_bac3929d51b34d3dba09772a308a4b73" inkscape:groupmode="layer" inkscape:label="Comp 1">
-        <g transform="matrix(1, 0, 0, 1, 0, 40)" opacity="1" id="Fill_2819fa4a4000402597abad514c3e431a" fill="#000000" inkscape:groupmode="layer" inkscape:label="Shape Layer 1" fill-opacity="1">
+        <g transform="matrix(1, 0, 0, 1, 0, 40)" opacity="1" id="Fill_2819fa4a4000402597abad514c3e431a" fill="#0000ff" inkscape:groupmode="layer" inkscape:label="Shape Layer 1" fill-opacity="1">
             <ellipse ry="10" cy="0" rx="10" cx="29" style="stroke:none;">
                 <animate values="10; 70; 70" keyTimes="0.000000; 0.983607; 1" attributeName="cx" repeatCount="indefinite" begin="0.000000" calcMode="linear" dur="1.016667" />
                 <animate values="0; 0; 0" keyTimes="0.000000; 0.983607; 1" attributeName="cy" repeatCount="indefinite" begin="0.000000" calcMode="linear" dur="1.016667" />
